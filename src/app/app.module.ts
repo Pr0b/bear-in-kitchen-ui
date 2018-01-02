@@ -10,13 +10,15 @@ import { SearchbarComponent } from './components/searchbar/searchbar.component';
 import { appRoutes } from '../routes'
 
 import { RecipeFetcherService } from './services/recipe-fetcher.service';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     GalleryComponent,
-    SearchbarComponent
+    SearchbarComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
