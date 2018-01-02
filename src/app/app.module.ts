@@ -11,6 +11,7 @@ import { appRoutes } from '../routes'
 
 import { RecipeFetcherService } from './services/recipe-fetcher.service';
 import { FooterComponent } from './components/footer/footer.component';
+import { RecipeComponent } from './components/recipe/recipe.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { FooterComponent } from './components/footer/footer.component';
     NavbarComponent,
     GalleryComponent,
     SearchbarComponent,
-    FooterComponent
+    FooterComponent,
+    RecipeComponent
   ],
   imports: [
     BrowserModule,

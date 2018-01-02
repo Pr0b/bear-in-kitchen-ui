@@ -15,6 +15,10 @@ export class RecipeFetcherService {
   getRecipePhotos(){
     return Observable.of(MOCK_IMAGES);
   }  
+
+  getImage(id: number){
+    return MOCK_IMAGES[id];
+  }
 }
 
 const MOCK_IMAGES =[

@@ -18,7 +18,7 @@ export class GalleryComponent implements OnInit {
   }
 }
 
-interface RecipePhoto{
+export interface RecipePhoto{
   "albumId": number,
   "id": number,
   "title": string,
