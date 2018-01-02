@@ -1,18 +1,29 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { HttpModule } from '@angular/http';
+import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { GalleryComponent } from './components/gallery/gallery.component';
+import { SearchbarComponent } from './components/searchbar/searchbar.component';
+import { appRoutes } from '../routes'
 
+import { RecipeFetcherService } from './services/recipe-fetcher.service';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NavbarComponent,
+    GalleryComponent,
+    SearchbarComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpModule,
+    RouterModule.forRoot(appRoutes)
   ],
-  providers: [],
+  providers: [RecipeFetcherService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

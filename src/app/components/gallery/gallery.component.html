@@ -1,0 +1,15 @@
+<app-searchbar></app-searchbar>
+<section class="fdb-block">
+  <div class="container">
+    <div class="row justify-content-center">
+        <div *ngFor="let recipePhoto of recipePhotos">  
+          <div class="clearfix" ng-if="$index % 3 == 0"></div>
+          <div class="col-12 col-md-8 text-center">
+            <div class=div class="row justify-content-center pb-4">
+              <img src="{{recipePhoto.thumbnailUrl}}">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
