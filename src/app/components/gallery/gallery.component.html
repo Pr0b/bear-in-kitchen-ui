@@ -2,12 +2,12 @@
 <section class="fdb-block">
   <div class="container">
     <div class="row justify-content-center">
-        <div *ngFor="let recipePhoto of recipePhotos">  
+        <div *ngFor="let recipe of recipes">  
           <div class="clearfix" ng-if="$index % 3 == 0"></div>
           <div class="col-4 col-md-4 text-center">
             <div class="justify-content-center pb-4">
-              <a [routerLink] ="['/image', recipePhoto.id]">
-                <img src="{{recipePhoto.thumbnailUrl}}" height="300" width="300">
+              <a [routerLink] ="['/recipe', recipe.id]">
+                <img [src]='recipe.thumbnailUrl' height="300" width="300">
               </a>
             </div>
           </div>

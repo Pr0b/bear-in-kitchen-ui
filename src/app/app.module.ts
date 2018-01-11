@@ -12,6 +12,9 @@ import { appRoutes } from '../routes'
 import { RecipeFetcherService } from './services/recipe-fetcher.service';
 import { FooterComponent } from './components/footer/footer.component';
 import { RecipeComponent } from './components/recipe/recipe.component';
+import { ProtocolComponent } from './components/recipe/protocol/protocol.component';
+import { CommentsComponent } from './components/recipe/comments/comments.component';
+import { OverviewComponent } from './components/recipe/overview/overview.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +23,10 @@ import { RecipeComponent } from './components/recipe/recipe.component';
     GalleryComponent,
     SearchbarComponent,
     FooterComponent,
-    RecipeComponent
+    RecipeComponent,
+    ProtocolComponent,
+    CommentsComponent,
+    OverviewComponent
   ],
   imports: [
     BrowserModule,

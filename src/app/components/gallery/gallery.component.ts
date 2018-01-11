@@ -7,18 +7,18 @@ import { RecipeFetcherService } from '../../services/recipe-fetcher.service';
   styleUrls: ['./gallery.component.scss']
 })
 export class GalleryComponent implements OnInit {
-  recipePhotos:RecipePhoto[];
+  recipes:RecipeDetail[];
 
   constructor(private recipeFetcherService:RecipeFetcherService) { }
 
   ngOnInit() {
-    this.recipeFetcherService.getRecipePhotos().subscribe((recipePhotos) => {
-      this.recipePhotos = recipePhotos;
+    this.recipeFetcherService.getRecipes().subscribe((recipes) => {
+      this.recipes = recipes;
     });
   }
 }
 
-export interface RecipePhoto{
+export interface RecipeDetail{
   "albumId": number,
   "id": number,
   "title": string,

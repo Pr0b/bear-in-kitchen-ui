@@ -7,16 +7,16 @@ import {Observable} from "rxjs/Rx";
 export class RecipeFetcherService {
 
   constructor(public http:Http) { }
-  // getRecipePhotos(){
+  // getRecipes(){
   //   return this.http.get('https://jsonplaceholder.typicode.com/photos')
   //     .map(res => res.json());
   // }
   
-  getRecipePhotos(){
+  getRecipes(){
     return Observable.of(MOCK_IMAGES);
   }  
 
-  getImage(id: number){
+  getRecipe(id: number){
     return MOCK_IMAGES[id];
   }
 }
