@@ -15,6 +15,7 @@ import { RecipeComponent } from './components/recipe/recipe.component';
 import { ProtocolComponent } from './components/recipe/protocol/protocol.component';
 import { CommentsComponent } from './components/recipe/comments/comments.component';
 import { OverviewComponent } from './components/recipe/overview/overview.component';
+import { IngredientsComponent } from './components/recipe/ingredients/ingredients.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { OverviewComponent } from './components/recipe/overview/overview.compone
     RecipeComponent,
     ProtocolComponent,
     CommentsComponent,
-    OverviewComponent
+    OverviewComponent,
+    IngredientsComponent
   ],
   imports: [
     BrowserModule,
