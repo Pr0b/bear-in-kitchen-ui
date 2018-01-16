@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router'
 
-import { RecipeFetcherService } from '../../services/recipe-fetcher.service';
+import { RecipeFetcherService } from '../../shared/services';
 import { RecipeDetail } from '../gallery/gallery.component';
 
 @Component({

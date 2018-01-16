@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import { RecipeDetail } from '../../gallery/gallery.component';
+import { RecipeDetail } from '../../../gallery/gallery.component';
 
 @Component({
   selector: 'app-ingredients',

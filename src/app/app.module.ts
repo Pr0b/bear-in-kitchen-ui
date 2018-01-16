@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
@@ -10,18 +11,6 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthGuard } from './shared';
-
-import { NavbarComponent } from './components/navbar/navbar.component';
-import { GalleryComponent } from './components/gallery/gallery.component';
-import { SearchbarComponent } from './components/searchbar/searchbar.component';
-
-import { RecipeFetcherService } from './shared/services/recipeRepository/recipe-fetcher.service';
-import { FooterComponent } from './components/footer/footer.component';
-import { RecipeComponent } from './components/recipe/recipe.component';
-import { ProtocolComponent } from './components/recipe/protocol/protocol.component';
-import { CommentsComponent } from './components/recipe/comments/comments.component';
-import { OverviewComponent } from './components/recipe/overview/overview.component';
-import { IngredientsComponent } from './components/recipe/ingredients/ingredients.component';
 
 export function createTranslateLoader(http: HttpClient) {
   // for development
@@ -43,9 +32,10 @@ export function createTranslateLoader(http: HttpClient) {
             deps: [HttpClient]
         }
     }),
+    HttpModule,
     AppRoutingModule
   ],
-  providers: [RecipeFetcherService, AuthGuard],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

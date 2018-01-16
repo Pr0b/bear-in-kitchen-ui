@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { RecipeFetcherService } from '../../shared/services';
+import { routerTransition } from '../../router.animations';
 
 import { StatModule } from '../../shared';
 
 @Component({
   selector: 'app-gallery',
   templateUrl: './gallery.component.html',
-  styleUrls: ['./gallery.component.scss']
+  styleUrls: ['./gallery.component.scss'],
+  animations: [routerTransition()]
 })
 export class GalleryComponent implements OnInit {
   recipes:RecipeDetail[];
