@@ -1,4 +1,3 @@
-
 import { AppModule } from './app.module';
 
 describe('AppModule', () => {
