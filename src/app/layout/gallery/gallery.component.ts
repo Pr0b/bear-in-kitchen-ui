@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { RecipeFetcherService } from '../../services/recipe-fetcher.service';
+import { RecipeFetcherService } from '../../shared/services';
+
+import { StatModule } from '../../shared';
 
 @Component({
   selector: 'app-gallery',
