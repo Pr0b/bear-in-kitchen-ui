@@ -16,6 +16,8 @@ export class RecipeComponent implements OnInit {
     private route: ActivatedRoute) { }
 
   ngOnInit() {
+    console.log('RecipeComponent');
+    console.log(this.route.snapshot.params['id']);
     this.recipe = this.recipeFetcherService.getRecipe(+this.route.snapshot.params['id']);
   }
 
