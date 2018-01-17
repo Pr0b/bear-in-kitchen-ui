@@ -1,6 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
-import { RecipeDetail } from '../../../gallery/gallery.component';
+import {RecipeDetail} from '../../recipe.component';
 
 @Component({
   selector: 'app-overview',
@@ -9,8 +9,10 @@ import { RecipeDetail } from '../../../gallery/gallery.component';
 })
 export class OverviewComponent implements OnInit {
 
-  @Input() recipe:RecipeDetail
-  constructor() { }
+  @Input() recipe: RecipeDetail;
+
+  constructor() {
+  }
 
   ngOnInit() {
   }

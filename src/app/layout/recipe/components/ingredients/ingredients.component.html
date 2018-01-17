@@ -1,12 +1,9 @@
 <section class="fdb-block">
   <div class="container">
+    <h1>Ingredients</h1>
     <div class="row mt-5 align-items-center">
       <ul class="list-group">
-        <li class="list-group-item">15 ml Ingredient 1</li>
-        <li class="list-group-item">66 ks Ingredient 2</li>
-        <li class="list-group-item">15 g Ingredient 3</li>
-        <li class="list-group-item">7 l Ingredient 4</li>
-        <li class="list-group-item">8 kg Ingredient 5</li>
+        <li class="list-group-item" *ngFor="let ingredient of recipe.ingredients" >{{ingredient.quantity}} {{ingredient.unit}} {{ingredient.title}}</li>
       </ul>
     </div>
   </div>

@@ -1,6 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
-import { RecipeDetail } from '../../../gallery/gallery.component';
+import {RecipeDetail} from '../../recipe.component';
+import {StaticNumberIconMappingService} from '../../../../shared/services';
 
 @Component({
   selector: 'app-protocol',
@@ -8,11 +9,17 @@ import { RecipeDetail } from '../../../gallery/gallery.component';
   styleUrls: ['./protocol.component.scss']
 })
 export class ProtocolComponent implements OnInit {
-  
-  @Input() recipe:RecipeDetail
-  constructor() { }
+
+  @Input() recipe: RecipeDetail;
+
+  constructor(private staticNumberIconMappingService: StaticNumberIconMappingService) {
+  }
 
   ngOnInit() {
+  }
+
+  mapNumberToIcon(id: number) {
+    return this.staticNumberIconMappingService.getIcon(id);
   }
 
 }
