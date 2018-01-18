@@ -35,12 +35,12 @@ const MOCK_IMAGES = [
     'ingredients': [
       {'id': 1, 'title': 'polohrubé mouky', 'quantity': 2, 'unit': 'hrnky'},
       {'id': 2, 'title': 'cukru krupice', 'quantity': 1, 'unit': 'hrnek'},
-      {'id': 3, 'title': 'prášek do pečiva', 'quantity': 1, 'unit': 'ks'},
+      {'id': 3, 'title': 'prášek do pečiva', 'quantity': 1, 'unit': ''},
       {'id': 4, 'title': 'mléka', 'quantity': 1, 'unit': 'hrnek'},
       {'id': 5, 'title': 'oleje', 'quantity': 4, 'unit': 'lžíce'},
-      {'id': 6, 'title': 'vejce', 'quantity': 2, 'unit': 'ks'},
+      {'id': 6, 'title': 'vejce', 'quantity': 2, 'unit': ''},
       {'id': 7, 'title': 'jahod', 'quantity': 500, 'unit': 'g'},
-      {'id': 8, 'title': 'vanilkové cukry', 'quantity': 2, 'unit': 'ks'}],
+      {'id': 8, 'title': 'vanilkové cukry', 'quantity': 2, 'unit': ''}],
     'protocol': [
       {'item': 'Nejdříve si v míse smícháme mouku, cukr a prášek do pečiva, uděláme důlek a přidáme mléko, olej a vejce.'},
       {'item': 'Důkladně smícháme, vylijeme na plech a povrch poklademe pokrájenými jahodami a zasypeme vanilkovými cukry.'},
@@ -48,7 +48,7 @@ const MOCK_IMAGES = [
   },
   {
     'albumId': 1,
-    'id': 1,
+    'id': 2,
     'title': 'Jahodová bublanina',
     'url': 'http://placehold.it/600/92c952',
     'thumbnailUrl': 'http://placehold.it/150/92c952',
@@ -57,12 +57,12 @@ const MOCK_IMAGES = [
     'ingredients': [
       {'id': 1, 'title': 'polohrubé mouky', 'quantity': 2, 'unit': 'hrnky'},
       {'id': 2, 'title': 'cukru krupice', 'quantity': 1, 'unit': 'hrnek'},
-      {'id': 3, 'title': 'prášek do pečiva', 'quantity': 1, 'unit': 'ks'},
+      {'id': 3, 'title': 'prášek do pečiva', 'quantity': 1, 'unit': ''},
       {'id': 4, 'title': 'mléka', 'quantity': 1, 'unit': 'hrnek'},
       {'id': 5, 'title': 'oleje', 'quantity': 4, 'unit': 'lžíce'},
-      {'id': 6, 'title': 'vejce', 'quantity': 2, 'unit': 'ks'},
+      {'id': 6, 'title': 'vejce', 'quantity': 2, 'unit': ''},
       {'id': 7, 'title': 'jahod', 'quantity': 500, 'unit': 'g'},
-      {'id': 8, 'title': 'vanilkové cukry', 'quantity': 2, 'unit': 'ks'}],
+      {'id': 8, 'title': 'vanilkové cukry', 'quantity': 2, 'unit': ''}],
     'protocol': [
       {'item': 'Nejdříve si v míse smícháme mouku, cukr a prášek do pečiva, uděláme důlek a přidáme mléko, olej a vejce.'},
       {'item': 'Důkladně smícháme, vylijeme na plech a povrch poklademe pokrájenými jahodami a zasypeme vanilkovými cukry.'},
