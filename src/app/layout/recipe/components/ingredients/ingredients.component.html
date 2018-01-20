@@ -1,8 +1,10 @@
-<div class="container">
-    <div class="row mt-5 align-top ">
-      <ul class="list-group">
-        <li class="list-group-item" *ngFor="let ingredient of recipe.ingredients" >{{ingredient.quantity}} {{ingredient.unit}} {{ingredient.title}}</li>
-      </ul>
-    </div>
+<div class="container mb-5">
+  <div class="row">
+    <ul class="list-group border">
+      <li style="border: none" class="list-group-item" *ngFor="let ingredient of recipe.ingredients">{{ingredient.quantity}}
+        {{ingredient.unit}} {{ingredient.title}}
+      </li>
+    </ul>
+  </div>
 </div>
 
