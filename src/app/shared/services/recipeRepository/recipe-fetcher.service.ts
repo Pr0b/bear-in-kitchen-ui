@@ -43,14 +43,13 @@ const MOCK_IMAGES = [
       {'id': 7, 'title': 'jahod', 'quantity': 500, 'unit': 'g'},
       {'id': 8, 'title': 'vanilkové cukry', 'quantity': 2, 'unit': ''}],
     'protocol': [
-      {'item': 'Nejdříve si v míse smícháme mouku, cukr a prášek do pečiva, uděláme důlek a přidáme mléko, olej a vejce.'},
-      {'item': 'Důkladně smícháme, vylijeme na plech a povrch poklademe pokrájenými jahodami a zasypeme vanilkovými cukry.'},
-      {'item': 'Pečeme na 180°C přibližně 35min.'}],
+      {'order': 1, 'item': 'Nejdříve si v míse smícháme mouku, cukr a prášek do pečiva, uděláme důlek a přidáme mléko, olej a vejce.', tip: false},
+      {'order': 2, 'item': 'Důkladně smícháme, vylijeme na plech a povrch poklademe pokrájenými jahodami a zasypeme vanilkovými cukry.', tip: false},
+      {'order': -1, 'item': 'Vyborne se hodi k ranni kave', tip: true},
+      {'order': 3, 'item': 'Pečeme na 180°C přibližně 35min.', tip: false}],
     'tags': [{'item': 'jahody'},
       {'item': 'kolac'},
-      {'item': 'buchta'}],
-    'tips': [{'item': 'Vyborne se hodi k ranni kave'},
-      {'item': 'Je to mnamka'}]
+      {'item': 'buchta'}]
   },
   {
     'id': 1,
@@ -71,14 +70,13 @@ const MOCK_IMAGES = [
       {'id': 7, 'title': 'jahod', 'quantity': 500, 'unit': 'g'},
       {'id': 8, 'title': 'vanilkové cukry', 'quantity': 2, 'unit': ''}],
     'protocol': [
-      {'item': 'Nejdříve si v míse smícháme mouku, cukr a prášek do pečiva, uděláme důlek a přidáme mléko, olej a vejce.'},
-      {'item': 'Důkladně smícháme, vylijeme na plech a povrch poklademe pokrájenými jahodami a zasypeme vanilkovými cukry.'},
-      {'item': 'Pečeme na 180°C přibližně 35min.'}],
+      {'order': 1, 'item': 'Nejdříve si v míse smícháme mouku, cukr a prášek do pečiva, uděláme důlek a přidáme mléko, olej a vejce.', tip: false},
+      {'order': 2, 'item': 'Důkladně smícháme, vylijeme na plech a povrch poklademe pokrájenými jahodami a zasypeme vanilkovými cukry.', tip: false},
+      {'order': 3, 'item': 'Pečeme na 180°C přibližně 35min.', tip: false},
+      {'order': -1, 'item': 'Je to mnamka', tip: true}],
     'tags': [{'item': 'jahody'},
       {'item': 'kolac'},
-      {'item': 'buchta'}],
-    'tips': [{'item': 'Vyborne se hodi k ranni kave'},
-      {'item': 'Je to mnamka'}]
+      {'item': 'buchta'}]
   },
   {
     'id': 2,
@@ -97,16 +95,15 @@ const MOCK_IMAGES = [
       {'id': 5, 'title': 'vanilkový cukr', 'quantity': 1, 'unit': ''},
       {'id': 6, 'title': 'moučkový cukr na poprášení', 'quantity': 1, 'unit': ''}],
     'protocol': [
-      {'item': 'Vejce si rozklepneme do nízké skleničky, rozmícháme a ¾ přelijeme do misky, kam přidáme tvaroh, moučkový cukr, vanilkový cukr a vymícháme do hladka.'},
-      {'item': 'Listové těsto rozkrájíme rádýlkem na 6 čtverců a nakrojíme úhlopříčně od kraje do středu přibližně do dvou třetin. Doprostřed dáme lžíci tvarohové náplně.'},
-      {'item': 'Přeložíme každý druhý roh vzniklého trojúhelníku doprostřed. Jako druhý přeložíme protější roh, aby mlýn dobře držel a pak zbylé dva. Veprostřed slepujeme zbylým vajíčkem ve skleničce.'},
-      {'item': 'Připravené mlýny přendáme opatrně na plech a potřeme vajíčkem. Totéž uděláme s druhým listovým těstem.'},
-      {'item': 'Pečeme na 190°C přibližně 15min. Po vychladnutí poprášíme moučkovým cukrem.'}],
+      {'order': 1, 'item': 'Vejce si rozklepneme do nízké skleničky, rozmícháme a ¾ přelijeme do misky, kam přidáme tvaroh, moučkový cukr, vanilkový cukr a vymícháme do hladka.', tip: false},
+      {'order': 2, 'item': 'Listové těsto rozkrájíme rádýlkem na 6 čtverců a nakrojíme úhlopříčně od kraje do středu přibližně do dvou třetin. Doprostřed dáme lžíci tvarohové náplně.', tip: false},
+      {'order': 3, 'item': 'Přeložíme každý druhý roh vzniklého trojúhelníku doprostřed. Jako druhý přeložíme protější roh, aby mlýn dobře držel a pak zbylé dva. Veprostřed slepujeme zbylým vajíčkem ve skleničce.', tip: false},
+      {'order': 4, 'item': 'Připravené mlýny přendáme opatrně na plech a potřeme vajíčkem. Totéž uděláme s druhým listovým těstem.', tip: false},
+      {'order': -1, 'item': 'Listové těsto necháme na pečícím papíře. Snadno pak přeneseme hotové větrné mlýny na plech.', tip: true},
+      {'order': 5, 'item': 'Pečeme na 190°C přibližně 15min. Po vychladnutí poprášíme moučkovým cukrem.', tip: false}],
     'tags': [{'item': 'listové těsto'},
       {'item': 'mlýn'},
-      {'item': 'tvaroh'}],
-    'tips': [{'item': 'Listové těsto necháme na pečícím papíře. Snadno pak přeneseme hotové větrné mlýny na plech. '},
-      {'item': 'Je to mnamka'}]
+      {'item': 'tvaroh'}]
   },  {
     'id': 3,
     'title': 'Recipe 3 title',
@@ -120,15 +117,13 @@ const MOCK_IMAGES = [
       {'id': 1, 'title': 'ingredient1', 'quantity': 2, 'unit': 'ml'},
       {'id': 2, 'title': 'ingredient2', 'quantity': 5, 'unit': 'kg'}],
     'protocol': [
-      {'item': 'polozka postupu 1'},
-      {'item': 'polozka postupu 2'},
-      {'item': 'polozka postupu 3'},
-      {'item': 'polozka postupu 4'}],
+      {'order': 1, 'item': 'polozka postupu 1', tip: false},
+      {'order': -1, 'item': 'tip k predchozi polozce', tip: true},
+      {'order': 2, 'item': 'polozka postupu 3', tip: false},
+      {'order': 3, 'item': 'polozka postupu 4', tip: false}],
     'tags': [{'item': 'jahody'},
       {'item': 'kolac'},
-      {'item': 'buchta'}],
-    'tips': [{'item': 'Vyborne se hodi k ranni kave'},
-      {'item': 'Je to mnamka'}]
+      {'item': 'buchta'}]
   },  {
     'id': 4,
     'title': 'Recipe 4 title',
@@ -142,15 +137,13 @@ const MOCK_IMAGES = [
       {'id': 1, 'title': 'ingredient1', 'quantity': 2, 'unit': 'ml'},
       {'id': 2, 'title': 'ingredient2', 'quantity': 5, 'unit': 'kg'}],
     'protocol': [
-      {'item': 'polozka postupu 1'},
-      {'item': 'polozka postupu 2'},
-      {'item': 'polozka postupu 3'},
-      {'item': 'polozka postupu 4'}],
+      {'order': 1, 'item': 'polozka postupu 1', tip: false},
+      {'order': -1, 'item': 'tip k predchozi polozce', tip: true},
+      {'order': 2, 'item': 'polozka postupu 3', tip: false},
+      {'order': 3, 'item': 'polozka postupu 4', tip: false}],
     'tags': [{'item': 'jahody'},
       {'item': 'kolac'},
-      {'item': 'buchta'}],
-    'tips': [{'item': 'Vyborne se hodi k ranni kave'},
-      {'item': 'Je to mnamka'}]
+      {'item': 'buchta'}]
   },  {
     'id': 5,
     'title': 'Recipe 5 title',
@@ -164,14 +157,12 @@ const MOCK_IMAGES = [
       {'id': 1, 'title': 'ingredient1', 'quantity': 2, 'unit': 'ml'},
       {'id': 2, 'title': 'ingredient2', 'quantity': 5, 'unit': 'kg'}],
     'protocol': [
-      {'item': 'polozka postupu 1'},
-      {'item': 'polozka postupu 2'},
-      {'item': 'polozka postupu 3'},
-      {'item': 'polozka postupu 4'}],
+      {'order': 1, 'item': 'polozka postupu 1', tip: false},
+      {'order': -1, 'item': 'tip k predchozi polozce', tip: true},
+      {'order': 2, 'item': 'polozka postupu 3', tip: false},
+      {'order': 3, 'item': 'polozka postupu 4', tip: false}],
     'tags': [{'item': 'jahody'},
       {'item': 'kolac'},
-      {'item': 'buchta'}],
-    'tips': [{'item': 'Vyborne se hodi k ranni kave'},
-      {'item': 'Je to mnamka'}]
+      {'item': 'buchta'}]
   }];
 

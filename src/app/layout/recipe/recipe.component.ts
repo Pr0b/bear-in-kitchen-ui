@@ -34,14 +34,12 @@ export interface Stats {
 }
 
 export interface ProtocolItem {
+  'order': number;
   'item': string;
+  'tip': boolean;
 }
 
 export interface TagItem {
-  'item': string;
-}
-
-export interface TipItem {
   'item': string;
 }
 
@@ -57,5 +55,4 @@ export interface RecipeDetail {
   'ingredients': Ingredient[];
   'protocol': ProtocolItem[];
   'tags': TagItem[];
-  'tips': TipItem[];
 }
