@@ -26,18 +26,36 @@ export interface Ingredient {
   'unit': string;
 }
 
+export interface Stats {
+  'serves': string;
+  'time': string;
+  'difficulty': string;
+  'category': string;
+}
+
 export interface ProtocolItem {
   'item': string;
 }
 
+export interface TagItem {
+  'item': string;
+}
+
+export interface TipItem {
+  'item': string;
+}
+
 export interface RecipeDetail {
-  'albumId': number;
   'id': number;
   'title': string;
+  'description': string;
   'url': string;
   'thumbnailUrl': string;
   'photo': string;
   'thumbnail': string;
+  'stats': Stats;
   'ingredients': Ingredient[];
   'protocol': ProtocolItem[];
+  'tags': TagItem[];
+  'tips': TipItem[];
 }
