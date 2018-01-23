@@ -7,8 +7,7 @@ const routes: Routes = [
         path: '',
         component: LayoutComponent,
         children: [
-            { path: '', redirectTo: 'gallery' },
-            { path: 'gallery', loadChildren: './gallery/gallery.module#GalleryModule' },
+            { path: '', loadChildren: './gallery/gallery.module#GalleryModule' },
             { path: 'recipe', loadChildren: './recipe/recipe.module#RecipeModule' }
         ]
     }
