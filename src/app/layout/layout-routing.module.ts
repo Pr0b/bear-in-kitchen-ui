@@ -8,7 +8,8 @@ const routes: Routes = [
         component: LayoutComponent,
         children: [
             { path: '', loadChildren: './gallery/gallery.module#GalleryModule' },
-            { path: 'recipe', loadChildren: './recipe/recipe.module#RecipeModule' }
+            { path: 'recipe', loadChildren: './recipe/recipe.module#RecipeModule' },
+            { path: 'profile', loadChildren: './profile/profile.module#ProfileModule' }
         ]
     }
 ];

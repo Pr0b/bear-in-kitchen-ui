@@ -1,7 +1,7 @@
 <div class="login-page" [@routerTransition]>
     <div class="row justify-content-md-center">
         <div class="col-md-4">
-            <img src="assets/images/logo.png" width="150px" class="user-avatar" />
+            <img src='./assets/icons/017-bear-1.svg' width="150px" class="user-avatar" />
             <h1>Bear In The Kitchen</h1>
             <form role="form">
                 <div class="form-content">
@@ -13,9 +13,9 @@
                         <input type="password" class="form-control input-underline input-lg" id="" placeholder="Password">
                     </div>
                 </div>
-                <a class="btn rounded-btn" [routerLink]="['/']" (click)="auth.googleLogin()"> <i class="fa fa-google"></i> Connect Google</a>
+                <a class="btn rounded-btn" (click)="googleLogin()"> <i class="fa fa-google"></i> Connect Google</a>
                 &nbsp;
-                <a class="btn rounded-btn" [routerLink]="['/signup']">Register</a>
+                <a class="btn rounded-btn" (click)="signUp()">Register</a>
             </form>
         </div>
     </div>
