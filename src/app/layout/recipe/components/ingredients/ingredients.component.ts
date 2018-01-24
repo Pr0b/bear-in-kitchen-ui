@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 
 import {RecipeDetail} from '../../recipe.component';
+import {Observable} from 'rxjs/Observable';
 
 @Component({
   selector: 'app-ingredients',
@@ -8,7 +9,7 @@ import {RecipeDetail} from '../../recipe.component';
   styleUrls: ['./ingredients.component.scss']
 })
 export class IngredientsComponent implements OnInit {
-  @Input() recipe: RecipeDetail;
+  @Input() recipe: Observable<RecipeDetail>;
 
   constructor() {
   }

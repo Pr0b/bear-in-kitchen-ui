@@ -3,11 +3,11 @@
   <section class="fdb-block">
     <div class="container">
       <div class="row justify-content-center">
-        <div *ngFor="let recipe of recipes">
+        <div *ngFor="let recipe of recipes | async">
           <div class="clearfix" ng-if="$index % 3 == 0"></div>
           <div class="col-4 col-md-4 text-center">
             <div class="justify-content-center pb-4">
-              <a [routerLink]="['/recipe', recipe.id]">
+              <a [routerLink]="['/recipe', recipe.title]">
                 <img [src]='recipe.thumbnail' height="225" width="300">
               </a>
             </div>

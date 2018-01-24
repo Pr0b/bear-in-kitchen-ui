@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
 
-import { RecipeFetcherService } from '../../shared/services';
+import {RecipeFetcherService} from '../../shared/services';
+import {Observable} from 'rxjs/Observable';
 
 @Component({
   selector: 'app-recipe',
@@ -9,12 +10,14 @@ import { RecipeFetcherService } from '../../shared/services';
   styleUrls: ['./recipe.component.scss']
 })
 export class RecipeComponent implements OnInit {
-  recipe: RecipeDetail;
+  recipe: Observable<RecipeDetail>;
+
   constructor(private recipeFetcherService: RecipeFetcherService,
-    private route: ActivatedRoute) { }
+              private route: ActivatedRoute) {
+  }
 
   ngOnInit() {
-    this.recipe = this.recipeFetcherService.getRecipe(+this.route.snapshot.params['id']);
+    this.recipe = this.recipeFetcherService.getRecipe(String(this.route.snapshot.params['id']));
   }
 
 }
@@ -44,7 +47,7 @@ export interface TagItem {
 }
 
 export interface RecipeDetail {
-  'id': number;
+  'id': string;
   'title': string;
   'description': string;
   'url': string;

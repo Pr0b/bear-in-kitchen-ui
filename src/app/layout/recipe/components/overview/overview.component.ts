@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 
 import {RecipeDetail} from '../../recipe.component';
+import {Observable} from 'rxjs/Observable';
 
 @Component({
   selector: 'app-overview',
@@ -9,7 +10,7 @@ import {RecipeDetail} from '../../recipe.component';
 })
 export class OverviewComponent implements OnInit {
 
-  @Input() recipe: RecipeDetail;
+  @Input() recipe: Observable<RecipeDetail>;
 
   constructor() {
   }

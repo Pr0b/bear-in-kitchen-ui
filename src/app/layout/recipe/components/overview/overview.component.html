@@ -4,7 +4,7 @@
       <div class="col-sm-6 col-md-4 col-lg-6 m-auto m-md-0 pr-5">
         <div class="row justify-content-start text-center">
           <div class="col-sm-12">
-            <img alt="recipeImage" class="img-fluid" [src]='recipe.photo'>
+            <img alt="recipeImage" class="img-fluid" [src]='recipe.photo | async'>
           </div>
         </div>
         <div class="row justify-content-start text-center">
@@ -28,12 +28,12 @@
         <div class="row justify-content-start text-left">
           <div class="row align-items-center">
             <div class="col-12">
-              <h1>{{recipe.title}}</h1>
+              <h1>{{(recipe | async)?.title}}</h1>
             </div>
           </div>
           <div class="row align-items-center">
             <div class="col-12">
-              <h3 class="pb-3 mb-3 font-italic">{{recipe.description}}</h3>
+              <h3 class="pb-3 mb-3 font-italic">{{(recipe | async)?.description}}</h3>
             </div>
           </div>
         </div>
@@ -45,7 +45,7 @@
                 <div class="row align-items-center">
                   <div class="col-12">
                     <img alt="image" class="img-fluid" src="./assets/icons/007-team.svg" height="30" width="30">
-                    <div class="caption text-nowrap center-block pt-1">{{recipe.stats.serves}}</div>
+                    <div class="caption text-nowrap center-block pt-1">{{ (recipe | async)?.stats?.serves }}</div>
                   </div>
                 </div>
               </div>
@@ -55,7 +55,7 @@
                   <div class="col-12">
                     <img alt="image" class="img-fluid"
                          src="./assets/icons/008-clock-of-circular-shape-at-two-o-clock.svg" height="30" width="30">
-                    <div class="caption text-nowrap center-block pt-1">{{recipe.stats.time}}</div>
+                    <div class="caption text-nowrap center-block pt-1">{{(recipe | async)?.stats?.time}}</div>
                   </div>
                 </div>
               </div>
@@ -63,7 +63,7 @@
                 <div class="row align-items-center">
                   <div class="col-12">
                     <img alt="image" class="img-fluid" src="./assets/icons/015-restaurant.svg" height="30" width="30">
-                    <div class="caption text-nowrap center-block pt-1">{{recipe.stats.difficulty}}</div>
+                    <div class="caption text-nowrap center-block pt-1">{{(recipe | async)?.stats?.difficulty}}</div>
                   </div>
                 </div>
               </div>
@@ -73,7 +73,7 @@
                   <div class="col-12">
                     <img alt="image" class="img-fluid" src="./assets/icons/037-piece-of-cake-with-cherry.svg"
                          height="30" width="30">
-                    <div class="caption text-nowrap center-block pt-1">{{recipe.stats.category}}</div>
+                    <div class="caption text-nowrap center-block pt-1">{{(recipe | async)?.stats?.category}}</div>
                   </div>
                 </div>
               </div>

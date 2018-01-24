@@ -1,7 +1,7 @@
 <div class="container">
   <div class="card-body">
     <ul class="timeline">
-      <li class="timeline-inverted" *ngFor="let item of recipe.protocol;let i = index">
+      <li class="timeline-inverted" *ngFor="let item of recipe.protocol | async">
         <div class="timeline-badge">
           <!--<span class="fa-stack fa-lg">-->
           <!--<i class="fa fa-circle fa-stack-2x"></i>-->

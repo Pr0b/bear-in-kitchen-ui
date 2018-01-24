@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 
 import {RecipeDetail} from '../../recipe.component';
 import {StaticNumberIconMappingService} from '../../../../shared/services';
+import {Observable} from 'rxjs/Observable';
 
 @Component({
   selector: 'app-protocol',
@@ -9,8 +10,7 @@ import {StaticNumberIconMappingService} from '../../../../shared/services';
   styleUrls: ['./protocol.component.scss']
 })
 export class ProtocolComponent implements OnInit {
-
-  @Input() recipe: RecipeDetail;
+  @Input() recipe: Observable<RecipeDetail>;
 
   constructor(private staticNumberIconMappingService: StaticNumberIconMappingService) {
   }

@@ -3,6 +3,7 @@ import {RecipeFetcherService} from '../../shared/services';
 import {routerTransition} from '../../router.animations';
 
 import { RecipeDetail } from '../recipe/recipe.component';
+import {Observable} from 'rxjs/Observable';
 
 @Component({
   selector: 'app-gallery',
@@ -11,14 +12,11 @@ import { RecipeDetail } from '../recipe/recipe.component';
   animations: [routerTransition()]
 })
 export class GalleryComponent implements OnInit {
-  recipes: RecipeDetail[];
-
+  recipes: Observable<RecipeDetail[]>
   constructor(private recipeFetcherService: RecipeFetcherService) {
   }
 
   ngOnInit() {
-    this.recipeFetcherService.getRecipes().subscribe((recipes) => {
-      this.recipes = recipes;
-    });
+    this.recipes = this.recipeFetcherService.getRecipes();
   }
 }
