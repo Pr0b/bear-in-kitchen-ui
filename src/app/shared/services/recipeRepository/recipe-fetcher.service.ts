@@ -11,8 +11,14 @@ export class RecipeFetcherService {
 
   getRecipes() {
     const collection: AngularFirestoreCollection<RecipeDetail> = this.afs.collection('recipes');
-    const collection$: Observable<RecipeDetail[]> = collection.valueChanges();
-    return collection$;
+
+    return collection.snapshotChanges().map(actions => {
+      return actions.map(a => {
+        const data = a.payload.doc.data() as RecipeDetail;
+        const id = a.payload.doc.id;
+        return { id, ...data };
+      });
+    });
   }
 
   getRecipe(id: string) {
@@ -24,7 +30,6 @@ export class RecipeFetcherService {
 
 const MOCK_IMAGES = [
   {
-    'id': 0,
     'title': 'Jahodová bublanina',
     'description': 'Česká klasika se sladkými jahodami.',
     'url': 'http://placehold.it/600/92c952',
@@ -59,7 +64,6 @@ const MOCK_IMAGES = [
       {'item': 'buchta'}]
   },
   {
-    'id': 1,
     'title': 'Jahodová bublanina',
     'description': 'Česká klasika se sladkými jahodami.',
     'url': 'http://placehold.it/600/92c952',
@@ -94,7 +98,6 @@ const MOCK_IMAGES = [
       {'item': 'buchta'}]
   },
   {
-    'id': 2,
     'title': 'Tvarohové větrné mlýny',
     'description': 'Elegantní dezert či snídaně, která je snadná a ostatní budou ohromeni.',
     'url': 'http://placehold.it/600/92c952',
@@ -136,7 +139,6 @@ const MOCK_IMAGES = [
       {'item': 'mlýn'},
       {'item': 'tvaroh'}]
   }, {
-    'id': 3,
     'title': 'Recipe 3 title',
     'description': 'Lorem ipsum',
     'url': 'http://placehold.it/600/92c952',
@@ -156,7 +158,6 @@ const MOCK_IMAGES = [
       {'item': 'kolac'},
       {'item': 'buchta'}]
   }, {
-    'id': 4,
     'title': 'Recipe 4 title',
     'description': 'Lorem ipsum',
     'url': 'http://placehold.it/600/92c952',
@@ -176,7 +177,6 @@ const MOCK_IMAGES = [
       {'item': 'kolac'},
       {'item': 'buchta'}]
   }, {
-    'id': 5,
     'title': 'Recipe 5 title',
     'description': 'Lorem ipsum',
     'url': 'http://placehold.it/600/92c952',
