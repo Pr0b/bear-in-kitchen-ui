@@ -19,23 +19,28 @@
             ></share-buttons>
 
 
-
-
           </div>
         </div>
       </div>
       <div class="col-sm-6 col-md-4 col-lg-6 m-auto m-md-0 pl-4">
+
         <div class="row justify-content-start text-left">
-          <div class="row align-items-center">
-            <div class="col-12">
-              <h1>{{(recipe | async)?.title}}</h1>
+          <section class="fdb-block py-0">
+            <div class="row align-items-start">
+              <div class="col-12">
+                <div class="row align-items-center">
+                  <div class="col-12">
+                    <h1 class="mt-0 pt-0">{{(recipe | async)?.title}}</h1>
+                  </div>
+                </div>
+                <div class="row align-items-center">
+                  <div class="col-12">
+                    <h3 class="pb-2 mb-2 font-italic">{{(recipe | async)?.description}}</h3>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
-          <div class="row align-items-center">
-            <div class="col-12">
-              <h3 class="pb-3 mb-3 font-italic">{{(recipe | async)?.description}}</h3>
-            </div>
-          </div>
+          </section>
         </div>
 
         <div class="row justify-content-start text-center border-top border-bottom">
