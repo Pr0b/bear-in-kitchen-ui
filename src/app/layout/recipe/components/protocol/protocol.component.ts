@@ -16,7 +16,6 @@ export class ProtocolComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.recipe);
   }
 
   mapNumberToIcon(id: number) {
