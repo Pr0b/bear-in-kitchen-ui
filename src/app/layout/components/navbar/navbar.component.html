@@ -2,7 +2,7 @@
   <div class="container">
     <nav class="navbar navbar-expand-md no-gutters">
       <div class="col-3 text-nowrap text-left">
-        <a href="/"><img src="./assets/icons/017-bear-1.svg" height="75" alt="Bear In The Kitchen"></a>
+        <a [routerLink]="['/']"><img src="./assets/icons/017-bear-1.svg" height="75" alt="Bear In The Kitchen"></a>
         Bear In The Kitchen
       </div>
 
@@ -13,13 +13,13 @@
       <div class="collapse navbar-collapse navbar-collapse-2 justify-content-center col-md-6" id="navbarNav7">
         <ul class="navbar-nav justify-content-center">
           <li class="nav-item active">
-            <a class="nav-link" href="">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link" [routerLink]="['/']">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="">Features</a>
+            <a class="nav-link" [routerLink]="['/']">Features</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="">Contact</a>
+            <a class="nav-link" [routerLink]="['/']">Contact</a>
           </li>
         </ul>
       </div>
@@ -27,10 +27,10 @@
       <div class="collapse navbar-collapse navbar-collapse-2">
         <ul class="navbar-nav ml-auto justify-content-end">
           <li class="nav-item">
-            <a class="nav-link" href="/profile">Profile</a>
+            <a class="nav-link" [routerLink]="['/profile']">Profile</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/recipe/new">New&nbsp;Recipe</a>
+            <a class="nav-link" [routerLink]="['/recipe/new']">New&nbsp;Recipe</a>
           </li>
         </ul>
         <a class="btn ml-md-3" (click)="signOut()">Log out</a>
