@@ -34,6 +34,14 @@ export class InputRecipeComponent implements OnInit {
 
   onSubmit() {
     console.log('Form Submitted!');
+    //load photo to cloud storage
+    //get url of stored photo
+    //add photo url it onto recipe model
+    //opt - save thumnail to cloud storage
+    //opt - add it onto recipe model
+    //opt - with cloud funtion create thumnail
+    //opt add thumnail url onto recipe model
+    //push recipe model into cloud db
   }
 
   addItemLabels() {
