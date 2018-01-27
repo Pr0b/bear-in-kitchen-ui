@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-lg-12">
 
-        <form [formGroup]="formGroup">
+        <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
 
           <dynamic-ng-bootstrap-form [group]="formGroup" [model]="formModel">
 
@@ -29,6 +29,7 @@
             </ng-template>
 
           </dynamic-ng-bootstrap-form>
+          <button type="submit" class="btn btn-primary" >Submit</button>
         </form>
 
       </div>

@@ -32,6 +32,10 @@ export class InputRecipeComponent implements OnInit {
     this.directionsFormArrayModel = this.formService.findById('directionsFormArray', this.formModel) as DynamicFormArrayModel;
   }
 
+  onSubmit() {
+    console.log('Form Submitted!');
+  }
+
   addItemLabels() {
     this.formService.addFormArrayGroup(this.labelsFormArrayControl, this.labelsFormArrayModel);
   }
