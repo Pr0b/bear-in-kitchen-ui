@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument} from 'angularfire2/firestore';
-import {RecipeDetail} from '../../../layout/recipe/recipe.component';
+import {Item, RecipeDetail} from '../../../layout/recipe/recipe.component';
 import {Observable} from 'rxjs/Observable';
 
 @Injectable()
@@ -16,14 +16,34 @@ export class RecipeFetcherService {
       return actions.map(a => {
         const data = a.payload.doc.data() as RecipeDetail;
         const id = a.payload.doc.id;
-        return { id, ...data };
+        return {id, ...data};
       });
     });
   }
 
-  getRecipe(id: string) {
-    const document: AngularFirestoreDocument<RecipeDetail> = this.afs.doc('recipes/' + id);
-    const document$: Observable<RecipeDetail> = document.valueChanges();
-    return document$;
+    getRecipe(idIn: string) {
+      const document: AngularFirestoreDocument<RecipeDetail> = this.afs.doc('recipes/' + idIn);
+      const document$: Observable<RecipeDetail> = document.snapshotChanges().map(a => {
+          const data = a.payload.data() as RecipeDetail;
+          const id = a.payload.id;
+          return this.getItems(idIn).map( item => {
+            return {id, ...data, items: item};
+          });
+        });
+      return document$;
+    }
+
+
+  getItems(idItem: string) {
+    const collection: AngularFirestoreCollection<Item> = this.afs.collection('recipes/' + idItem + '/items');
+
+    return collection.snapshotChanges().map(actions => {
+      return actions.map(a => {
+        const data = a.payload.doc.data() as Item;
+        const id = a.payload.doc.id;
+        console.log(data);
+        return {id, ...data};
+      });
+    });
   }
 }

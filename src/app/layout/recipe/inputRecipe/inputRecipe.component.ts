@@ -7,7 +7,7 @@ import {AngularFirestore, AngularFirestoreCollection} from 'angularfire2/firesto
 import {INPUT_RECIPE_MODEL} from './model/inputRecipeModel';
 import {Observable} from 'rxjs/Observable';
 
-import {RecipeDetail} from '../../recipe/recipe.component';
+import {RecipeDetail} from '../recipe.component';
 import {Stats} from '../recipe.component';
 
 @Component({
@@ -141,8 +141,8 @@ export class InputRecipeComponent implements OnInit {
     this.downloadURL = task.downloadURL();
 
     task.then((taskDone) => {
-      this.newRecipe.photo = taskDone.downloadURL;
-      this.newRecipe.thumbnail = taskDone.downloadURL;
+      this.newRecipe.photoUrl = taskDone.downloadURL;
+      this.newRecipe.thumbnailUrl = taskDone.downloadURL;
     });
   }
 }

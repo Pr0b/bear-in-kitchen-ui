@@ -3,6 +3,7 @@ import {ActivatedRoute} from '@angular/router';
 
 import {RecipeFetcherService} from '../../shared/services';
 import {Observable} from 'rxjs/Observable';
+import {AngularFirestoreDocument} from 'angularfire2/firestore/document/document';
 
 @Component({
   selector: 'app-recipe',
@@ -18,15 +19,29 @@ export class RecipeComponent implements OnInit {
 
   ngOnInit() {
     this.recipe = this.recipeFetcherService.getRecipe(String(this.route.snapshot.params['id']));
+    this.recipeFetcherService.getItems(String(this.route.snapshot.params['id'])).subscribe(item => {
+      console.log(item);
+    });
+
+    this.recipe.subscribe(item => {
+      console.log(item);
+    });
   }
 
 }
 
-export interface Ingredient {
-  'id': number;
+export interface Category {
+  'id': string;
+  'icon': string;
+  'name': string;
+}
+
+export interface IngredientRecipe {
+  'id': string;
   'title': string;
   'quantity': number;
   'unit': string;
+  'ref': string;
 }
 
 export interface Stats {
@@ -43,6 +58,13 @@ export interface ProtocolItem {
 }
 
 export interface TagItem {
+  'id': string;
+  'name': string;
+  'ref': string;
+}
+
+export interface Item {
+  'id': string;
   'item': string;
 }
 
@@ -50,12 +72,11 @@ export interface RecipeDetail {
   'id': string;
   'title': string;
   'description': string;
-  'url': string;
   'thumbnailUrl': string;
-  'photo': string;
-  'thumbnail': string;
+  'photoUrl': string;
   'stats': Stats;
-  'ingredients': Ingredient[];
+  'ingredients': IngredientRecipe[];
   'protocol': ProtocolItem[];
   'tags': TagItem[];
+  'items': Item[];
 }
