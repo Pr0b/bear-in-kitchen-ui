@@ -23,12 +23,6 @@ export const INPUT_RECIPE_MODEL: DynamicFormControlModel[] = [
         id: 'description',
         label: 'Description'
       }),
-      new DynamicInputModel({
-
-        id: 'photo',
-        label: 'Photo',
-        inputType: 'file'
-      })
     ]
   }),
 
