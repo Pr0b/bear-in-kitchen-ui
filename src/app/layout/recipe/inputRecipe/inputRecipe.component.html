@@ -5,33 +5,35 @@
 
         <form [formGroup]="formGroup" novalidate (ngSubmit)="onSubmit()">
 
-          <dynamic-ng-bootstrap-form [group]="formGroup" [model]="formModel">
+          <dynamic-ng-bootstrap-form [group]="formGroup" [model]="formModel" [layout]="formLayout">
 
-            <ng-template modelId="labelsFormArray" let-group let-index="index" let-context="context">
+            <ng-template modelId="tagsFormArray" let-group let-index="index" let-context="context">
 
-              <button class="btn" type="button" (click)="removeItemLabels(context, index)">Remove Item</button>
-              <button class="btn" type="button" (click)="insertItemLabels(group.context, group.index + 1)">Add Item</button>
+              <button class="btn btn-danger" type="button" (click)="removeItemLabels(context, index)">Remove Tag</button>
+              <button class="btn btn-success" type="button" (click)="insertItemLabels(group.context, group.index + 1)">Add Tag</button>
 
             </ng-template>
 
             <ng-template modelId="ingredientsFormArray" let-group let-index="index" let-context="context">
 
-              <button class="btn" type="button" (click)="removeItemIngredients(context, index)">Remove Item</button>
-              <button class="btn" type="button" (click)="insertItemIngredients(group.context, group.index + 1)">Add Item</button>
+              <button class="btn btn-danger" type="button" (click)="removeItemIngredients(context, index)">Remove Ingredient</button>
+              <button class="btn btn-success" type="button" (click)="insertItemIngredients(group.context, group.index + 1)">Add Ingredient</button>
 
             </ng-template>
 
             <ng-template modelId="directionsFormArray" let-group let-index="index" let-context="context">
 
-              <button class="btn" type="button" (click)="removeItemDirections(context, index)">Remove Item</button>
-              <button class="btn" type="button" (click)="insertItemDirections(group.context, group.index + 1)">Add Item</button>
+              <button class="btn btn-danger" type="button" (click)="removeItemDirections(context, index)">Remove Direction</button>
+              <button class="btn btn-success" type="button" (click)="insertItemDirections(group.context, group.index + 1)">Add Direction</button>
 
             </ng-template>
 
           </dynamic-ng-bootstrap-form>
-          <input type="file" (change)="uploadFile($event)" />
-          <div>{{ uploadPercent | async }}</div>
-          <a [href]="downloadURL | async">{{ downloadURL | async }}</a>
+          <div class="form-group">
+            <input type="file" (change)="uploadFile($event)" />
+            <div>{{ uploadPercent | async }}</div>
+            <a [href]="downloadURL | async">{{ downloadURL | async }}</a>
+          </div>
           <button type="submit" class="btn btn-primary" >Submit</button>
         </form>
 

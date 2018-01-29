@@ -56,13 +56,13 @@ export const INPUT_RECIPE_MODEL: DynamicFormControlModel[] = [
 
   new DynamicFormArrayModel({
 
-    id: 'labelsFormArray',
+    id: 'tagsFormArray',
     initialCount: 1,
     groupFactory: () => {
       return [
         new DynamicInputModel({
-          id: 'label',
-          label: 'Label'
+          id: 'tag',
+          label: 'tag'
         })
       ];
     }
@@ -77,6 +77,14 @@ export const INPUT_RECIPE_MODEL: DynamicFormControlModel[] = [
         new DynamicInputModel({
           id: 'ingredient',
           label: 'Ingredient'
+        }),
+        new DynamicInputModel({
+          id: 'unit',
+          label: 'unit'
+        }),
+        new DynamicInputModel({
+          id: 'quantity',
+          label: 'quantity'
         })
       ];
     }
@@ -91,8 +99,46 @@ export const INPUT_RECIPE_MODEL: DynamicFormControlModel[] = [
         new DynamicInputModel({
           id: 'direction',
           label: 'Direction'
+        }),
+        new DynamicInputModel({
+          id: 'order',
+          label: 'order'
         })
       ];
     }
   })
 ];
+
+export const NG_BOOTSTRAP_SAMPLE_FORM_LAYOUT = {
+  'tagsFormArray': {
+    element: {
+      container: 'form-group form-array',
+      label: 'control-label'
+    },
+    grid: {
+      control: 'col-sm-6',
+      label: 'col-sm-6'
+    }
+  },
+  'ingredientsFormArray': {
+    element: {
+      container: 'form-group form-array',
+      label: 'control-label'
+    },
+    grid: {
+      control: 'col-sm-6',
+      label: 'col-sm-6'
+    }
+  },
+  'directionsFormArray': {
+    element: {
+      container: 'form-group form-array',
+      label: 'control-label'
+    },
+    grid: {
+      control: 'col-sm-6',
+      label: 'col-sm-6'
+    }
+  }
+}
+

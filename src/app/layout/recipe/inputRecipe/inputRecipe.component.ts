@@ -1,14 +1,14 @@
 import {Component, OnInit} from '@angular/core';
 import {routerTransition} from '../../../router.animations';
-import {DynamicFormArrayModel, DynamicFormControlModel, DynamicFormService} from '@ng-dynamic-forms/core';
+import {DynamicFormArrayModel, DynamicFormControlModel, DynamicFormLayout, DynamicFormService} from '@ng-dynamic-forms/core';
 import {FormArray, FormGroup} from '@angular/forms';
 import {AngularFireStorage} from 'angularfire2/storage';
 import {AngularFirestore, AngularFirestoreCollection} from 'angularfire2/firestore';
-import {INPUT_RECIPE_MODEL} from './model/inputRecipeModel';
+import {INPUT_RECIPE_MODEL, NG_BOOTSTRAP_SAMPLE_FORM_LAYOUT} from './model/inputRecipeModel';
 import {Observable} from 'rxjs/Observable';
 
-import {RecipeDetail} from '../recipe.component';
-import {Stats} from '../recipe.component';
+import {RecipeDetail, Stats} from '../recipe.component';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-input-recipe',
@@ -18,18 +18,18 @@ import {Stats} from '../recipe.component';
 })
 export class InputRecipeComponent implements OnInit {
   formModel: DynamicFormControlModel[] = INPUT_RECIPE_MODEL;
+  formLayout: DynamicFormLayout = NG_BOOTSTRAP_SAMPLE_FORM_LAYOUT;
   formGroup: FormGroup;
 
-  labelsFormArrayControl: FormArray;
+  tagsFormArrayControl: FormArray;
   ingredientsFormArrayControl: FormArray;
   directionsFormArrayControl: FormArray;
-  labelsFormArrayModel: DynamicFormArrayModel;
+  tagsFormArrayModel: DynamicFormArrayModel;
   ingredientsFormArrayModel: DynamicFormArrayModel;
   directionsFormArrayModel: DynamicFormArrayModel;
 
   uploadPercent: Observable<number>;
   downloadURL: Observable<string>;
-  metaThumb: Observable<any>;
 
   private newRecipe = <RecipeDetail> {
     stats: <Stats>{}
@@ -40,15 +40,16 @@ export class InputRecipeComponent implements OnInit {
 
   constructor(private formService: DynamicFormService,
               private storage: AngularFireStorage,
-              private afs: AngularFirestore) {
+              private afs: AngularFirestore,
+              private router: Router) {
   }
 
   ngOnInit() {
     this.formGroup = this.formService.createFormGroup(this.formModel);
-    this.labelsFormArrayControl = this.formGroup.get('labelsFormArray') as FormArray;
+    this.tagsFormArrayControl = this.formGroup.get('tagsFormArray') as FormArray;
     this.ingredientsFormArrayControl = this.formGroup.get('ingredientsFormArray') as FormArray;
     this.directionsFormArrayControl = this.formGroup.get('directionsFormArray') as FormArray;
-    this.labelsFormArrayModel = this.formService.findById('labelsFormArray', this.formModel) as DynamicFormArrayModel;
+    this.tagsFormArrayModel = this.formService.findById('tagsFormArray', this.formModel) as DynamicFormArrayModel;
     this.ingredientsFormArrayModel = this.formService.findById('ingredientsFormArray', this.formModel) as DynamicFormArrayModel;
     this.directionsFormArrayModel = this.formService.findById('directionsFormArray', this.formModel) as DynamicFormArrayModel;
 
@@ -57,20 +58,10 @@ export class InputRecipeComponent implements OnInit {
   }
 
   addRecipe(recipeDetail: RecipeDetail) {
-    this.recipesCollection.add(recipeDetail);
+    return this.recipesCollection.add(recipeDetail);
   }
 
   onSubmit() {
-
-    // uploadFile(this.formGroup.)
-    //load photo to cloud storage
-    //get url of stored photo
-    //add photo url it onto recipe model
-    //opt - save thumnail to cloud storage
-    //opt - add it onto recipe model
-    //opt - with cloud funtion create thumnail
-    //opt add thumnail url onto recipe model
-    //push recipe model into cloud db
     console.log(this.formGroup.value);
     this.newRecipe.title = this.formGroup.get(['basic', 'title']).value;
     this.newRecipe.description = this.formGroup.get(['basic', 'description']).value;
@@ -79,23 +70,50 @@ export class InputRecipeComponent implements OnInit {
     this.newRecipe.stats.serves = this.formGroup.get(['categories', 'serves']).value;
     this.newRecipe.stats.time = this.formGroup.get(['categories', 'time']).value;
 
-    this.addRecipe(this.newRecipe);
+    this.addRecipe(this.newRecipe).then((ref) => {
+      const promises: Promise<any>[] = [];
+      for (const tag of this.formGroup.get(['tagsFormArray']).value) {
+        promises.push(ref.collection('tags').add({name: tag.tag}));
+      }
+
+      for (const ingredient of this.formGroup.get(['ingredientsFormArray']).value) {
+        promises.push(ref.collection('ingredients').add({
+          name: ingredient.ingredient,
+          quantity: ingredient.quantity,
+          unit: ingredient.unit
+        }));
+      }
+
+      for (const protocol of this.formGroup.get(['directionsFormArray']).value) {
+        promises.push(ref.collection('protocols').add({
+          content: protocol.direction,
+          order: protocol.order,
+          tip: false
+        }));
+      }
+
+      Promise.all(promises).then(
+        () => {
+          this.router.navigate(['/recipe/id/' + ref.id]);
+        });
+
+    });
   }
 
   addItemLabels() {
-    this.formService.addFormArrayGroup(this.labelsFormArrayControl, this.labelsFormArrayModel);
+    this.formService.addFormArrayGroup(this.tagsFormArrayControl, this.tagsFormArrayModel);
   }
 
   clearLabels() {
-    this.formService.clearFormArray(this.labelsFormArrayControl, this.labelsFormArrayModel);
+    this.formService.clearFormArray(this.tagsFormArrayControl, this.tagsFormArrayModel);
   }
 
   removeItemLabels(context: DynamicFormArrayModel, index: number) {
-    this.formService.removeFormArrayGroup(index, this.labelsFormArrayControl, context);
+    this.formService.removeFormArrayGroup(index, this.tagsFormArrayControl, context);
   }
 
   insertItemLabels(context: DynamicFormArrayModel, index: number) {
-    this.formService.insertFormArrayGroup(index, this.labelsFormArrayControl, context);
+    this.formService.insertFormArrayGroup(index, this.tagsFormArrayControl, context);
   }
 
   addItemIngredients() {
