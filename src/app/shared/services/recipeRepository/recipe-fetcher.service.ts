@@ -29,21 +29,21 @@ export class RecipeFetcherService {
       const protocols = [];
       const data = a.payload.data() as RecipeDetail;
       const id = a.payload.id;
-      this.getTags(idIn).subscribe(res => {
+      this.getTags(idIn).then(res => {
         res.forEach(item => {
-          tags.push(item);
+          tags.push({id: item.id, ...item.data()});
         });
       });
 
-      this.getIngredients(idIn).subscribe(res => {
+      this.getIngredients(idIn).then(res => {
         res.forEach(item => {
-          ingredients.push(item);
+          ingredients.push({id: item.id, ...item.data()});
         });
       });
 
-      this.getProtocols(idIn).subscribe(res => {
+      this.getProtocols(idIn).then(res => {
         res.forEach(item => {
-          protocols.push(item);
+          protocols.push({id: item.id, ...item.data()});
         });
       });
 
@@ -54,34 +54,22 @@ export class RecipeFetcherService {
 
   getTags(idItem: string) {
     const collection: AngularFirestoreCollection<TagRecipe> = this.afs.collection('recipes/' + idItem + '/tags');
-    return collection.snapshotChanges().map(actions => {
-      return actions.map(a => {
-        const data = a.payload.doc.data() as TagRecipe;
-        const id = a.payload.doc.id;
-        return {id, ...data};
-      });
+    return collection.ref.get().then(qsnap => {
+      return qsnap.docs;
     });
   }
 
   getIngredients(idItem: string) {
     const collection: AngularFirestoreCollection<IngredientRecipe> = this.afs.collection('recipes/' + idItem + '/ingredients');
-    return collection.snapshotChanges().map(actions => {
-      return actions.map(a => {
-        const data = a.payload.doc.data() as IngredientRecipe;
-        const id = a.payload.doc.id;
-        return {id, ...data};
-      });
+    return collection.ref.get().then(qsnap => {
+      return qsnap.docs;
     });
   }
 
   getProtocols(idItem: string) {
     const collection: AngularFirestoreCollection<ProtocolItem> = this.afs.collection('recipes/' + idItem + '/protocols');
-    return collection.snapshotChanges().map(actions => {
-      return actions.map(a => {
-        const data = a.payload.doc.data() as ProtocolItem;
-        const id = a.payload.doc.id;
-        return {id, ...data};
-      });
+    return collection.ref.orderBy('order').get().then(qsnap => {
+      return qsnap.docs;
     });
   }
 }
