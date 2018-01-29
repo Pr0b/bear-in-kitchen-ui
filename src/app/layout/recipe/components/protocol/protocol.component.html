@@ -1,7 +1,7 @@
 <div class="container">
   <div class="card-body">
     <ul class="timeline">
-      <li class="timeline-inverted" *ngFor="let item of (recipe | async)?.protocol">
+      <li class="timeline-inverted" *ngFor="let item of (recipe | async)?.protocols">
         <div class="timeline-badge">
           <!--<span class="fa-stack fa-lg">-->
           <!--<i class="fa fa-circle fa-stack-2x"></i>-->
@@ -21,7 +21,7 @@
             <!--</p>-->
           </div>
           <div class="timeline-body">
-            <p>{{item.item}}</p>
+            <p>{{item.content}}</p>
           </div>
         </div>
       </li>

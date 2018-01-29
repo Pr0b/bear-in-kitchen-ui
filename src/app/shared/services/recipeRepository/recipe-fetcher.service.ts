@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument} from 'angularfire2/firestore';
-import {Item, RecipeDetail} from '../../../layout/recipe/recipe.component';
+import {IngredientRecipe, ProtocolItem, RecipeDetail, TagRecipe} from '../../../layout/recipe/recipe.component';
 import {Observable} from 'rxjs/Observable';
 
 @Injectable()
@@ -24,24 +24,61 @@ export class RecipeFetcherService {
   getRecipe(idIn: string) {
     const document: AngularFirestoreDocument<RecipeDetail> = this.afs.doc('recipes/' + idIn);
     const document$: Observable<RecipeDetail> = document.snapshotChanges().map(a => {
-      const items = [];
+      const tags = [];
+      const ingredients = [];
+      const protocols = [];
       const data = a.payload.data() as RecipeDetail;
       const id = a.payload.id;
-      this.getItems(idIn).subscribe(res => {
+      this.getTags(idIn).subscribe(res => {
         res.forEach(item => {
-          items.push(item);
+          tags.push(item);
         });
       });
-      return {id, ...data, items: items};
+
+      this.getIngredients(idIn).subscribe(res => {
+        res.forEach(item => {
+          ingredients.push(item);
+        });
+      });
+
+      this.getProtocols(idIn).subscribe(res => {
+        res.forEach(item => {
+          protocols.push(item);
+        });
+      });
+
+      return {id, ...data, tags: tags, ingredients: ingredients, protocols: protocols};
     });
     return document$;
   }
 
-  getItems(idItem: string) {
-    const collection: AngularFirestoreCollection<Item> = this.afs.collection('recipes/' + idItem + '/items');
+  getTags(idItem: string) {
+    const collection: AngularFirestoreCollection<TagRecipe> = this.afs.collection('recipes/' + idItem + '/tags');
     return collection.snapshotChanges().map(actions => {
       return actions.map(a => {
-        const data = a.payload.doc.data() as Item;
+        const data = a.payload.doc.data() as TagRecipe;
+        const id = a.payload.doc.id;
+        return {id, ...data};
+      });
+    });
+  }
+
+  getIngredients(idItem: string) {
+    const collection: AngularFirestoreCollection<IngredientRecipe> = this.afs.collection('recipes/' + idItem + '/ingredients');
+    return collection.snapshotChanges().map(actions => {
+      return actions.map(a => {
+        const data = a.payload.doc.data() as IngredientRecipe;
+        const id = a.payload.doc.id;
+        return {id, ...data};
+      });
+    });
+  }
+
+  getProtocols(idItem: string) {
+    const collection: AngularFirestoreCollection<ProtocolItem> = this.afs.collection('recipes/' + idItem + '/protocols');
+    return collection.snapshotChanges().map(actions => {
+      return actions.map(a => {
+        const data = a.payload.doc.data() as ProtocolItem;
         const id = a.payload.doc.id;
         return {id, ...data};
       });

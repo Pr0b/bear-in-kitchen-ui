@@ -19,7 +19,6 @@ export class RecipeComponent implements OnInit {
 
   ngOnInit() {
     this.recipe = this.recipeFetcherService.getRecipe(String(this.route.snapshot.params['id']));
-    this.recipeFetcherService.getItems(String(this.route.snapshot.params['id']));
 
     this.recipe.subscribe(item => {
       console.log(item);
@@ -36,10 +35,16 @@ export interface Category {
 
 export interface IngredientRecipe {
   'id': string;
-  'title': string;
+  'name': string;
   'quantity': number;
   'unit': string;
-  'ref': string;
+  'refIngredient': string;
+}
+
+export interface Ingredient {
+  'id': string;
+  'name': string;
+  'synonyms': string[];
 }
 
 export interface Stats {
@@ -50,20 +55,21 @@ export interface Stats {
 }
 
 export interface ProtocolItem {
+  'id': string;
   'order': number;
-  'item': string;
+  'content': string;
   'tip': boolean;
 }
 
-export interface TagItem {
+export interface TagRecipe {
   'id': string;
   'name': string;
-  'ref': string;
+  'refTag': string;
 }
 
-export interface Item {
+export interface Tag {
   'id': string;
-  'item': string;
+  'name': string;
 }
 
 export interface RecipeDetail {
@@ -74,7 +80,6 @@ export interface RecipeDetail {
   'photoUrl': string;
   'stats': Stats;
   'ingredients': IngredientRecipe[];
-  'protocol': ProtocolItem[];
-  'tags': TagItem[];
-  'items': Item[];
+  'protocols': ProtocolItem[];
+  'tags': TagRecipe[];
 }
