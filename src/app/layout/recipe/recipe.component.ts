@@ -19,9 +19,7 @@ export class RecipeComponent implements OnInit {
 
   ngOnInit() {
     this.recipe = this.recipeFetcherService.getRecipe(String(this.route.snapshot.params['id']));
-    this.recipeFetcherService.getItems(String(this.route.snapshot.params['id'])).subscribe(item => {
-      console.log(item);
-    });
+    this.recipeFetcherService.getItems(String(this.route.snapshot.params['id']));
 
     this.recipe.subscribe(item => {
       console.log(item);

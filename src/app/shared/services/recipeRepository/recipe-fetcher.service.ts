@@ -21,27 +21,28 @@ export class RecipeFetcherService {
     });
   }
 
-    getRecipe(idIn: string) {
-      const document: AngularFirestoreDocument<RecipeDetail> = this.afs.doc('recipes/' + idIn);
-      const document$: Observable<RecipeDetail> = document.snapshotChanges().map(a => {
-          const data = a.payload.data() as RecipeDetail;
-          const id = a.payload.id;
-          return this.getItems(idIn).map( item => {
-            return {id, ...data, items: item};
-          });
+  getRecipe(idIn: string) {
+    const document: AngularFirestoreDocument<RecipeDetail> = this.afs.doc('recipes/' + idIn);
+    const document$: Observable<RecipeDetail> = document.snapshotChanges().map(a => {
+      const items = [];
+      const data = a.payload.data() as RecipeDetail;
+      const id = a.payload.id;
+      this.getItems(idIn).subscribe(res => {
+        res.forEach(item => {
+          items.push(item);
         });
-      return document$;
-    }
-
+      });
+      return {id, ...data, items: items};
+    });
+    return document$;
+  }
 
   getItems(idItem: string) {
     const collection: AngularFirestoreCollection<Item> = this.afs.collection('recipes/' + idItem + '/items');
-
     return collection.snapshotChanges().map(actions => {
       return actions.map(a => {
         const data = a.payload.doc.data() as Item;
         const id = a.payload.doc.id;
-        console.log(data);
         return {id, ...data};
       });
     });
