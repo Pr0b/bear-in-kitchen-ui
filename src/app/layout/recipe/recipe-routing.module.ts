@@ -4,10 +4,10 @@ import {RecipeComponent} from './recipe.component';
 
 const routes: Routes = [
   {
-    path: 'id/:id', component: RecipeComponent
+    path: 'new', loadChildren: './inputRecipe/inputRecipe.module#InputRecipeModule'
   },
   {
-    path: 'new', loadChildren: './inputRecipe/inputRecipe.module#InputRecipeModule'
+    path: ':id', component: RecipeComponent
   }
 ];
 

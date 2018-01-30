@@ -57,6 +57,7 @@ export interface Stats {
 export interface ProtocolItem {
   'id': string;
   'order': number;
+  'icon': number;
   'content': string;
   'tip': boolean;
 }

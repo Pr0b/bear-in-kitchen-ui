@@ -100,9 +100,9 @@ export const INPUT_RECIPE_MODEL: DynamicFormControlModel[] = [
           id: 'direction',
           label: 'Direction'
         }),
-        new DynamicInputModel({
-          id: 'order',
-          label: 'order'
+        new DynamicCheckboxModel({
+          id: 'tip',
+          label: 'tip'
         })
       ];
     }

@@ -9,8 +9,8 @@ export class StaticNumberIconMappingService implements OnInit {
   ngOnInit() {
   }
 
-  getIcon(id: number) {
-    if (id === -1) {
+  getIcon(id: number, tip: boolean) {
+    if (tip) {
       return './assets/icons/004-idea.svg';
     }
     return './assets/icons/numbers/' + ICON_NAMES[id];

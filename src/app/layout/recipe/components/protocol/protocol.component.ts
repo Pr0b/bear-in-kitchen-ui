@@ -18,8 +18,8 @@ export class ProtocolComponent implements OnInit {
   ngOnInit() {
   }
 
-  mapNumberToIcon(id: number) {
-    return this.staticNumberIconMappingService.getIcon(id);
+  mapNumberToIcon(id: number, tip: boolean) {
+    return this.staticNumberIconMappingService.getIcon(id, tip);
   }
 
 }

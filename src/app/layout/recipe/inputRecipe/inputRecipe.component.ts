@@ -84,17 +84,24 @@ export class InputRecipeComponent implements OnInit {
         }));
       }
 
+      let order = 1;
+      let icon = 1;
       for (const protocol of this.formGroup.get(['directionsFormArray']).value) {
         promises.push(ref.collection('protocols').add({
           content: protocol.direction,
-          order: protocol.order,
-          tip: false
+          order: order,
+          icon: icon,
+          tip: protocol.tip
         }));
+        ++order;
+        if (!protocol.tip) {
+          ++icon;
+        }
       }
 
       Promise.all(promises).then(
         () => {
-          this.router.navigate(['/recipe/id/' + ref.id]);
+          this.router.navigate(['/recipe/' + ref.id]);
         });
 
     });
