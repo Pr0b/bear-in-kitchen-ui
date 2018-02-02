@@ -1,13 +1,17 @@
 import {Component, OnInit} from '@angular/core';
 import {routerTransition} from '../../../router.animations';
-import {DynamicFormArrayModel, DynamicFormControlModel, DynamicFormLayout, DynamicFormService} from '@ng-dynamic-forms/core';
+import {
+  DynamicFormArrayModel, DynamicFormControlModel, DynamicFormLayout, DynamicFormService,
+  DynamicSelectModel
+} from '@ng-dynamic-forms/core';
 import {FormArray, FormGroup} from '@angular/forms';
 import {AngularFireStorage} from 'angularfire2/storage';
 import {AngularFirestore, AngularFirestoreCollection} from 'angularfire2/firestore';
-import {INPUT_RECIPE_MODEL, NG_BOOTSTRAP_SAMPLE_FORM_LAYOUT} from './model/inputRecipeModel';
+import {InputRecipeModel, NG_BOOTSTRAP_SAMPLE_FORM_LAYOUT} from './model/inputRecipeModel';
 import {Observable} from 'rxjs/Observable';
 
 import {RecipeDetail, Stats} from '../recipe.component';
+import {FormatSelectOptionService} from './service/formatSelectOption.service';
 import {Router} from '@angular/router';
 
 @Component({
@@ -17,7 +21,7 @@ import {Router} from '@angular/router';
   animations: [routerTransition()]
 })
 export class InputRecipeComponent implements OnInit {
-  formModel: DynamicFormControlModel[] = INPUT_RECIPE_MODEL;
+  formModel: DynamicFormControlModel[];
   formLayout: DynamicFormLayout = NG_BOOTSTRAP_SAMPLE_FORM_LAYOUT;
   formGroup: FormGroup;
 
@@ -31,6 +35,7 @@ export class InputRecipeComponent implements OnInit {
   uploadPercent: Observable<number>;
   downloadURL: Observable<string>;
 
+  selectControl: DynamicSelectModel<string>;
   private newRecipe = <RecipeDetail> {
     stats: <Stats>{}
   };
@@ -41,7 +46,10 @@ export class InputRecipeComponent implements OnInit {
   constructor(private formService: DynamicFormService,
               private storage: AngularFireStorage,
               private afs: AngularFirestore,
-              private router: Router) {
+              private router: Router,
+              private formatSelectOptionService: FormatSelectOptionService,
+              private inputRecipeModel: InputRecipeModel) {
+    this.formModel = inputRecipeModel.INPUT_RECIPE_MODEL;
   }
 
   ngOnInit() {
