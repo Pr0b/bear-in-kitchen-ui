@@ -8,6 +8,7 @@ import {
 } from '@ng-dynamic-forms/core';
 import {Injectable} from '@angular/core';
 import {FormatSelectOptionService} from '../service/formatSelectOption.service';
+import {Observable} from 'rxjs/Observable';
 
 @Injectable()
 export class InputRecipeModel {
@@ -80,7 +81,7 @@ export class InputRecipeModel {
       id: 'ingredientsFormArray',
       initialCount: 1,
       groupFactory: () => {
-        const newOptions = this.formatSelectOptionService.getIngredients();
+        // const newOptions = Observable.fromPromise(this.formatSelectOptionService.getIngredients());
         return [
           new DynamicInputModel({
             id: 'ingredient',
@@ -99,7 +100,7 @@ export class InputRecipeModel {
               id: 'ingredientSelect',
               label: 'Ingredients',
               multiple: false,
-              options: newOptions,
+              // options: newOptions,
               placeholder: 'Select an option'
             }
           )

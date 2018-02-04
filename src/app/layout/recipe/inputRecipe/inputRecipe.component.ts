@@ -1,7 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {routerTransition} from '../../../router.animations';
 import {
-  DynamicFormArrayModel, DynamicFormControlModel, DynamicFormLayout, DynamicFormService,
+  DynamicFormArrayModel,
+  DynamicFormControlModel,
+  DynamicFormLayout,
+  DynamicFormService,
   DynamicSelectModel
 } from '@ng-dynamic-forms/core';
 import {FormArray, FormGroup} from '@angular/forms';
@@ -34,14 +37,11 @@ export class InputRecipeComponent implements OnInit {
 
   uploadPercent: Observable<number>;
   downloadURL: Observable<string>;
-
-  selectControl: DynamicSelectModel<string>;
   private newRecipe = <RecipeDetail> {
     stats: <Stats>{}
   };
 
   private recipesCollection: AngularFirestoreCollection<RecipeDetail>;
-  recipes: Observable<RecipeDetail[]>;
 
   constructor(private formService: DynamicFormService,
               private storage: AngularFireStorage,
@@ -62,7 +62,9 @@ export class InputRecipeComponent implements OnInit {
     this.directionsFormArrayModel = this.formService.findById('directionsFormArray', this.formModel) as DynamicFormArrayModel;
 
     this.recipesCollection = this.afs.collection<RecipeDetail>('recipes');
-    this.recipes = this.recipesCollection.valueChanges();
+
+    const selectControl = this.ingredientsFormArrayModel.get(0).get(3) as DynamicSelectModel<string>;
+    selectControl.options = this.formatSelectOptionService.getIngredients();
   }
 
   addRecipe(recipeDetail: RecipeDetail) {
@@ -88,7 +90,8 @@ export class InputRecipeComponent implements OnInit {
         promises.push(ref.collection('ingredients').add({
           name: ingredient.ingredient,
           quantity: ingredient.quantity,
-          unit: ingredient.unit
+          unit: ingredient.unit,
+          refIngredient: ingredient.ingredientSelect
         }));
       }
 
@@ -145,6 +148,8 @@ export class InputRecipeComponent implements OnInit {
 
   insertItemIngredients(context: DynamicFormArrayModel, index: number) {
     this.formService.insertFormArrayGroup(index, this.ingredientsFormArrayControl, context);
+    const selectControl = this.ingredientsFormArrayModel.get(index).get(3) as DynamicSelectModel<string>;
+    selectControl.options = this.formatSelectOptionService.getIngredients();
   }
 
   addItemDirections() {

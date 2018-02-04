@@ -11,7 +11,7 @@ export class RecipeFetcherService {
 
   getRecipes() {
     const collection: AngularFirestoreCollection<RecipeDetail> = this.afs.collection('recipes');
-
+    // TODO rewrite to reference only
     return collection.snapshotChanges().map(actions => {
       return actions.map(a => {
         const data = a.payload.doc.data() as RecipeDetail;

@@ -10,15 +10,17 @@ export class IngredientFetcherService {
 
   getAllIngredients() {
     const collection: AngularFirestoreCollection<Ingredient> = this.afs.collection('ingredients');
-    return collection.valueChanges();
-    // return collection.snapshotChanges().map(actions => {
-    //   return actions.map(a => {
-    //     const data = a.payload.doc.data();
-    //     const id = a.payload.doc.id;
-    //     console.log('ingredient data=' + data);
-    //     console.log('ingredient id=' + id);
-    //     return {id, ...data};
-    //   });
-    // });
+    return collection.ref;
+  }
+
+  getAllIngredientsWithChanges() {
+    const collection: AngularFirestoreCollection<Ingredient> = this.afs.collection('ingredients');
+    return collection.snapshotChanges().map(actions => {
+      return actions.map(a => {
+        const data = a.payload.doc.data();
+        const id = a.payload.doc.id;
+        return {id, name: data.name};
+      });
+    });
   }
 }

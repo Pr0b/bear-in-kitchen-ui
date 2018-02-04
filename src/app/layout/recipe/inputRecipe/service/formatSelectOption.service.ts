@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {AngularFirestore} from 'angularfire2/firestore';
-import {IngredientFetcherService} from '../../../../shared/services/ingredientRepository/ingredient-fetcher.service';
+import {IngredientFetcherService} from '../../../../shared/services';
 
 @Injectable()
 export class FormatSelectOptionService {
@@ -10,15 +10,12 @@ export class FormatSelectOptionService {
   }
 
   getIngredients() {
-    console.log('getIngredients start');
-    const array = [];
-    return this.ingredientFetcherService.getAllIngredients().map( ingredients => {
-      ingredients.forEach( ingredient => {
+    return this.ingredientFetcherService.getAllIngredientsWithChanges().map(ingredients => {
+       return ingredients.map(ingredient => {
         const label = ingredient.name;
-        const value = ingredient.name;
-        array.push({label, value});
+        const value = ingredient.id;
+        return {label, value};
       });
-      return array;
     });
   }
 }
