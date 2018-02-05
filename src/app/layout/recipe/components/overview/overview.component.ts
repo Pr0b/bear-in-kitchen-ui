@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 
-import {RecipeDetail} from '../../recipe.component';
+import {RecipeDetail, Tag} from '../../recipe.component';
 import {Observable} from 'rxjs/Observable';
 
 @Component({
@@ -19,6 +19,10 @@ export class OverviewComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  getInlineTagNames(tags: Tag[]) {
+    return tags.map(tag => tag.name).join(', ');
   }
 
 }
