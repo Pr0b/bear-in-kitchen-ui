@@ -93,6 +93,9 @@ export class InputRecipeComponent implements OnInit {
           unit: ingredient.unit,
           refIngredient: ingredient.ingredientSelect
         }));
+        promises.push(this.afs.collection('ingredients/' + ingredient.ingredientSelect + '/synonyms').add({
+          name: ingredient.ingredient
+        }));
       }
 
       let order = 1;
