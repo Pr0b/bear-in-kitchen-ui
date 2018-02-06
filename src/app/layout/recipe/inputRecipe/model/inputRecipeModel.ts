@@ -54,7 +54,15 @@ export const  INPUT_RECIPE_MODEL: DynamicFormControlModel[] = [
 
           id: 'category',
           label: 'Category'
-        })
+        }),
+        new DynamicSelectModel<string>(
+          {
+            id: 'recipeCategorySelect',
+            label: 'Recipe Categories',
+            multiple: false,
+            placeholder: 'Select an option'
+          }
+        )
       ]
     }),
 

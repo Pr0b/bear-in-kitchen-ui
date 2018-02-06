@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {AngularFirestore, AngularFirestoreCollection} from 'angularfire2/firestore';
 import {Ingredient} from '../../../layout/recipe/recipe.component';
+import {Observable} from 'rxjs/Observable';
 
 @Injectable()
 export class IngredientFetcherService {
@@ -13,13 +14,13 @@ export class IngredientFetcherService {
     return collection.ref;
   }
 
-  getAllIngredientsWithChanges() {
+  getAllIngredientsWithChanges(): Observable<Ingredient[]> {
     const collection: AngularFirestoreCollection<Ingredient> = this.afs.collection('ingredients');
     return collection.snapshotChanges().map(actions => {
       return actions.map(a => {
-        const data = a.payload.doc.data();
+        const data = a.payload.doc.data() as Ingredient;
         const id = a.payload.doc.id;
-        return {id, name: data.name};
+        return {id, ...data};
       });
     });
   }

@@ -23,7 +23,7 @@ export class RecipeComponent implements OnInit {
 
 }
 
-export interface Category {
+export interface RecipeCategory {
   'id': string;
   'icon': string;
   'name': string;

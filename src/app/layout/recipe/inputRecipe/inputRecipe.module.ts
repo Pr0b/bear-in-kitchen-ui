@@ -10,6 +10,7 @@ import {DynamicFormsCoreModule} from '@ng-dynamic-forms/core';
 import {DynamicFormsNGBootstrapUIModule} from '@ng-dynamic-forms/ui-ng-bootstrap';
 import {IngredientFetcherService} from '../../../shared/services/ingredientRepository/ingredient-fetcher.service';
 import {FormatSelectOptionService} from './service/formatSelectOption.service';
+import {CategoryFetcherService} from '../../../shared/services';
 
 @NgModule({
   imports: [
@@ -21,7 +22,7 @@ import {FormatSelectOptionService} from './service/formatSelectOption.service';
     AngularFireStorageModule
   ],
   declarations: [InputRecipeComponent],
-  providers: [IngredientFetcherService, FormatSelectOptionService]
+  providers: [IngredientFetcherService, FormatSelectOptionService, CategoryFetcherService]
 })
 export class InputRecipeModule {
 }

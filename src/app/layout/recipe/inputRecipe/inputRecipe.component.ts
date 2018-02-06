@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {routerTransition} from '../../../router.animations';
 import {
   DynamicFormArrayModel,
-  DynamicFormControlModel,
+  DynamicFormControlModel, DynamicFormGroupModel,
   DynamicFormLayout,
   DynamicFormService,
   DynamicSelectModel
@@ -62,8 +62,12 @@ export class InputRecipeComponent implements OnInit {
 
     this.recipesCollection = this.afs.collection<RecipeDetail>('recipes');
 
-    const selectControl = this.ingredientsFormArrayModel.get(0).get(0) as DynamicSelectModel<string>;
-    selectControl.options = this.formatSelectOptionService.getIngredients();
+    const ingredientsSelectControl = this.ingredientsFormArrayModel.get(0).get(0) as DynamicSelectModel<string>;
+    ingredientsSelectControl.options = this.formatSelectOptionService.getIngredients();
+
+    const categories = this.formService.findById('categories', this.formModel) as DynamicFormGroupModel;
+    const recipeCategoriesSelectControl = categories.get(4) as DynamicSelectModel<string>;
+    recipeCategoriesSelectControl.options = this.formatSelectOptionService.getRecipeCategories();
   }
 
   addRecipe(recipeDetail: RecipeDetail) {
