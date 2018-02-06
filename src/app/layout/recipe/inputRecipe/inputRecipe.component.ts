@@ -62,7 +62,7 @@ export class InputRecipeComponent implements OnInit {
 
     this.recipesCollection = this.afs.collection<RecipeDetail>('recipes');
 
-    const selectControl = this.ingredientsFormArrayModel.get(0).get(3) as DynamicSelectModel<string>;
+    const selectControl = this.ingredientsFormArrayModel.get(0).get(0) as DynamicSelectModel<string>;
     selectControl.options = this.formatSelectOptionService.getIngredients();
   }
 
@@ -150,7 +150,7 @@ export class InputRecipeComponent implements OnInit {
 
   insertItemIngredients(context: DynamicFormArrayModel, index: number) {
     this.formService.insertFormArrayGroup(index, this.ingredientsFormArrayControl, context);
-    const selectControl = this.ingredientsFormArrayModel.get(index).get(3) as DynamicSelectModel<string>;
+    const selectControl = this.ingredientsFormArrayModel.get(index).get(0) as DynamicSelectModel<string>;
     selectControl.options = this.formatSelectOptionService.getIngredients();
   }
 

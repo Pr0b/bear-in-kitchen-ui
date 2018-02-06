@@ -131,15 +131,14 @@ export const  INPUT_RECIPE_MODEL: DynamicFormControlModel[] = [
 export const NG_BOOTSTRAP_SAMPLE_FORM_LAYOUT = {
   'tagsFormArray': {
     element: {
-      control: 'form-row'
+      container: 'form-group form-array',
+      label: 'control-label'
+    },
+    grid: {
+      control: 'col-sm-9',
+      label: 'col-sm-3'
     }
   },
-  'tag': {
-    element: {
-      label: 'col-form-label'
-    }
-  },
-
   'ingredientsFormArray': {
     element: {
       container: 'form-group form-array',
