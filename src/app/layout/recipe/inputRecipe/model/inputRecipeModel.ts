@@ -50,11 +50,6 @@ export const  INPUT_RECIPE_MODEL: DynamicFormControlModel[] = [
           id: 'difficulty',
           label: 'Difficulty'
         }),
-        new DynamicInputModel({
-
-          id: 'category',
-          label: 'Category'
-        }),
         new DynamicSelectModel<string>(
           {
             id: 'recipeCategorySelect',

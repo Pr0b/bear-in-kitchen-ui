@@ -13,7 +13,7 @@ import {AngularFirestore, AngularFirestoreCollection} from 'angularfire2/firesto
 import {INPUT_RECIPE_MODEL, NG_BOOTSTRAP_SAMPLE_FORM_LAYOUT} from './model/inputRecipeModel';
 import {Observable} from 'rxjs/Observable';
 
-import {RecipeDetail, Stats} from '../recipe.component';
+import {RecipeCategoryRecipe, RecipeDetail, Stats} from '../recipe.component';
 import {FormatSelectOptionService} from './service/formatSelectOption.service';
 import {Router} from '@angular/router';
 
@@ -38,7 +38,9 @@ export class InputRecipeComponent implements OnInit {
   uploadPercent: Observable<number>;
   downloadURL: Observable<string>;
   private newRecipe = <RecipeDetail> {
-    stats: <Stats>{}
+    stats: <Stats>{
+      category: <RecipeCategoryRecipe>{}
+    }
   };
 
   private recipesCollection: AngularFirestoreCollection<RecipeDetail>;
@@ -66,7 +68,7 @@ export class InputRecipeComponent implements OnInit {
     ingredientsSelectControl.options = this.formatSelectOptionService.getIngredients();
 
     const categories = this.formService.findById('categories', this.formModel) as DynamicFormGroupModel;
-    const recipeCategoriesSelectControl = categories.get(4) as DynamicSelectModel<string>;
+    const recipeCategoriesSelectControl = categories.get(3) as DynamicSelectModel<RecipeCategoryRecipe>;
     recipeCategoriesSelectControl.options = this.formatSelectOptionService.getRecipeCategories();
   }
 
@@ -78,7 +80,7 @@ export class InputRecipeComponent implements OnInit {
     console.log(this.formGroup.value);
     this.newRecipe.title = this.formGroup.get(['basic', 'title']).value;
     this.newRecipe.description = this.formGroup.get(['basic', 'description']).value;
-    this.newRecipe.stats.category = this.formGroup.get(['categories', 'category']).value;
+    this.newRecipe.stats.category = this.formGroup.get(['categories', 'recipeCategorySelect']).value;
     this.newRecipe.stats.difficulty = this.formGroup.get(['categories', 'difficulty']).value;
     this.newRecipe.stats.serves = this.formGroup.get(['categories', 'serves']).value;
     this.newRecipe.stats.time = this.formGroup.get(['categories', 'time']).value;

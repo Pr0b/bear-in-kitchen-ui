@@ -4,7 +4,7 @@
       <div class="col-sm-6 col-md-4 col-lg-6 m-auto m-md-0 pr-5">
         <div class="row justify-content-start text-center">
           <div class="col-sm-12">
-            <div *ngIf="recipe | async as recipeSnap" >
+            <div *ngIf="recipe | async as recipeSnap">
               <img alt="recipeImage" class="img-fluid" [src]="recipeSnap.photoUrl">
             </div>
 
@@ -79,9 +79,12 @@
               <div class="col-sm-3 m-sm-auto">
                 <div class="row align-items-center">
                   <div class="col-12">
-                    <img alt="image" class="img-fluid" src="./assets/icons/037-piece-of-cake-with-cherry.svg"
-                         height="30" width="30">
-                    <div class="caption text-nowrap center-block pt-1">{{(recipe | async)?.stats?.category}}</div>
+                    <div *ngIf="recipe | async as recipeSnap">
+                      <img alt="image" class="img-fluid" src="./assets/icons/{{recipeSnap.stats.category.icon}}"
+                           height="30" width="30">
+
+                      <div class="caption text-nowrap center-block pt-1">{{recipeSnap.stats.category.name}}</div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -94,11 +97,10 @@
               <div class="col-12 mx-3 m-sm-auto">
                 <!--<i class="fa fa-tags fa-2x fa-fw" aria-hidden="true"></i>-->
                 <!--*ngFor="let tag of (recipe | async)?.tags"-->
-                  <!--&nbsp;{{tag?.name}}-->
+                <!--&nbsp;{{tag?.name}}-->
                 <div *ngIf="recipe | async as recipeSnap">
                   <i class="fa fa-tags fa-2x fa-fw" aria-hidden="true"></i>&nbsp;{{getInlineTagNames(recipeSnap.tags)}}
                 </div>
-
 
 
                 <!--<div class="row justify-content-start pl-3">-->
@@ -113,13 +115,13 @@
           </section>
         </div>
         <!--<div class="row justify-content-start text-left">-->
-          <!--<section class="fdb-block py-4">-->
-            <!--<div class="row justify-content-center">-->
-              <!--<div class="col-12 mx-3 m-sm-auto">-->
-                <!--<i class="fa fa-facebook fa-2x" aria-hidden="true"></i> Dalsi sekce ...-->
-              <!--</div>-->
-            <!--</div>-->
-          <!--</section>-->
+        <!--<section class="fdb-block py-4">-->
+        <!--<div class="row justify-content-center">-->
+        <!--<div class="col-12 mx-3 m-sm-auto">-->
+        <!--<i class="fa fa-facebook fa-2x" aria-hidden="true"></i> Dalsi sekce ...-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--</section>-->
         <!--</div>-->
       </div>
     </div>
