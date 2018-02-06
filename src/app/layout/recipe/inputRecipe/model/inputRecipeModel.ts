@@ -4,8 +4,10 @@ import {
   DynamicFormControlModel,
   DynamicFormGroupModel,
   DynamicInputModel,
-  DynamicSelectModel, DynamicTextAreaModel
+  DynamicSelectModel,
+  DynamicTextAreaModel
 } from '@ng-dynamic-forms/core';
+import {RecipeCategoryRecipe} from '../../recipe.component';
 
 
 export const  INPUT_RECIPE_MODEL: DynamicFormControlModel[] = [
@@ -45,12 +47,29 @@ export const  INPUT_RECIPE_MODEL: DynamicFormControlModel[] = [
           inputType: 'number',
           label: 'Time'
         }),
-        new DynamicInputModel({
-
-          id: 'difficulty',
-          label: 'Difficulty'
-        }),
         new DynamicSelectModel<string>(
+          {
+            id: 'difficultySelect',
+            label: 'Difficulty',
+            multiple: false,
+            placeholder: 'Select an option',
+            options: [
+              {
+                label: 'Super easy',
+                value: 'Super easy'
+              },
+              {
+                label: 'Easy',
+                value: 'Easy'
+              },
+              {
+                label: 'Intermediate',
+                value: 'Intermediate'
+              }
+            ],
+          }
+        ),
+        new DynamicSelectModel<RecipeCategoryRecipe>(
           {
             id: 'recipeCategorySelect',
             label: 'Recipe Categories',

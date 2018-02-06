@@ -2,7 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {routerTransition} from '../../../router.animations';
 import {
   DynamicFormArrayModel,
-  DynamicFormControlModel, DynamicFormGroupModel,
+  DynamicFormControlModel,
+  DynamicFormGroupModel,
   DynamicFormLayout,
   DynamicFormService,
   DynamicSelectModel
@@ -81,7 +82,7 @@ export class InputRecipeComponent implements OnInit {
     this.newRecipe.title = this.formGroup.get(['basic', 'title']).value;
     this.newRecipe.description = this.formGroup.get(['basic', 'description']).value;
     this.newRecipe.stats.category = this.formGroup.get(['categories', 'recipeCategorySelect']).value;
-    this.newRecipe.stats.difficulty = this.formGroup.get(['categories', 'difficulty']).value;
+    this.newRecipe.stats.difficulty = this.formGroup.get(['categories', 'difficultySelect']).value;
     this.newRecipe.stats.serves = this.formGroup.get(['categories', 'serves']).value;
     this.newRecipe.stats.time = this.formGroup.get(['categories', 'time']).value;
 
