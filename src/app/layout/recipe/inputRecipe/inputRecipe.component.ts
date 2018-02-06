@@ -10,7 +10,7 @@ import {
 import {FormArray, FormGroup} from '@angular/forms';
 import {AngularFireStorage} from 'angularfire2/storage';
 import {AngularFirestore, AngularFirestoreCollection} from 'angularfire2/firestore';
-import {InputRecipeModel, NG_BOOTSTRAP_SAMPLE_FORM_LAYOUT} from './model/inputRecipeModel';
+import {INPUT_RECIPE_MODEL, NG_BOOTSTRAP_SAMPLE_FORM_LAYOUT} from './model/inputRecipeModel';
 import {Observable} from 'rxjs/Observable';
 
 import {RecipeDetail, Stats} from '../recipe.component';
@@ -47,9 +47,8 @@ export class InputRecipeComponent implements OnInit {
               private storage: AngularFireStorage,
               private afs: AngularFirestore,
               private router: Router,
-              private formatSelectOptionService: FormatSelectOptionService,
-              private inputRecipeModel: InputRecipeModel) {
-    this.formModel = inputRecipeModel.INPUT_RECIPE_MODEL;
+              private formatSelectOptionService: FormatSelectOptionService) {
+    this.formModel = INPUT_RECIPE_MODEL;
   }
 
   ngOnInit() {

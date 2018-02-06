@@ -4,18 +4,11 @@ import {
   DynamicFormControlModel,
   DynamicFormGroupModel,
   DynamicInputModel,
-  DynamicSelectModel
+  DynamicSelectModel, DynamicTextAreaModel
 } from '@ng-dynamic-forms/core';
-import {Injectable} from '@angular/core';
-import {FormatSelectOptionService} from '../service/formatSelectOption.service';
-import {Observable} from 'rxjs/Observable';
 
-@Injectable()
-export class InputRecipeModel {
-  constructor(private formatSelectOptionService: FormatSelectOptionService) {
-  }
 
-  INPUT_RECIPE_MODEL: DynamicFormControlModel[] = [
+export const  INPUT_RECIPE_MODEL: DynamicFormControlModel[] = [
     new DynamicFormGroupModel({
 
       id: 'basic',
@@ -26,10 +19,11 @@ export class InputRecipeModel {
           id: 'title',
           label: 'title',
         }),
-        new DynamicInputModel({
-
+        new DynamicTextAreaModel({
           id: 'description',
-          label: 'Description'
+          label: 'Description',
+          placeholder: 'Description',
+          rows: 5
         }),
       ]
     }),
@@ -42,11 +36,13 @@ export class InputRecipeModel {
         new DynamicInputModel({
 
           id: 'serves',
+          inputType: 'number',
           label: 'Serves',
         }),
         new DynamicInputModel({
 
           id: 'time',
+          inputType: 'number',
           label: 'Time'
         }),
         new DynamicInputModel({
@@ -81,8 +77,15 @@ export class InputRecipeModel {
       id: 'ingredientsFormArray',
       initialCount: 1,
       groupFactory: () => {
-        // const newOptions = Observable.fromPromise(this.formatSelectOptionService.getIngredients());
         return [
+          new DynamicSelectModel<string>(
+            {
+              id: 'ingredientSelect',
+              label: 'Ingredients',
+              multiple: false,
+              placeholder: 'Select an option'
+            }
+          ),
           new DynamicInputModel({
             id: 'ingredient',
             label: 'Ingredient'
@@ -93,17 +96,13 @@ export class InputRecipeModel {
           }),
           new DynamicInputModel({
             id: 'quantity',
-            label: 'quantity'
-          }),
-          new DynamicSelectModel<string>(
-            {
-              id: 'ingredientSelect',
-              label: 'Ingredients',
-              multiple: false,
-              // options: newOptions,
-              placeholder: 'Select an option'
-            }
-          )
+            inputType: 'number',
+            label: 'quantity',
+            placeholder: 'Quantity',
+            hint: 'Hint',
+            min: 1,
+            value: 4
+          })
         ];
       }
     }),
@@ -114,9 +113,11 @@ export class InputRecipeModel {
       initialCount: 1,
       groupFactory: () => {
         return [
-          new DynamicInputModel({
+          new DynamicTextAreaModel({
             id: 'direction',
-            label: 'Direction'
+            label: 'Direction',
+            placeholder: 'Direction description',
+            rows: 5
           }),
           new DynamicCheckboxModel({
             id: 'tip',
@@ -126,38 +127,91 @@ export class InputRecipeModel {
       }
     })
   ];
-}
 
 export const NG_BOOTSTRAP_SAMPLE_FORM_LAYOUT = {
   'tagsFormArray': {
     element: {
-      container: 'form-group form-array',
-      label: 'control-label'
-    },
-    grid: {
-      control: 'col-sm-6',
-      label: 'col-sm-6'
+      control: 'form-row'
     }
   },
+  'tag': {
+    element: {
+      label: 'col-form-label'
+    }
+  },
+
   'ingredientsFormArray': {
     element: {
       container: 'form-group form-array',
       label: 'control-label'
     },
     grid: {
-      control: 'col-sm-6',
-      label: 'col-sm-6'
+      control: 'col-sm-9',
+      label: 'col-sm-3'
     }
   },
+
   'directionsFormArray': {
     element: {
       container: 'form-group form-array',
       label: 'control-label'
     },
     grid: {
-      control: 'col-sm-6',
-      label: 'col-sm-6'
+      control: 'col-sm-9',
+      label: 'col-sm-3'
+    }
+  },
+
+  'basic': {
+    element: {
+      container: 'form-group',
+      label: 'control-label'
+    },
+    grid: {
+      control: 'col-sm-9',
+      label: 'col-sm-3'
+    }
+  },
+
+  'categories': {
+    element: {
+      container: 'form-group',
+      label: 'control-label'
+    },
+    grid: {
+      control: 'col-sm-9',
+      label: 'col-sm-3'
     }
   }
+
+  // 'tagsFormArray': {
+  //   element: {
+  //     container: 'form-group form-array',
+  //     label: 'control-label'
+  //   },
+  //   grid: {
+  //     control: 'col-sm-6',
+  //     label: 'col-sm-6'
+  //   }
+  // },
+  // 'ingredientsFormArray': {
+  //   element: {
+  //     container: 'form-group form-array',
+  //     label: 'control-label'
+  //   },
+  //   grid: {
+  //     control: 'col-sm-6',
+  //     label: 'col-sm-6'
+  //   }
+  // },
+  // 'directionsFormArray': {
+  //   element: {
+  //     container: 'form-group form-array',
+  //     label: 'control-label'
+  //   },
+  //   grid: {
+  //     control: 'col-sm-6',
+  //     label: 'col-sm-6'
+  //   }
 };
 
