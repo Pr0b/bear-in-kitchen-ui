@@ -7,7 +7,7 @@ import {
   DynamicSelectModel,
   DynamicTextAreaModel
 } from '@ng-dynamic-forms/core';
-import {RecipeCategoryRecipe} from '../../recipe.component';
+import {RecipeCategoryRecipe, TagRecipe} from '../../recipe.component';
 
 
 export const  INPUT_RECIPE_MODEL: DynamicFormControlModel[] = [
@@ -86,10 +86,14 @@ export const  INPUT_RECIPE_MODEL: DynamicFormControlModel[] = [
       initialCount: 1,
       groupFactory: () => {
         return [
-          new DynamicInputModel({
-            id: 'tag',
-            label: 'tag'
-          })
+          new DynamicSelectModel<TagRecipe>(
+            {
+              id: 'tagSelect',
+              label: 'Tags',
+              multiple: false,
+              placeholder: 'Select an option'
+            }
+          )
         ];
       }
     }),
@@ -151,59 +155,59 @@ export const  INPUT_RECIPE_MODEL: DynamicFormControlModel[] = [
   ];
 
 export const NG_BOOTSTRAP_SAMPLE_FORM_LAYOUT = {
-  'tagsFormArray': {
-    element: {
-      container: 'form-group form-array',
-      label: 'control-label'
-    },
-    grid: {
-      control: 'col-sm-9',
-      label: 'col-sm-3'
-    }
-  },
-  'ingredientsFormArray': {
-    element: {
-      container: 'form-group form-array',
-      label: 'control-label'
-    },
-    grid: {
-      control: 'col-sm-9',
-      label: 'col-sm-3'
-    }
-  },
-
-  'directionsFormArray': {
-    element: {
-      container: 'form-group form-array',
-      label: 'control-label'
-    },
-    grid: {
-      control: 'col-sm-9',
-      label: 'col-sm-3'
-    }
-  },
-
-  'basic': {
-    element: {
-      container: 'form-group',
-      label: 'control-label'
-    },
-    grid: {
-      control: 'col-sm-9',
-      label: 'col-sm-3'
-    }
-  },
-
-  'categories': {
-    element: {
-      container: 'form-group',
-      label: 'control-label'
-    },
-    grid: {
-      control: 'col-sm-9',
-      label: 'col-sm-3'
-    }
-  }
+  // 'tagsFormArray': {
+  //   element: {
+  //     container: 'form-group form-array',
+  //     label: 'control-label'
+  //   },
+  //   grid: {
+  //     control: 'col-sm-9',
+  //     label: 'col-sm-3'
+  //   }
+  // },
+  // 'ingredientsFormArray': {
+  //   element: {
+  //     container: 'form-group form-array',
+  //     label: 'control-label'
+  //   },
+  //   grid: {
+  //     control: 'col-sm-9',
+  //     label: 'col-sm-3'
+  //   }
+  // },
+  //
+  // 'directionsFormArray': {
+  //   element: {
+  //     container: 'form-group form-array',
+  //     label: 'control-label'
+  //   },
+  //   grid: {
+  //     control: 'col-sm-9',
+  //     label: 'col-sm-3'
+  //   }
+  // },
+  //
+  // 'basic': {
+  //   element: {
+  //     container: 'form-group',
+  //     label: 'control-label'
+  //   },
+  //   grid: {
+  //     control: 'col-sm-9',
+  //     label: 'col-sm-3'
+  //   }
+  // },
+  //
+  // 'categories': {
+  //   element: {
+  //     container: 'form-group',
+  //     label: 'control-label'
+  //   },
+  //   grid: {
+  //     control: 'col-sm-9',
+  //     label: 'col-sm-3'
+  //   }
+  // }
 
   // 'tagsFormArray': {
   //   element: {

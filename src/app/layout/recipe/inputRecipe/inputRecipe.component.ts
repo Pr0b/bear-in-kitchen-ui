@@ -14,7 +14,7 @@ import {AngularFirestore, AngularFirestoreCollection} from 'angularfire2/firesto
 import {INPUT_RECIPE_MODEL, NG_BOOTSTRAP_SAMPLE_FORM_LAYOUT} from './model/inputRecipeModel';
 import {Observable} from 'rxjs/Observable';
 
-import {RecipeCategoryRecipe, RecipeDetail, Stats} from '../recipe.component';
+import {RecipeCategoryRecipe, RecipeDetail, Stats, TagRecipe} from '../recipe.component';
 import {FormatSelectOptionService} from './service/formatSelectOption.service';
 import {Router} from '@angular/router';
 
@@ -68,6 +68,9 @@ export class InputRecipeComponent implements OnInit {
     const ingredientsSelectControl = this.ingredientsFormArrayModel.get(0).get(0) as DynamicSelectModel<string>;
     ingredientsSelectControl.options = this.formatSelectOptionService.getIngredients();
 
+    const tagsSelectControl = this.tagsFormArrayModel.get(0).get(0) as DynamicSelectModel<TagRecipe>;
+    tagsSelectControl.options = this.formatSelectOptionService.getRecipeTags();
+
     const categories = this.formService.findById('categories', this.formModel) as DynamicFormGroupModel;
     const recipeCategoriesSelectControl = categories.get(3) as DynamicSelectModel<RecipeCategoryRecipe>;
     recipeCategoriesSelectControl.options = this.formatSelectOptionService.getRecipeCategories();
@@ -89,7 +92,7 @@ export class InputRecipeComponent implements OnInit {
     this.addRecipe(this.newRecipe).then((ref) => {
       const promises: Promise<any>[] = [];
       for (const tag of this.formGroup.get(['tagsFormArray']).value) {
-        promises.push(ref.collection('tags').add({name: tag.tag}));
+        promises.push(ref.collection('tags').add(tag.tagSelect));
       }
 
       for (const ingredient of this.formGroup.get(['ingredientsFormArray']).value) {
@@ -141,6 +144,8 @@ export class InputRecipeComponent implements OnInit {
 
   insertItemLabels(context: DynamicFormArrayModel, index: number) {
     this.formService.insertFormArrayGroup(index, this.tagsFormArrayControl, context);
+    const tagsSelectControl = this.tagsFormArrayModel.get(0).get(0) as DynamicSelectModel<TagRecipe>;
+    tagsSelectControl.options = this.formatSelectOptionService.getRecipeTags();
   }
 
   addItemIngredients() {

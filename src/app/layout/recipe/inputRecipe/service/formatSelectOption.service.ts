@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {AngularFirestore} from 'angularfire2/firestore';
 import {CategoryFetcherService, IngredientFetcherService} from '../../../../shared/services';
 import {Observable} from 'rxjs/Observable';
-import {RecipeCategoryRecipe} from '../../recipe.component';
+import {RecipeCategoryRecipe, Tag, TagRecipe} from '../../recipe.component';
 
 @Injectable()
 export class FormatSelectOptionService {
@@ -30,6 +30,19 @@ export class FormatSelectOptionService {
           refCategory: recipeCategory.id,
           icon: recipeCategory.icon,
           name: recipeCategory.name,
+        };
+        return {label, value};
+      });
+    });
+  }
+
+  getRecipeTags(): Observable<OptionValueItem<TagRecipe>[]> {
+    return this.categoryFetcherService.getAllTagsWithChanges().map( tagRecipes => {
+      return tagRecipes.map(tagRecipe => {
+        const label = tagRecipe.name;
+        const value = {
+          refTag: tagRecipe.id,
+          name: tagRecipe.name,
         };
         return {label, value};
       });

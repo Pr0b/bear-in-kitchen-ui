@@ -66,7 +66,6 @@ export interface ProtocolItem {
 }
 
 export interface TagRecipe {
-  'id': string;
   'name': string;
   'refTag': string;
 }
