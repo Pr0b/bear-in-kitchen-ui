@@ -144,7 +144,7 @@ export class InputRecipeComponent implements OnInit {
 
   insertItemLabels(context: DynamicFormArrayModel, index: number) {
     this.formService.insertFormArrayGroup(index, this.tagsFormArrayControl, context);
-    const tagsSelectControl = this.tagsFormArrayModel.get(0).get(0) as DynamicSelectModel<TagRecipe>;
+    const tagsSelectControl = this.tagsFormArrayModel.get(index).get(0) as DynamicSelectModel<TagRecipe>;
     tagsSelectControl.options = this.formatSelectOptionService.getRecipeTags();
   }
 
