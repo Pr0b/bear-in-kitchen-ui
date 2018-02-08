@@ -156,6 +156,14 @@ export class InputRecipeComponent implements OnInit {
     this.formService.clearFormArray(this.ingredientsFormArrayControl, this.ingredientsFormArrayModel);
   }
 
+  addNewIngredient() {
+    console.log(this.formGroup.get('addNewIngredient').value);
+  }
+
+  addNewTag() {
+    console.log(this.formGroup.get('addNewTag').value);
+  }
+
   removeItemIngredients(context: DynamicFormArrayModel, index: number) {
     this.formService.removeFormArrayGroup(index, this.ingredientsFormArrayControl, context);
   }

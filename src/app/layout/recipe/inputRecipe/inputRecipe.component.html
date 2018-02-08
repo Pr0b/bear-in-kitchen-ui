@@ -7,12 +7,28 @@
 
           <dynamic-ng-bootstrap-form [group]="formGroup" [model]="formModel" [layout]="formLayout">
 
+            <ng-template modelId="addNewTag">
+
+              <button class="btn btn-warning" type="button" (click)="addNewTag()">
+                Add New Tag
+              </button>
+
+            </ng-template>
+
             <ng-template modelId="tagsFormArray" let-group let-index="index" let-context="context">
 
               <button class="btn btn-danger" type="button" (click)="removeItemLabels(context, index)">Remove Tag
               </button>
               <button class="btn btn-success" type="button" (click)="insertItemLabels(group.context, group.index + 1)">
                 Add Tag
+              </button>
+
+            </ng-template>
+
+            <ng-template modelId="addNewIngredient">
+
+              <button class="btn btn-warning" type="button" (click)="addNewIngredient()">
+                Add New Ingredient
               </button>
 
             </ng-template>
