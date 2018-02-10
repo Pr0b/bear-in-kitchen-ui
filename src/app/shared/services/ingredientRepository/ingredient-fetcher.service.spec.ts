@@ -1,6 +1,6 @@
-import { TestBed, inject } from '@angular/core/testing';
+import {inject, TestBed} from '@angular/core/testing';
 
-import { IngredientFetcherService } from './ingredient-fetcher.service';
+import {IngredientFetcherService} from './ingredient-fetcher.service';
 
 describe('IngredientFetcherService', () => {
   beforeEach(() => {

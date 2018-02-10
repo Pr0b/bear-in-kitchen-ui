@@ -36,6 +36,10 @@ export class AuthService {
     return this.oAuthLogin(provider);
   }
 
+  signOut() {
+    return this.afAuth.auth.signOut();
+  }
+
   private oAuthLogin(provider) {
     return this.afAuth.auth.signInWithPopup(provider)
       .then((credential) => {
@@ -52,9 +56,5 @@ export class AuthService {
       photoURL: user.photoURL
     };
     return userRef.set(data);
-  }
-
-  signOut() {
-    return this.afAuth.auth.signOut();
   }
 }

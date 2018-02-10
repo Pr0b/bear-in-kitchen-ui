@@ -1,6 +1,6 @@
-import { TestBed, inject } from '@angular/core/testing';
+import {inject, TestBed} from '@angular/core/testing';
 
-import { RecipeFetcherService } from './recipe-fetcher.service';
+import {RecipeFetcherService} from './recipe-fetcher.service';
 
 describe('RecipeFetcherService', () => {
   beforeEach(() => {

@@ -1,4 +1,4 @@
-import { InputRecipeModule } from './inputRecipe.module';
+import {InputRecipeModule} from './inputRecipe.module';
 
 describe('InputRecipeModule', () => {
   let inputRecipeModule: InputRecipeModule;

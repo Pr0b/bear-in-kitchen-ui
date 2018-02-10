@@ -1,4 +1,4 @@
-import { RecipeModule } from './recipe.module';
+import {RecipeModule} from './recipe.module';
 
 describe('GalleryModule', () => {
   let recipeModule: RecipeModule;

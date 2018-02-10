@@ -1,7 +1,8 @@
 <div class="container mb-5">
   <div class="row">
     <ul class="list-group border">
-      <li style="border: none" class="list-group-item" *ngFor="let ingredient of (recipe | async)?.ingredients">{{ingredient.quantity}}
+      <li style="border: none" class="list-group-item" *ngFor="let ingredient of (recipe | async)?.ingredients">
+        {{ingredient.quantity}}
         {{ingredient.unit}} {{ingredient.name}}
       </li>
     </ul>

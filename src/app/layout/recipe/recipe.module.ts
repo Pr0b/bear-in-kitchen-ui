@@ -2,7 +2,7 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {HttpClientJsonpModule, HttpClientModule} from '@angular/common/http';
 
-import { ShareButtonsModule } from '@ngx-share/buttons';
+import {ShareButtonsModule} from '@ngx-share/buttons';
 
 import {RecipeRoutingModule} from './recipe-routing.module';
 import {RecipeComponent} from './recipe.component';

@@ -1,6 +1,6 @@
-import { TestBed, inject } from '@angular/core/testing';
+import {inject, TestBed} from '@angular/core/testing';
 
-import { CategoryFetcherService } from './category-fetcher.service';
+import {CategoryFetcherService} from './category-fetcher.service';
 
 describe('CategoryFetcherService', () => {
   beforeEach(() => {

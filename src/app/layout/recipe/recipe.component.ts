@@ -3,7 +3,6 @@ import {ActivatedRoute} from '@angular/router';
 
 import {RecipeFetcherService} from '../../shared/services';
 import {Observable} from 'rxjs/Observable';
-import {AngularFirestoreDocument} from 'angularfire2/firestore/document/document';
 
 @Component({
   selector: 'app-recipe',
