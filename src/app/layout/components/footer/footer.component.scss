@@ -1,0 +1,49 @@
+.grid {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-areas: "authors" "licence1" "licence2";
+  grid-template-rows: auto auto auto;
+}
+
+.authors {
+  grid-area: authors;
+}
+
+.licence1 {
+  grid-area: licence1;
+}
+
+.licence2 {
+  grid-area: licence2;
+}
+
+.authors, .licence1, .licence2 {
+  background: #51ea5c;
+  padding: 1em;
+  justify-self: center;
+}
+
+@media all and (min-width: 640px) {
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: auto auto;
+    grid-template-areas: ". authors authors . licence2 licence2 ." ". licence1 licence1 . . . .";
+  }
+
+  .authors, .licence1 {
+    justify-self: start;
+  }
+
+  .licence2 {
+    justify-self: end;
+  }
+}
+
+//.grid > * {
+//  display: flex;
+//  align-items: center;
+//  justify-content: center;
+//}
+
+

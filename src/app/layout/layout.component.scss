@@ -1,31 +1,22 @@
 .grid {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-areas: "hr hr hr" "art  art art" "ft ft ft";
-  grid-gap: 1em;
+  grid-template-columns: 100%;
+  grid-template-areas: "hr" "art" "ft";
+  grid-template-rows: auto 1fr auto;
 }
 
 header {
-  background: #eaeaea;
-  padding: 1em;
+  background: #77c8ea;
   grid-area: hr;
-}
-
-aside {
-  background: #eaeaea;
-  padding: 1em;
-  grid-area: asd;
 }
 
 article {
   background: #eaeaea;
-  padding: 1em;
   grid-area: art;
 }
 
 footer {
-  background: #eaeaea;
-  padding: 1em;
+  background: #77c8ea;
   grid-area: ft;
 }
 
@@ -33,20 +24,11 @@ footer {
   .grid {
     min-height: 100vh;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: auto 1fr auto;
-    grid-template-areas: "hr hr hr hr hr" ".  art art art ." "ft ft ft ft ft";
-    grid-gap: 1em;
+    grid-template-areas: "hr hr hr hr hr hr hr" ". art art art art art ." "ft ft ft ft ft ft ft";
   }
 }
-
-/* Demo Specific Styles */
-//body {
-//  margin: 0 auto;
-//  max-width: 756em;
-//  padding: 1em 0;
-//  height: 100%;
-//}
 
 //.grid > * {
 //  display: flex;
