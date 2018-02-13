@@ -1,46 +1,11 @@
+.navBear {
+  background: #eacadc;
+  grid-area: navBear;
+}
+
 .grid {
   display: grid;
-  grid-template-columns: 100%;
-  grid-template-areas:
-    "logoBear"
-    "menuBear"
-    "miscBear";
-  grid-template-rows: auto auto auto;
-}
-
-.logoBear {
-  background: #ea6465;
-  grid-area: logoBear;
-  justify-self: center;
-}
-
-.menuBear {
-  background: #ead545;
-  grid-area: menuBear;
-  justify-self: center;
-}
-
-.miscBear {
-  background: #ea08d7;
-  grid-area: miscBear;
-  justify-self: center;
-}
-
-@media all and (min-width: 640px) {
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    //grid-template-rows: auto;
-    grid-template-areas:
-      ". logoBear . menuBear . miscBear .";
-  }
-
-  .miscBear {
-    justify-self: end;
-  }
-
-  .logoBear {
-    justify-self: start;
-  }
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-areas: ". navBear navBear navBear navBear navBear .";
 }
 

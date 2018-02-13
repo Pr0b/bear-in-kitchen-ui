@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {TranslateModule} from '@ngx-translate/core';
-import {NgbDropdownModule} from '@ng-bootstrap/ng-bootstrap';
+import {NgbCollapseModule, NgbDropdownModule} from '@ng-bootstrap/ng-bootstrap';
 
 import {LayoutRoutingModule} from './layout-routing.module';
 import {LayoutComponent} from './layout.component';
@@ -15,7 +15,8 @@ import {AuthService} from '../shared/services';
     CommonModule,
     LayoutRoutingModule,
     TranslateModule,
-    NgbDropdownModule.forRoot()
+    NgbDropdownModule.forRoot(),
+    NgbCollapseModule.forRoot()
   ],
   providers: [AuthService],
   declarations: [LayoutComponent, NavbarComponent, FooterComponent]

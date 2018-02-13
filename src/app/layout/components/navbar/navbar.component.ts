@@ -8,7 +8,7 @@ import {Router} from '@angular/router';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
-
+  public isCollapsed = true;
 
   constructor(private router: Router,
               private auth: AuthService) {
