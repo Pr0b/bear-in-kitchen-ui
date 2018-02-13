@@ -1,17 +1,16 @@
 <header>
-  <div class="container">
-    <nav class="navbar navbar-expand-md no-gutters">
-      <div class="col-3 text-nowrap text-left">
+    <nav class="grid">
+      <div class="logoBear">
         <a [routerLink]="['/']"><img src="./assets/icons/017-bear-1.svg" height="75" alt="Bear In The Kitchen"></a>
         Bear In The Kitchen
       </div>
 
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse-2"
-              aria-controls="navbarNav7" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+      <!--<button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse-2"-->
+              <!--aria-controls="navbarNav7" aria-expanded="false" aria-label="Toggle navigation">-->
+        <!--<span class="navbar-toggler-icon"></span>-->
+      <!--</button>-->
 
-      <div class="collapse navbar-collapse navbar-collapse-2 justify-content-center col-md-6" id="navbarNav7">
+      <div class="menuBear">
         <ul class="navbar-nav justify-content-center">
           <li class="nav-item active">
             <a class="nav-link" [routerLink]="['/']">Home <span class="sr-only">(current)</span></a>
@@ -25,7 +24,7 @@
         </ul>
       </div>
 
-      <div class="collapse navbar-collapse navbar-collapse-2">
+      <div class="miscBear">
         <ul class="navbar-nav ml-auto justify-content-end">
           <li class="nav-item">
             <a class="nav-link" [routerLink]="['/profile']">Profile</a>
@@ -37,5 +36,4 @@
         <a class="btn ml-md-3" (click)="signOut()">Log out</a>
       </div>
     </nav>
-  </div>
 </header>

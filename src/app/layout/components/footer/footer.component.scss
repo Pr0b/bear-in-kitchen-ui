@@ -26,7 +26,7 @@
 @media all and (min-width: 640px) {
   .grid {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: repeat(7, 1fr);
     grid-template-rows: auto auto;
     grid-template-areas: ". authors authors . licence2 licence2 ." ". licence1 licence1 . . . .";
   }
@@ -39,11 +39,3 @@
     justify-self: end;
   }
 }
-
-//.grid > * {
-//  display: flex;
-//  align-items: center;
-//  justify-content: center;
-//}
-
-
