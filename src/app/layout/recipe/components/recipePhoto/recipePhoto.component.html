@@ -1,0 +1,15 @@
+<div class="grid">
+  <div class="photoBear">
+    <div *ngIf="recipe | async as recipeSnap">
+      <img alt="recipeImage" class="img-fluid" [src]="recipeSnap.photoUrl">
+    </div>
+  </div>
+  <div class="shareBear">
+    <share-buttons [theme]="'circles-dark'"
+                   [include]="['facebook','twitter','google','whatsapp','print']"
+                   [show]="7"
+                   [size]="-6"
+                   [url]="''">
+    </share-buttons>
+  </div>
+</div>

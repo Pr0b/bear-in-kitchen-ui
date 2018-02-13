@@ -8,3 +8,30 @@
   margin-left: -50%;
   margin-top: -50%;
 }
+
+.titleBear {
+  background: #89cbea;
+  grid-area: titleBear;
+}
+
+.descriptionBear {
+  background: #1ceadb;
+  grid-area: descriptionBear;
+}
+
+.categoryBear {
+  background: #56deea;
+  grid-area: categoryBear;
+}
+
+.labelBear {
+  background: #3078ea;
+  grid-area: labelBear;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-areas: "titleBear" "descriptionBear" "categoryBear" "labelBear";
+}
+

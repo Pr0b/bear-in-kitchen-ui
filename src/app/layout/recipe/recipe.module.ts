@@ -9,6 +9,7 @@ import {RecipeComponent} from './recipe.component';
 import {RecipeFetcherService, StaticNumberIconMappingService} from '../../shared/services';
 import {CommentsComponent, IngredientsComponent, OverviewComponent, ProtocolComponent} from './components';
 import {StatModule} from '../../shared';
+import {RecipePhotoComponent} from './components/recipePhoto/recipePhoto.component';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import {StatModule} from '../../shared';
     CommentsComponent,
     IngredientsComponent,
     OverviewComponent,
+    RecipePhotoComponent,
     ProtocolComponent
   ],
   providers: [RecipeFetcherService, StaticNumberIconMappingService]

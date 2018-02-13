@@ -1,0 +1,15 @@
+.photoBear {
+  background: #89cbea;
+  grid-area: photoBear;
+}
+
+.shareBear {
+  background: #8cea9d;
+  grid-area: shareBear;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-areas: "photoBear" "shareBear";
+}

@@ -1,15 +1,24 @@
-<app-overview [recipe]=recipe></app-overview>
-<div class="container border-top">
-  <section class="fdb-block pt-3">
-    <div class="row align-items-start">
-      <div class="col-10 col-sm-6">
-        <h1>Ingredients</h1>
-        <app-ingredients [recipe]=recipe></app-ingredients>
-      </div>
-      <div class="col-10 col-sm-6 pl-2">
-        <h1>Directions</h1>
-        <app-protocol [recipe]=recipe></app-protocol>
-      </div>
-    </div>
-  </section>
+<div class="grid">
+  <div class="photoRecipeBear">
+    <app-recipe-photo [recipe]=recipe></app-recipe-photo>
+  </div>
+  <div class="overviewBear">
+    <app-overview [recipe]=recipe></app-overview>
+  </div>
 </div>
+
+
+<!--<div class="container border-top">-->
+<!--<section class="fdb-block pt-3">-->
+<!--<div class="row align-items-start">-->
+<!--<div class="col-10 col-sm-6">-->
+<!--<h1>Ingredients</h1>-->
+<!--<app-ingredients [recipe]=recipe></app-ingredients>-->
+<!--</div>-->
+<!--<div class="col-10 col-sm-6 pl-2">-->
+<!--<h1>Directions</h1>-->
+<!--<app-protocol [recipe]=recipe></app-protocol>-->
+<!--</div>-->
+<!--</div>-->
+<!--</section>-->
+<!--</div>-->

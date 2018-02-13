@@ -1,0 +1,23 @@
+.photoRecipeBear {
+  background: #89cbea;
+  grid-area: photoRecipeBear;
+}
+
+.overviewBear {
+  background: #6f6aea;
+  grid-area: overviewBear;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-areas: "photoRecipeBear" "overviewBear";
+}
+
+@media all and (min-width: 640px) {
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "photoRecipeBear overviewBear";
+  }
+}

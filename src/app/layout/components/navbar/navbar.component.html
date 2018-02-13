@@ -4,9 +4,13 @@
       <nav class="navbar navbar-light navbar-expand-md justify-content-center">
         <a [routerLink]="['/']" class="navbar-brand"><img src="./assets/icons/017-bear-1.svg" height="75"
                                                           alt="Bear In The Kitchen">Bear In The Kitchen</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsingNavbar2"
+        <button class="navbar-toggler"
+                type="button"
+                data-toggle="collapse"
+                data-target="#collapsingNavbar2"
                 (click)="isCollapsed = !isCollapsed"
-                [attr.aria-expanded]="!isCollapsed" aria-controls="collapsingNavbar2">
+                [attr.aria-expanded]="!isCollapsed"
+                aria-controls="collapsingNavbar2">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="navbar-collapse collapse justify-content-between w-100" id="collapsingNavbar2"
