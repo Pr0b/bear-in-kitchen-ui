@@ -29,13 +29,49 @@
 
 <div class="grid">
   <div class="titleBear">
-    titleBear
+    <div class="flexBox">
+      <h1>{{(recipe | async)?.title}}</h1>
+    </div>
   </div>
   <div class="descriptionBear">
-    descriptionBear
+    <div class="flexBox">
+      <h3 class="font-italic">{{(recipe | async)?.description}}</h3>
+    </div>
   </div>
   <div class="categoryBear">
-    categoryBear
+    <div class="rowBear">
+      <div class="item">
+        <div class="item-img">
+          <img alt="image" src="./assets/icons/007-team.svg" height="30" width="30">
+        </div>
+        <div class="item-heading">{{ (recipe | async)?.stats?.serves }}</div>
+      </div>
+      <div class="item">
+        <div class="item-img">
+          <img alt="image" src="./assets/icons/008-clock-of-circular-shape-at-two-o-clock.svg" height="30" width="30">
+        </div>
+        <div class="item-heading">{{(recipe | async)?.stats?.time}}</div>
+      </div>
+      <div class="item">
+        <div class="item-img">
+          <img alt="image" src="./assets/icons/015-restaurant.svg" height="30" width="30">
+        </div>
+        <div class="item-heading">{{(recipe | async)?.stats?.difficulty}}</div>
+      </div>
+
+      <div class="item">
+
+        <div class="item-img">
+          <div *ngIf="recipe | async as recipeSnap">
+            <img alt="image" class="img-fluid" src="./assets/icons/{{recipeSnap.stats.category.icon}}" height="30"
+                 width="30">
+          </div>
+        </div>
+        <div *ngIf="recipe | async as recipeSnap">
+          <div class="item-heading">{{recipeSnap.stats.category.name}}</div>
+        </div>
+      </div>
+    </div>
   </div>
   <div class="labelBear">
     labelBear

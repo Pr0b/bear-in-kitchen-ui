@@ -35,3 +35,71 @@
   grid-template-areas: "titleBear" "descriptionBear" "categoryBear" "labelBear";
 }
 
+/* Horizontal flex: rows
+   =====================
+*/
+
+.rowBear {
+  display: flex;
+}
+
+.item {
+  flex: 1 1 30%;
+  //padding-left: 1.5rem;
+}
+
+/* Vertical flex: items
+   ===================
+*/
+
+.item {
+  display: flex;
+  flex-direction: column;
+}
+
+.item-heading {
+  flex: 1;
+}
+
+.item-img {
+  flex: 1;
+  align-self: center
+}
+
+/* Third flex: item heading
+   ========================
+*/
+
+.item-img {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.item-heading {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+img {
+  max-width: 100%;
+}
+
+//.row {
+//  margin-bottom: 1.5rem;
+//}
+
+.item-img {
+  padding: 1rem;
+  font-size: 1rem;
+  background: #eacadc;
+}
+
+.item-heading {
+  padding: 1rem;
+  font-size: 1rem;
+  background: yellow;
+  text-align: center;
+}
+
