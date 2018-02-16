@@ -19,8 +19,9 @@ export class GalleryComponent implements OnInit {
 
   ngOnInit() {
     this.recipes = this.recipeFetcherService.getRecipes();
-    this.recipes.subscribe(rec => {
-      console.log(rec);
-    });
+  }
+
+  onScroll() {
+    console.log('scrolled!!');
   }
 }

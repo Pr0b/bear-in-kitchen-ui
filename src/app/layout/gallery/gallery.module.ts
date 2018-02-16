@@ -6,10 +6,12 @@ import {GalleryComponent} from './gallery.component';
 import {RecipeFetcherService} from '../../shared/services';
 import {SearchbarComponent} from './components/searchbar/searchbar.component';
 import {StatModule} from '../../shared';
+import {InfiniteScrollModule} from 'ngx-infinite-scroll';
 
 @NgModule({
   imports: [
     CommonModule,
+    InfiniteScrollModule,
     GalleryRoutingModule,
     StatModule
   ],
