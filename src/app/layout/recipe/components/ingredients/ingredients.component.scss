@@ -1,0 +1,10 @@
+.ingredientsBear {
+  background: #89cbea;
+  grid-area: ingredientsBear;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-areas: "ingredientsBear";
+}

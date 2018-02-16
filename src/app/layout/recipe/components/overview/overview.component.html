@@ -58,23 +58,19 @@
         </div>
         <div class="item-heading">{{(recipe | async)?.stats?.difficulty}}</div>
       </div>
-
-      <div class="item">
-
+      <div class="item" *ngIf="recipe | async as recipeSnap">
         <div class="item-img">
-          <div *ngIf="recipe | async as recipeSnap">
-            <img alt="image" class="img-fluid" src="./assets/icons/{{recipeSnap.stats.category.icon}}" height="30"
-                 width="30">
-          </div>
+          <img alt="image" class="img-fluid" src="./assets/icons/{{recipeSnap.stats.category.icon}}" height="30"
+               width="30">
         </div>
-        <div *ngIf="recipe | async as recipeSnap">
-          <div class="item-heading">{{recipeSnap.stats.category.name}}</div>
-        </div>
+        <div class="item-heading">{{recipeSnap.stats.category.name}}</div>
       </div>
     </div>
   </div>
   <div class="labelBear">
-    labelBear
+    <div *ngIf="recipe | async as recipeSnap">
+      <i class="fa fa-tags fa-2x fa-fw" aria-hidden="true"></i>&nbsp;{{getInlineTagNames(recipeSnap.tags)}}
+    </div>
   </div>
 
 </div>

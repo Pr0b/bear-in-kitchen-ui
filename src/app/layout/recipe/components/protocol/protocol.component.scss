@@ -1,3 +1,15 @@
+.protocolBear {
+  background: #a331ea;
+  grid-area: protocolBear;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-areas: "protocolBear";
+}
+
+
 .timeline {
   position: relative;
   padding: 20px 0 20px;
