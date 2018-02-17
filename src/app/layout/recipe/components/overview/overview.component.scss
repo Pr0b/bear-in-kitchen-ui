@@ -41,7 +41,7 @@
   display: grid;
   grid-template-columns: 100%;
   grid-template-areas: "titleBear" "descriptionBear" "categoryBear" "labelBear";
-  grid-gap: 2em;
+  grid-gap: 1.5em;
 }
 
 /* Horizontal flex: rows
@@ -101,7 +101,7 @@ img {
 //}
 
 .item-img {
-  padding: 2rem 2rem 1rem 2rem;
+  padding: 0rem 2rem 1rem 2rem;
   font-size: 1rem;
   //background: #eacadc;
 }
