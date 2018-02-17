@@ -1,32 +1,3 @@
-<!--<h1 class="mt-0 pt-0">{{(recipe | async)?.title}}</h1>-->
-
-<!--<h3 class="pb-2 mb-2 font-italic">{{(recipe | async)?.description}}</h3>-->
-
-
-<!--<img alt="image" class="img-fluid" src="./assets/icons/007-team.svg" height="30" width="30">-->
-<!--<div class="caption text-nowrap center-block pt-1">{{ (recipe | async)?.stats?.serves }}</div>-->
-
-<!--<img alt="image" class="img-fluid"-->
-<!--src="./assets/icons/008-clock-of-circular-shape-at-two-o-clock.svg" height="30" width="30">-->
-<!--<div class="caption text-nowrap center-block pt-1">{{(recipe | async)?.stats?.time}}</div>-->
-
-
-<!--<img alt="image" class="img-fluid" src="./assets/icons/015-restaurant.svg" height="30" width="30">-->
-<!--<div class="caption text-nowrap center-block pt-1">{{(recipe | async)?.stats?.difficulty}}</div>-->
-
-
-<!--<div *ngIf="recipe | async as recipeSnap">-->
-<!--<img alt="image" class="img-fluid" src="./assets/icons/{{recipeSnap.stats.category.icon}}"-->
-<!--height="30" width="30">-->
-
-<!--<div class="caption text-nowrap center-block pt-1">{{recipeSnap.stats.category.name}}</div>-->
-<!--</div>-->
-
-
-<!--<div *ngIf="recipe | async as recipeSnap">-->
-<!--<i class="fa fa-tags fa-2x fa-fw" aria-hidden="true"></i>&nbsp;{{getInlineTagNames(recipeSnap.tags)}}-->
-<!--</div>-->
-
 <div class="grid">
   <div class="titleBear">
     <div class="flexBox">
@@ -35,7 +6,7 @@
   </div>
   <div class="descriptionBear">
     <div class="flexBox">
-      <h3 class="font-italic">{{(recipe | async)?.description}}</h3>
+      <h5 class="font-italic">{{(recipe | async)?.description}}</h5>
     </div>
   </div>
   <div class="categoryBear">

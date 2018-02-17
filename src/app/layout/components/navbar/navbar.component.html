@@ -2,8 +2,13 @@
   <div class="grid">
     <div class="navBear">
       <nav class="navbar navbar-light navbar-expand-md justify-content-center">
-        <a [routerLink]="['/']" class="navbar-brand"><img src="./assets/icons/017-bear-1.svg" height="75"
-                                                          alt="Bear In The Kitchen">Bear In The Kitchen</a>
+        <a [routerLink]="['/']" class="navbar-brand flexBear">
+
+          <img src="./assets/icons/017-bear-1.svg" height="75" alt="Bear In The Kitchen">
+          <div class="sos">
+            <h1 class="sos-r1">Bear <span class="sos-prep">in the</span> Kitchen</h1>
+          </div>
+        </a>
         <button class="navbar-toggler"
                 type="button"
                 data-toggle="collapse"
@@ -17,19 +22,19 @@
              [ngbCollapse]="isCollapsed">
           <ul class="navbar-nav mx-auto text-center">
             <li class="nav-item active">
-              <a class="nav-link" [routerLink]="['/']">Link<span class="sr-only">(current)</span></a>
+              <a class="nav-link text-white" [routerLink]="['/']">Recepty<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" [routerLink]="['/']">Link</a>
+              <a class="nav-link text-white" [routerLink]="['/']">Rady &amp; Tipy</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" [routerLink]="['/']">Link</a>
+              <a class="nav-link text-white" [routerLink]="['/']">O mne</a>
             </li>
           </ul>
           <ul class="nav navbar-nav flex-row">
-            <li class="nav-item"><a class="nav-link" [routerLink]="['/profile']">Profile</a></li>
-            <li class="nav-item"><a class="nav-link" [routerLink]="['/recipe/new']">New Recipe</a></li>
-            <li class="nav-item"><a class="btn btn-info" (click)="signOut()">Log out</a></li>
+            <li class="nav-item"><a class="nav-link text-white" [routerLink]="['/profile']">Profile</a></li>
+            <li class="nav-item"><a class="nav-link text-white" [routerLink]="['/recipe/new']">New Recipe</a></li>
+            <li class="nav-item"><a class="btn btn-info text-white" (click)="signOut()">Log out</a></li>
           </ul>
         </div>
       </nav>

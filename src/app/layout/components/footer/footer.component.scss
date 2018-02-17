@@ -3,6 +3,7 @@
   grid-template-columns: 100%;
   grid-template-areas: "authors" "licence1" "licence2";
   grid-template-rows: auto auto auto;
+  color: #ffffff;
 }
 
 .authors {
@@ -18,7 +19,7 @@
 }
 
 .authors, .licence1, .licence2 {
-  background: #51ea5c;
+  //background: #51ea5c;
   padding: 1em;
   justify-self: center;
 }
