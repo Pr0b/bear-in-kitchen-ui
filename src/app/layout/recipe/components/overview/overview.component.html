@@ -1,15 +1,15 @@
 <div class="grid">
-  <div class="titleBear">
+  <div class="titleBear border-bottom">
     <div class="flexBox">
       <h1>{{(recipe | async)?.title}}</h1>
     </div>
   </div>
-  <div class="descriptionBear">
+  <div class="descriptionBear border-bottom">
     <div class="flexBox">
       <h5 class="font-italic">{{(recipe | async)?.description}}</h5>
     </div>
   </div>
-  <div class="categoryBear">
+  <div class="categoryBear border-bottom">
     <div class="rowBear">
       <div class="item">
         <div class="item-img">
@@ -38,7 +38,7 @@
       </div>
     </div>
   </div>
-  <div class="labelBear">
+  <div class="labelBear border-bottom">
     <div *ngIf="recipe | async as recipeSnap">
       <i class="fa fa-tags fa-2x fa-fw" aria-hidden="true"></i>&nbsp;{{getInlineTagNames(recipeSnap.tags)}}
     </div>
