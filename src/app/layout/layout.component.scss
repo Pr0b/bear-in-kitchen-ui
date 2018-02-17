@@ -6,7 +6,6 @@
 }
 
 header {
-  //background: #343a40;
   background: #343434;
   grid-area: hr;
 }
@@ -17,7 +16,6 @@ article {
 }
 
 footer {
-  //background: #343a40;
   background: #343434;
   grid-area: ft;
 }
@@ -32,10 +30,3 @@ footer {
     grid-gap: 2em;
   }
 }
-
-//.grid > * {
-//  display: flex;
-//  align-items: center;
-//  justify-content: center;
-//}
-
