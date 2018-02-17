@@ -27,6 +27,7 @@ footer {
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: auto 1fr auto;
     grid-template-areas: "hr hr hr hr hr hr hr" ". art art art art art ." "ft ft ft ft ft ft ft";
+    grid-gap: 1em;
   }
 }
 

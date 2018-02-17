@@ -10,22 +10,22 @@
 }
 
 .titleBear {
-  background: #89cbea;
+  //background: #89cbea;
   grid-area: titleBear;
 }
 
 .descriptionBear {
-  background: #1ceadb;
+  //background: #1ceadb;
   grid-area: descriptionBear;
 }
 
 .categoryBear {
-  background: #56deea;
+  //background: #56deea;
   grid-area: categoryBear;
 }
 
 .labelBear {
-  background: #3078ea;
+  //background: #3078ea;
   grid-area: labelBear;
 }
 
@@ -33,6 +33,7 @@
   display: grid;
   grid-template-columns: 100%;
   grid-template-areas: "titleBear" "descriptionBear" "categoryBear" "labelBear";
+  grid-gap: 2em;
 }
 
 /* Horizontal flex: rows
@@ -41,10 +42,11 @@
 
 .rowBear {
   display: flex;
+  justify-content: flex-start;
 }
 
 .item {
-  flex: 1 1 30%;
+  //flex: 1 1 30%;
   //padding-left: 1.5rem;
 }
 
@@ -91,15 +93,15 @@ img {
 //}
 
 .item-img {
-  padding: 1rem;
+  padding: 2rem 2rem 1rem 2rem;
   font-size: 1rem;
-  background: #eacadc;
+  //background: #eacadc;
 }
 
 .item-heading {
-  padding: 1rem;
+  //padding: 2rem;
   font-size: 1rem;
-  background: yellow;
+  //background: yellow;
   text-align: center;
 }
 

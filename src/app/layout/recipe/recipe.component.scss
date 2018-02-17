@@ -1,20 +1,20 @@
 .photoRecipeBear {
-  background: #89cbea;
+  //background: #89cbea;
   grid-area: photoRecipeBear;
 }
 
 .overviewBear {
-  background: #6f6aea;
+  //background: #6f6aea;
   grid-area: overviewBear;
 }
 
 .ingredientsBear {
-  background: #36ea7d;
+  //background: #36ea7d;
   grid-area: ingredientsBear;
 }
 
 .protocolBear {
-  background: #00eaaf;
+  //background: #00eaaf;
   grid-area: protocolBear;
 }
 
@@ -32,9 +32,10 @@
   .grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: auto auto;
     grid-template-areas:
       "photoRecipeBear overviewBear"
       "ingredientsBear protocolBear";
+    grid-gap: 2em;
   }
 }

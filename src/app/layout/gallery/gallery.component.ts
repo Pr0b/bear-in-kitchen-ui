@@ -18,10 +18,38 @@ export class GalleryComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.recipes = this.recipeFetcherService.getRecipes();
+    this.recipes = Observable.fromPromise(this.recipeFetcherService.getPagenatedRecipes());
+    this.recipes.subscribe(rec => {
+      console.log(rec);
+    });
   }
 
   onScroll() {
     console.log('scrolled!!');
+    // const result = concat(this.recipes, this.recipeFetcherService.getPagenatedRecipes()).;
+    //
+    // var subscription = result.subscribe(
+    //   function (x) {
+    //     console.log('Next: ' + x);
+    //   },
+    //   function (err) {
+    //     console.log('Error: ' + err);
+    //   },
+    //   function () {
+    //     console.log('Completed');
+    //   });
+    //
+    // this.recipes.subscribe(rec => {
+    //   console.log(rec);
+    // });
+    // this.recipeFetcherService.getPagenatedRecipes().then( newRecipes => {
+    //   this.recipes.subscribe(recipes => {
+    //     console.log('newRecipes');
+    //     console.log(newRecipes);
+    //     this.recipes.concat(newRecipes);
+    //     console.log('recipes');
+    //     console.log(recipes);
+    //   });
+    // });
   }
 }

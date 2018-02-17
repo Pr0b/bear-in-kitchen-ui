@@ -1,5 +1,6 @@
 <div class="grid">
   <div class="ingredientsBear">
+    <h3>Ingredience</h3>
     <ul class="list-group border">
       <li style="border: none" class="list-group-item" *ngFor="let ingredient of (recipe | async)?.ingredients">
         {{ingredient.quantity}}
@@ -7,5 +8,6 @@
       </li>
     </ul>
   </div>
+
 </div>
 
