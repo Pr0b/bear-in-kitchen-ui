@@ -10,31 +10,38 @@
 }
 
 .titleBear {
-  //background: #89cbea;
   grid-area: titleBear;
   font-family: 'Playfair Display', serif;
-  //font-family: Source Sans Pro, sans-serif;
   font-weight: 400;
   font-size: 1.5em;
 }
 
 .descriptionBear {
-  //background: #1ceadb;
   grid-area: descriptionBear;
   font-family: 'Playfair Display', serif;
   font-style: italic;
   font-weight: 400;
   font-size: 1.5em;
+  color: #414d53;
+  padding-bottom: 1em;
 }
 
 .categoryBear {
   //background: #56deea;
   grid-area: categoryBear;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: 1.25em;
+  padding-bottom: 1em;
 }
 
 .labelBear {
   //background: #3078ea;
   grid-area: labelBear;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: 1.25em;
+  padding-bottom: 1em;
 }
 
 .grid {
