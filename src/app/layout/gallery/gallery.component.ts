@@ -18,7 +18,8 @@ export class GalleryComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.recipes = Observable.fromPromise(this.recipeFetcherService.getPagenatedRecipes());
+    // this.recipes = Observable.fromPromise(this.recipeFetcherService.getPagenatedRecipes());
+    this.recipes = this.recipeFetcherService.getRecipes();
     this.recipes.subscribe(rec => {
       console.log(rec);
     });

@@ -3,6 +3,7 @@ import {Router} from '@angular/router';
 
 import {RecipeDetail, Tag} from '../../recipe.component';
 import {Observable} from 'rxjs/Observable';
+import {NgbTooltipConfig} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-overview',
@@ -14,7 +15,7 @@ export class OverviewComponent implements OnInit {
   @Input() recipe: Observable<RecipeDetail>;
 
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private   config: NgbTooltipConfig) {
     this.href = this.router.url;
   }
 
@@ -24,5 +25,4 @@ export class OverviewComponent implements OnInit {
   getInlineTagNames(tags: Tag[]) {
     return tags.map(tag => tag.name).join(', ');
   }
-
 }

@@ -11,25 +11,25 @@
   </div>
   <div class="categoryBear border-bottom">
     <div class="rowBear">
-      <div class="item">
+      <div class="item" placement="top" ngbTooltip="number of serves">
         <div class="item-img">
           <img alt="image" src="./assets/icons/007-team.svg" height="40" width="40">
         </div>
         <div class="item-heading">{{ (recipe | async)?.stats?.serves }}</div>
       </div>
-      <div class="item">
+      <div class="item" placement="top" ngbTooltip="time">
         <div class="item-img">
           <img alt="image" src="./assets/icons/008-clock-of-circular-shape-at-two-o-clock.svg" height="40" width="40">
         </div>
         <div class="item-heading">{{(recipe | async)?.stats?.time}}</div>
       </div>
-      <div class="item">
+      <div class="item" placement="top" ngbTooltip="difficulty">
         <div class="item-img">
-          <img alt="image" src="./assets/icons/015-restaurant.svg" height="40" width="40">
+          <img alt="image" src="./assets/icons/043-wooden-spoon.svg" height="40" width="40">
         </div>
         <div class="item-heading">{{(recipe | async)?.stats?.difficulty}}</div>
       </div>
-      <div class="item" *ngIf="recipe | async as recipeSnap">
+      <div class="item" *ngIf="recipe | async as recipeSnap" placement="top" ngbTooltip="category">
         <div class="item-img">
           <img alt="image" class="img-fluid" src="./assets/icons/{{recipeSnap.stats.category.icon}}" height="40"
                width="40">
