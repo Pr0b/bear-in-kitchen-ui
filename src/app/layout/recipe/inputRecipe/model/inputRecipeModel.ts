@@ -7,7 +7,7 @@ import {
   DynamicSelectModel,
   DynamicTextAreaModel
 } from '@ng-dynamic-forms/core';
-import {RecipeCategoryRecipe, TagRecipe} from '../../recipe.component';
+import {RecipeCategory, TagRecipe} from '../../recipe.component';
 
 
 export const INPUT_RECIPE_MODEL: DynamicFormControlModel[] = [
@@ -69,7 +69,7 @@ export const INPUT_RECIPE_MODEL: DynamicFormControlModel[] = [
           ],
         }
       ),
-      new DynamicSelectModel<RecipeCategoryRecipe>(
+      new DynamicSelectModel<RecipeCategory>(
         {
           id: 'recipeCategorySelect',
           label: 'Recipe Categories',

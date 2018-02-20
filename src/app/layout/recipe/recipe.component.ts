@@ -28,13 +28,6 @@ export interface RecipeCategory {
   'name': string;
 }
 
-// TODO rename & reduce denormalization
-export interface RecipeCategoryRecipe {
-  'icon': string;
-  'name': string;
-  'refCategory': string;
-}
-
 export interface IngredientRecipe {
   'id': string;
   'name': string;
@@ -53,7 +46,7 @@ export interface Stats {
   'serves': string;
   'time': string;
   'difficulty': string;
-  'category': RecipeCategoryRecipe;
+  'refCategory': string;
 }
 
 export interface ProtocolItem {

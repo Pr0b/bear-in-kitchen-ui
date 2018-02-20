@@ -14,7 +14,7 @@ import {AngularFirestore, AngularFirestoreCollection} from 'angularfire2/firesto
 import {INPUT_RECIPE_MODEL, NG_BOOTSTRAP_SAMPLE_FORM_LAYOUT} from './model/inputRecipeModel';
 import {Observable} from 'rxjs/Observable';
 
-import {RecipeCategoryRecipe, RecipeDetail, Stats, TagRecipe} from '../recipe.component';
+import {RecipeCategory, RecipeDetail, Stats, TagRecipe} from '../recipe.component';
 import {FormatSelectOptionService} from './service/formatSelectOption.service';
 import {Router} from '@angular/router';
 
@@ -39,11 +39,8 @@ export class InputRecipeComponent implements OnInit {
   uploadPercent: Observable<number>;
   downloadURL: Observable<string>;
   private newRecipe = <RecipeDetail> {
-    stats: <Stats>{
-      category: <RecipeCategoryRecipe>{}
-    }
+    stats: <Stats>{}
   };
-
   private recipesCollection: AngularFirestoreCollection<RecipeDetail>;
 
   constructor(private formService: DynamicFormService,
@@ -72,7 +69,7 @@ export class InputRecipeComponent implements OnInit {
     tagsSelectControl.options = this.formatSelectOptionService.getRecipeTags();
 
     const categories = this.formService.findById('categories', this.formModel) as DynamicFormGroupModel;
-    const recipeCategoriesSelectControl = categories.get(3) as DynamicSelectModel<RecipeCategoryRecipe>;
+    const recipeCategoriesSelectControl = categories.get(3) as DynamicSelectModel<RecipeCategory>;
     recipeCategoriesSelectControl.options = this.formatSelectOptionService.getRecipeCategories();
   }
 
@@ -84,7 +81,7 @@ export class InputRecipeComponent implements OnInit {
     console.log(this.formGroup.value);
     this.newRecipe.title = this.formGroup.get(['basic', 'title']).value;
     this.newRecipe.description = this.formGroup.get(['basic', 'description']).value;
-    this.newRecipe.stats.category = this.formGroup.get(['categories', 'recipeCategorySelect']).value;
+    this.newRecipe.stats.refCategory = this.formGroup.get(['categories', 'recipeCategorySelect']).value.id;
     this.newRecipe.stats.difficulty = this.formGroup.get(['categories', 'difficultySelect']).value;
     this.newRecipe.stats.serves = this.formGroup.get(['categories', 'serves']).value;
     this.newRecipe.stats.time = this.formGroup.get(['categories', 'time']).value;
