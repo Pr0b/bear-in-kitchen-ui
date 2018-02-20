@@ -2,8 +2,7 @@ import {Injectable} from '@angular/core';
 import {AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument} from 'angularfire2/firestore';
 import {IngredientRecipe, ProtocolItem, RecipeDetail, TagRecipe} from '../../../layout/recipe/recipe.component';
 import {Observable} from 'rxjs/Observable';
-import * as firebase from 'firebase/app';
-import DocumentSnapshot = firebase.firestore.DocumentSnapshot;
+import { Query, DocumentSnapshot } from '@firebase/firestore-types';
 
 
 @Injectable()
@@ -17,18 +16,20 @@ export class RecipeFetcherService {
   // getPagenatedRecipes(startAfter: RecipeDetail) {
   getPagenatedRecipes() {
     const collection: AngularFirestoreCollection<RecipeDetail> = this.afs.collection('recipes');
-    return collection.ref
-      .orderBy('title')
-      .startAfter(this.lastRecipe)
-      .limit(9)
-      .get().then(qsnap => {
-        this.lastRecipe = qsnap.docs[qsnap.docs.length - 1];
-        return qsnap.docs.map(qdocsnap => {
-          const data = qdocsnap.data() as RecipeDetail;
-          const id = qdocsnap.id;
-          return {id, ...data};
-        });
+    let firebaseQuery: Query = collection.ref.orderBy('title');
+
+    if (this.lastRecipe != null) {
+      firebaseQuery = firebaseQuery.startAfter(this.lastRecipe);
+    }
+
+    return firebaseQuery.limit(9).get().then(qsnap => {
+      this.lastRecipe = qsnap.docs[qsnap.docs.length - 1];
+      return qsnap.docs.map(qdocsnap => {
+        const data = qdocsnap.data() as RecipeDetail;
+        const id = qdocsnap.id;
+        return {id, ...data};
       });
+    });
   }
 
   getRecipes() {

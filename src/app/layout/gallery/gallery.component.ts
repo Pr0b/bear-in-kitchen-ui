@@ -4,6 +4,7 @@ import {routerTransition} from '../../router.animations';
 
 import {RecipeDetail} from '../recipe/recipe.component';
 import {Observable} from 'rxjs/Observable';
+import 'rxjs/add/operator/merge';
 
 @Component({
   selector: 'app-gallery',
@@ -19,7 +20,8 @@ export class GalleryComponent implements OnInit {
 
   ngOnInit() {
     // this.recipes = Observable.fromPromise(this.recipeFetcherService.getPagenatedRecipes());
-    this.recipes = this.recipeFetcherService.getRecipes();
+    // this.recipes = this.recipeFetcherService.getRecipes();
+    this.recipes = Observable.fromPromise(this.recipeFetcherService.getPagenatedRecipes());
     this.recipes.subscribe(rec => {
       console.log(rec);
     });
@@ -27,7 +29,14 @@ export class GalleryComponent implements OnInit {
 
   onScroll() {
     console.log('scrolled!!');
-    // const result = concat(this.recipes, this.recipeFetcherService.getPagenatedRecipes()).;
+    // this.recipes = this.recipes.merge(this.recipeFetcherService.getPagenatedRecipes());
+
+    // this.recipes.subscribe(rec => {
+    //   this.recipeFetcherService.getPagenatedRecipes().then( newRecipe => {
+    //
+    //   });
+    // });
+    // const result = concat(this.recipes, ).;
     //
     // var subscription = result.subscribe(
     //   function (x) {
