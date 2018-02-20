@@ -57,6 +57,7 @@ export interface ProtocolItem {
   'tip': boolean;
 }
 
+//TODO remove name
 export interface TagRecipe {
   'name': string;
   'refTag': string;

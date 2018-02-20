@@ -6,7 +6,7 @@ import {ShareButtonsModule} from '@ngx-share/buttons';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {RecipeRoutingModule} from './recipe-routing.module';
 import {RecipeComponent} from './recipe.component';
-import {RecipeFetcherService, StaticNumberIconMappingService} from '../../shared/services';
+import {CategoryFetcherService, RecipeFetcherService, StaticNumberIconMappingService} from '../../shared/services';
 import {CommentsComponent, IngredientsComponent, OverviewComponent, ProtocolComponent} from './components';
 import {StatModule} from '../../shared';
 import {RecipePhotoComponent} from './components/recipePhoto/recipePhoto.component';
@@ -30,7 +30,7 @@ import {RecipePhotoComponent} from './components/recipePhoto/recipePhoto.compone
     RecipePhotoComponent,
     ProtocolComponent
   ],
-  providers: [RecipeFetcherService, StaticNumberIconMappingService]
+  providers: [RecipeFetcherService, StaticNumberIconMappingService, CategoryFetcherService]
 })
 export class RecipeModule {
 }

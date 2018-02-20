@@ -1,9 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 
-import {RecipeDetail, Tag} from '../../recipe.component';
+import {RecipeCategory, RecipeDetail, Tag} from '../../recipe.component';
 import {Observable} from 'rxjs/Observable';
-import {NgbTooltipConfig} from '@ng-bootstrap/ng-bootstrap';
+import {CategoryFetcherService} from '../../../../shared/services/categoryRepository/category-fetcher.service';
 
 @Component({
   selector: 'app-overview',
@@ -12,14 +12,18 @@ import {NgbTooltipConfig} from '@ng-bootstrap/ng-bootstrap';
 })
 export class OverviewComponent implements OnInit {
   public href = '';
+  public recipeCategory: Observable<RecipeCategory>;
   @Input() recipe: Observable<RecipeDetail>;
 
 
-  constructor(private router: Router, private   config: NgbTooltipConfig) {
+  constructor(private router: Router, private categoryFetcherService: CategoryFetcherService) {
     this.href = this.router.url;
   }
 
   ngOnInit() {
+    this.recipe.subscribe(recipe => {
+      this.recipeCategory = this.categoryFetcherService.getRecipeCategory(recipe.stats.refCategory);
+    });
   }
 
   getInlineTagNames(tags: Tag[]) {

@@ -29,13 +29,15 @@
         </div>
         <div class="item-heading">{{(recipe | async)?.stats?.difficulty}}</div>
       </div>
-      <div class="item" *ngIf="recipe | async as recipeSnap" placement="top" ngbTooltip="category">
+
+      <div class="item" *ngIf="recipeCategory | async as recipeCategorySnap" placement="top" ngbTooltip="category">
         <div class="item-img">
-          <img alt="image" class="img-fluid" src="./assets/icons/{{recipeSnap.stats.category.icon}}" height="40"
+          <img alt="image" class="img-fluid" src="./assets/icons/{{recipeCategorySnap.icon}}" height="40"
                width="40">
         </div>
-        <div class="item-heading">{{recipeSnap.stats.category.name}}</div>
+        <div class="item-heading">{{recipeCategorySnap.name}}</div>
       </div>
+
     </div>
   </div>
   <div class="labelBear border-bottom">

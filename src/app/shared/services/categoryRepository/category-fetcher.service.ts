@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
-import {AngularFirestore, AngularFirestoreCollection} from 'angularfire2/firestore';
-import {Ingredient, RecipeCategory, Tag} from '../../../layout/recipe/recipe.component';
+import {AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument} from 'angularfire2/firestore';
+import {Ingredient, RecipeCategory, RecipeDetail, Tag} from '../../../layout/recipe/recipe.component';
 import {Observable} from 'rxjs/Observable';
 
 @Injectable()
@@ -23,6 +23,16 @@ export class CategoryFetcherService {
         return {id, ...data};
       });
     });
+  }
+
+  // getRecipeCategory(recipeDetail: Observable<RecipeDetail>): Promise<RecipeCategory> {
+  //   return recipeDetail.toPromise().then( recipe => {
+  //     return this.afs.doc('recipes/' + recipe.stats.refCategory).valueChanges().toPromise() as RecipeCategory;
+  //   });
+  // }
+
+  getRecipeCategory(idIn: string): Observable<RecipeCategory> {
+    return this.afs.doc('recipeCategories/' + idIn).valueChanges() as Observable<RecipeCategory>;
   }
 
   getAllTagsWithChanges(): Observable<Tag[]> {
