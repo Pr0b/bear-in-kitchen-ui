@@ -37,7 +37,6 @@ export class InputRecipeComponent implements OnInit {
   directionsFormArrayModel: DynamicFormArrayModel;
 
   uploadPercent: Observable<number>;
-  downloadURL: Observable<string>;
   private newRecipe = <RecipeDetail> {
     stats: <Stats>{}
   };
@@ -111,7 +110,8 @@ export class InputRecipeComponent implements OnInit {
           content: protocol.direction,
           order: order,
           icon: icon,
-          tip: protocol.tip
+          tip: protocol.tip,
+          photoUrl: protocol.directionPhoto
         }));
         ++order;
         if (!protocol.tip) {
@@ -194,12 +194,20 @@ export class InputRecipeComponent implements OnInit {
 
     // observe percentage changes
     this.uploadPercent = task.percentageChanges();
-    // get notified when the download URL is available
-    this.downloadURL = task.downloadURL();
 
     task.then((taskDone) => {
       this.newRecipe.photoUrl = taskDone.downloadURL;
       this.newRecipe.thumbnailUrl = taskDone.downloadURL;
+    });
+  }
+
+  uploadDirectionPhoto(event, context: DynamicFormArrayModel, index: number) {
+    const file = event.target.files[0] as File;
+    const filePath = 'recipes/' + file.name;
+    const task = this.storage.upload(filePath, file);
+
+    task.then((taskDone) => {
+      this.directionsFormArrayControl.at(index).patchValue({directionPhoto: taskDone.downloadURL});
     });
   }
 }

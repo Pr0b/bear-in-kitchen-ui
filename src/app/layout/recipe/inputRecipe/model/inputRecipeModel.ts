@@ -153,6 +153,10 @@ export const INPUT_RECIPE_MODEL: DynamicFormControlModel[] = [
           placeholder: 'Direction description',
           rows: 5
         }),
+        new DynamicInputModel({
+          id: 'directionPhoto',
+          label: 'Direction Photo',
+        }),
         new DynamicCheckboxModel({
           id: 'tip',
           label: 'tip'

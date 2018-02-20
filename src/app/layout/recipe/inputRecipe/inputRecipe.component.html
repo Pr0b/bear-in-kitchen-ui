@@ -46,6 +46,10 @@
 
             <ng-template modelId="directionsFormArray" let-group let-index="index" let-context="context">
 
+              <div class="form-group">
+                <input type="file" (change)="uploadDirectionPhoto($event, group.context, index)"/>
+              </div>
+
               <button class="btn btn-danger" type="button" (click)="removeItemDirections(context, index)">Remove
                 Direction
               </button>
@@ -56,13 +60,11 @@
             </ng-template>
 
           </dynamic-ng-bootstrap-form>
-
           <div class="row">
             <div class="col-lg-12">
               <div class="form-group">
                 <input type="file" (change)="uploadFile($event)"/>
                 <div>{{ uploadPercent | async }}</div>
-                <a [href]="downloadURL | async">{{ downloadURL | async }}</a>
               </div>
               <button type="submit" class="btn btn-primary">Submit</button>
             </div>

@@ -54,6 +54,7 @@ export interface ProtocolItem {
   'order': number;
   'icon': number;
   'content': string;
+  'photoUrl': string;
   'tip': boolean;
 }
 

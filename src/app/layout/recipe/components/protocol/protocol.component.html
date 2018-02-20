@@ -24,6 +24,12 @@
             </div>
             <div class="timeline-body">
               <p>{{item.content}}</p>
+              <hr/>
+              <div *ngIf="item.photoUrl">
+                <img alt="recipeImage" class="img-fluid" [src]="item.photoUrl">
+              </div>
+
+              <!--if photo then hr+img-->
             </div>
           </div>
         </li>
