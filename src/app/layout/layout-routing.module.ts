@@ -9,6 +9,8 @@ const routes: Routes = [
     children: [
       {path: '', loadChildren: './gallery/gallery.module#GalleryModule'},
       {path: 'recipe', loadChildren: './recipe/recipe.module#RecipeModule'},
+      {path: 'tricks-and-tips', loadChildren: './tips-and-tricks/tips-and-tricks.module#TipsAndTricksModule'},
+      {path: 'about-me', loadChildren: './about-me/about-me.module#AboutMeModule'},
       {path: 'profile', loadChildren: './profile/profile.module#ProfileModule'}
     ]
   }
