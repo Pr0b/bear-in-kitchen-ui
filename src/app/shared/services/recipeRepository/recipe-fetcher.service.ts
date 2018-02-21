@@ -22,7 +22,7 @@ export class RecipeFetcherService {
       firebaseQuery = firebaseQuery.startAfter(this.lastRecipe);
     }
 
-    return firebaseQuery.limit(9).get().then(qsnap => {
+    return firebaseQuery.limit(3).get().then(qsnap => {
       this.lastRecipe = qsnap.docs[qsnap.docs.length - 1];
       return qsnap.docs.map(qdocsnap => {
         const data = qdocsnap.data() as RecipeDetail;

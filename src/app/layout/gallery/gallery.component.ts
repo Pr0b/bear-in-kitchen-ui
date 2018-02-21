@@ -4,7 +4,7 @@ import {routerTransition} from '../../router.animations';
 
 import {RecipeDetail} from '../recipe/recipe.component';
 import {Observable} from 'rxjs/Observable';
-import 'rxjs/add/operator/merge';
+import 'rxjs/add/observable/forkJoin';
 
 @Component({
   selector: 'app-gallery',
@@ -13,30 +13,35 @@ import 'rxjs/add/operator/merge';
   animations: [routerTransition()]
 })
 export class GalleryComponent implements OnInit {
-  recipes: Observable<RecipeDetail[]>;
+  recipes$: Promise<RecipeDetail[]>;
+  recipes: RecipeDetail[];
 
   constructor(private recipeFetcherService: RecipeFetcherService) {
+    this.recipes = [];
   }
 
   ngOnInit() {
-    // this.recipes = Observable.fromPromise(this.recipeFetcherService.getPagenatedRecipes());
-    // this.recipes = this.recipeFetcherService.getRecipes();
-    this.recipes = Observable.fromPromise(this.recipeFetcherService.getPagenatedRecipes());
-    this.recipes.subscribe(rec => {
-      console.log(rec);
+    this.recipes$ = this.recipeFetcherService.getPagenatedRecipes();
+    this.recipes$.then(recipes => {
+      this.recipes = this.recipes.concat(recipes);
+      console.log(this.recipes);
     });
   }
 
   onScroll() {
     console.log('scrolled!!');
-    // this.recipes = this.recipes.merge(this.recipeFetcherService.getPagenatedRecipes());
+    this.recipeFetcherService.getPagenatedRecipes().then( recipes => {
+      this.recipes = this.recipes.concat(recipes);
+      console.log(this.recipes);
+    });
+    // this.recipes$ = this.recipes$.merge(this.recipeFetcherService.getPagenatedRecipes());
 
-    // this.recipes.subscribe(rec => {
+    // this.recipes$.subscribe(rec => {
     //   this.recipeFetcherService.getPagenatedRecipes().then( newRecipe => {
     //
     //   });
     // });
-    // const result = concat(this.recipes, ).;
+    // const result = concat(this.recipes$, ).;
     //
     // var subscription = result.subscribe(
     //   function (x) {
@@ -49,16 +54,16 @@ export class GalleryComponent implements OnInit {
     //     console.log('Completed');
     //   });
     //
-    // this.recipes.subscribe(rec => {
+    // this.recipes$.subscribe(rec => {
     //   console.log(rec);
     // });
     // this.recipeFetcherService.getPagenatedRecipes().then( newRecipes => {
-    //   this.recipes.subscribe(recipes => {
+    //   this.recipes$.subscribe(recipes$ => {
     //     console.log('newRecipes');
     //     console.log(newRecipes);
-    //     this.recipes.concat(newRecipes);
-    //     console.log('recipes');
-    //     console.log(recipes);
+    //     this.recipes$.concat(newRecipes);
+    //     console.log('recipes$');
+    //     console.log(recipes$);
     //   });
     // });
   }
