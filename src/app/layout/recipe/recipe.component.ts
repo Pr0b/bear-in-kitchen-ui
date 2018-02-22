@@ -75,6 +75,7 @@ export interface RecipeDetail {
   'description': string;
   'thumbnailUrl': string;
   'photoUrl': string;
+  'created': Date;
   'stats': Stats;
   'ingredients': IngredientRecipe[];
   'protocols': ProtocolItem[];

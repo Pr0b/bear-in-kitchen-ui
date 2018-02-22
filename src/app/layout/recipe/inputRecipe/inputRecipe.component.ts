@@ -85,6 +85,8 @@ export class InputRecipeComponent implements OnInit {
     this.newRecipe.stats.serves = this.formGroup.get(['categories', 'serves']).value;
     this.newRecipe.stats.time = this.formGroup.get(['categories', 'time']).value;
 
+    this.newRecipe.created = new Date();
+
     this.addRecipe(this.newRecipe).then((ref) => {
       const promises: Promise<any>[] = [];
       for (const tag of this.formGroup.get(['tagsFormArray']).value) {

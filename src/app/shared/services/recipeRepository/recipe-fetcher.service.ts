@@ -25,8 +25,8 @@ export class RecipeFetcherService {
   init() {
     this.query = {
       path: 'recipes',
-      field: 'title',
-      limit: 3,
+      field: 'created',
+      limit: 9,
       reverse: false,
       prepend: false,
     };
