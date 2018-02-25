@@ -14,7 +14,7 @@ import {AngularFirestore, AngularFirestoreCollection} from 'angularfire2/firesto
 import {INPUT_RECIPE_MODEL, NG_BOOTSTRAP_SAMPLE_FORM_LAYOUT} from './model/inputRecipeModel';
 import {Observable} from 'rxjs/Observable';
 
-import {RecipeCategory, RecipeDetail, Stats, TagRecipe} from '../recipe.component';
+import {Ingredient, RecipeCategory, RecipeDetail, Stats, Tag, TagRecipe} from '../recipe.component';
 import {FormatSelectOptionService} from './service/formatSelectOption.service';
 import {Router} from '@angular/router';
 
@@ -156,11 +156,17 @@ export class InputRecipeComponent implements OnInit {
   }
 
   addNewIngredient() {
-    console.log(this.formGroup.get('addNewIngredient').value);
+    const ingredientName = this.formGroup.get('addNewIngredient').value;
+    const newIngredient = <Ingredient> {};
+    newIngredient.name = ingredientName;
+    this.afs.collection<Ingredient>('ingredients').add(newIngredient);
   }
 
   addNewTag() {
-    console.log(this.formGroup.get('addNewTag').value);
+    const tagName = this.formGroup.get('addNewTag').value;
+    const newTag = <Tag> {};
+    newTag.name = tagName;
+    this.afs.collection<Tag>('recipeTags').add(newTag);
   }
 
   removeItemIngredients(context: DynamicFormArrayModel, index: number) {
