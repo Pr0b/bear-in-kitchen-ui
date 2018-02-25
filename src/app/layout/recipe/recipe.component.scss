@@ -3,6 +3,10 @@
   grid-area: photoRecipeBear;
 }
 
+.dividerRecipeBear {
+  grid-area: dividerRecipeBear;
+}
+
 .overviewBear {
   //background: #6f6aea;
   grid-area: overviewBear;
@@ -34,7 +38,7 @@
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto auto;
     grid-template-areas:
-      "photoRecipeBear overviewBear"
+      "photoRecipeBear overviewBear" "dividerRecipeBear dividerRecipeBear"
       "ingredientsBear protocolBear";
     grid-gap: 2em;
   }
