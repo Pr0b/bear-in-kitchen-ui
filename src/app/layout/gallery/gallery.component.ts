@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {RecipeFetcherService} from '../../shared/services';
+import {RecipePaginatedFetcherService} from '../../shared/services';
 import {routerTransition} from '../../router.animations';
 import 'rxjs/add/observable/forkJoin';
 
@@ -11,15 +11,30 @@ import 'rxjs/add/observable/forkJoin';
 })
 export class GalleryComponent implements OnInit {
 
-  constructor(private recipeFetcherService: RecipeFetcherService) {
+  constructor(private recipePaginatedFetcherService: RecipePaginatedFetcherService) {
   }
 
   ngOnInit() {
-    this.recipeFetcherService.init();
+    console.log('init!!');
+    this.recipePaginatedFetcherService.init();
+    this.recipePaginatedFetcherService.data.subscribe(array => {
+      console.log('--==start==--');
+      array.forEach(item => {
+        console.log('item.id=' + item.id);
+      });
+      console.log('--==end==--');
+    });
   }
 
   onScroll() {
     console.log('scrolled!!');
-    this.recipeFetcherService.more();
+    this.recipePaginatedFetcherService.more();
+    this.recipePaginatedFetcherService.data.subscribe(array => {
+      array.forEach(item => {
+        console.log('--==start==--');
+        console.log('item.id=' + item.id);
+      });
+      console.log('--==end==--');
+    });
   }
 }
