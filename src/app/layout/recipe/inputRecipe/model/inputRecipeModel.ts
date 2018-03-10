@@ -55,16 +55,16 @@ export const INPUT_RECIPE_MODEL: DynamicFormControlModel[] = [
           placeholder: 'Select an option',
           options: [
             {
-              label: 'Super easy',
-              value: 'Super easy'
+              label: 'Velmi snadné',
+              value: 'Velmi snadné'
             },
             {
-              label: 'Easy',
-              value: 'Easy'
+              label: 'Snadné',
+              value: 'Snadné'
             },
             {
-              label: 'Intermediate',
-              value: 'Intermediate'
+              label: 'Náročné',
+              value: 'Náročné'
             }
           ],
         }
