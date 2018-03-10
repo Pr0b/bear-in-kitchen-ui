@@ -27,14 +27,14 @@ export class GalleryComponent implements OnInit {
   }
 
   onScroll() {
-    console.log('scrolled!!');
-    this.recipePaginatedFetcherService.more();
-    this.recipePaginatedFetcherService.data.subscribe(array => {
-      array.forEach(item => {
-        console.log('--==start==--');
-        console.log('item.id=' + item.id);
-      });
-      console.log('--==end==--');
-    });
+    // console.log('scrolled!!');
+    // this.recipePaginatedFetcherService.more();
+    // this.recipePaginatedFetcherService.data.subscribe(array => {
+    //   array.forEach(item => {
+    //     console.log('--==start==--');
+    //     console.log('item.id=' + item.id);
+    //   });
+    //   console.log('--==end==--');
+    // });
   }
 }

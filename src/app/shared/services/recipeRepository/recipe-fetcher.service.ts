@@ -11,6 +11,7 @@ export class RecipeFetcherService {
 
   constructor(private afs: AngularFirestore) {
     this.lastRecipe = null;
+    console.log('fetcher cons');
   }
 
   // getPagenatedRecipes(startAfter: RecipeDetail) {

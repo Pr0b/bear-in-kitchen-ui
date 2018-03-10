@@ -28,7 +28,7 @@ export class RecipePaginatedFetcherService {
     this.query = {
       path: 'recipes',
       field: 'created',
-      limit: 2,
+      limit: 9,
       reverse: false,
       prepend: false,
     };
