@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {AngularFirestore} from 'angularfire2/firestore';
 import {CategoryFetcherService, IngredientFetcherService} from '../../../../shared/services';
-import {Observable} from 'rxjs/Observable';
+import {Observable} from 'rxjs';
 import {RecipeCategory, TagRecipe} from '../../recipe.component';
 
 @Injectable()

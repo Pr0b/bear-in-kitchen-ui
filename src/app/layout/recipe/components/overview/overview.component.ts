@@ -2,8 +2,8 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 
 import {RecipeCategory, RecipeDetail, Tag} from '../../recipe.component';
-import {Observable} from 'rxjs/Observable';
-import {CategoryFetcherService} from '../../../../shared/services/categoryRepository/category-fetcher.service';
+import {Observable} from 'rxjs';
+import {CategoryFetcherService} from '../../../../shared/services';
 
 @Component({
   selector: 'app-overview',

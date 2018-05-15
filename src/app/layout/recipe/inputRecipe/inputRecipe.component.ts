@@ -12,7 +12,7 @@ import {FormArray, FormGroup} from '@angular/forms';
 import {AngularFireStorage} from 'angularfire2/storage';
 import {AngularFirestore, AngularFirestoreCollection} from 'angularfire2/firestore';
 import {INPUT_RECIPE_MODEL, NG_BOOTSTRAP_SAMPLE_FORM_LAYOUT} from './model/inputRecipeModel';
-import {Observable} from 'rxjs/Observable';
+import {Observable} from 'rxjs';
 
 import {Ingredient, RecipeCategory, RecipeDetail, Stats, Tag, TagRecipe} from '../recipe.component';
 import {FormatSelectOptionService} from './service/formatSelectOption.service';
@@ -204,8 +204,10 @@ export class InputRecipeComponent implements OnInit {
     this.uploadPercent = task.percentageChanges();
 
     task.then((taskDone) => {
-      this.newRecipe.photoUrl = taskDone.downloadURL;
-      this.newRecipe.thumbnailUrl = taskDone.downloadURL;
+      taskDone.ref.getDownloadURL().then(url => {
+        this.newRecipe.photoUrl = url;
+        this.newRecipe.thumbnailUrl = url;
+      });
     });
   }
 
@@ -215,7 +217,9 @@ export class InputRecipeComponent implements OnInit {
     const task = this.storage.upload(filePath, file);
 
     task.then((taskDone) => {
-      this.directionsFormArrayControl.at(index).patchValue({directionPhoto: taskDone.downloadURL});
+      taskDone.ref.getDownloadURL().then(url => {
+        this.directionsFormArrayControl.at(index).patchValue({directionPhoto: url});
+      });
     });
   }
 }

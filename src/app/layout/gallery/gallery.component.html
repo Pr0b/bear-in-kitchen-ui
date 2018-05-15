@@ -1,11 +1,11 @@
 <div [@routerTransition]>
 
   <app-searchbar></app-searchbar>
-  <div class="search-results"
-       infiniteScroll
-       [infiniteScrollDistance]="2"
-       [infiniteScrollThrottle]="300"
-       (scrolled)="onScroll()">
+  <!--<div class="search-results"-->
+       <!--infiniteScroll-->
+       <!--[infiniteScrollDistance]="2"-->
+       <!--[infiniteScrollThrottle]="300"-->
+       <!--(scrolled)="onScroll()">-->
 
     <section>
       <div class="container">
@@ -23,7 +23,7 @@
           </div>
         </div>
       </div>
-
+      <button type="button" class="btn btn-info" (click)="onScroll()">next recipies</button>
     </section>
-  </div>
+  <!--</div>-->
 </div>

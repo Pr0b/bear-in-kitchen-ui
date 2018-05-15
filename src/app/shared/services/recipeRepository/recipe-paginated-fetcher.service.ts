@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {AngularFirestore, AngularFirestoreCollection} from 'angularfire2/firestore';
-import {Observable} from 'rxjs/Observable';
+import {Observable} from 'rxjs';
+import 'rxjs/add/operator/scan';
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 
 
@@ -19,16 +20,17 @@ export class RecipePaginatedFetcherService {
   }
 
   init() {
-
+    console.log('init() exec');
     if (this._data.getValue().length > 0) {
       return;
     }
-    console.log('init() exec');
+
+    console.log('fetching in init');
 
     this.query = {
       path: 'recipes',
       field: 'created',
-      limit: 9,
+      limit: 2,
       reverse: false,
       prepend: false,
     };
@@ -46,6 +48,8 @@ export class RecipePaginatedFetcherService {
       .scan((acc, val) => {
         return this.query.prepend ? val.concat(acc) : acc.concat(val);
       });
+
+    return this.data;
   }
 
   more() {
@@ -59,15 +63,16 @@ export class RecipePaginatedFetcherService {
       return ref
         .orderBy(this.query.field, this.query.reverse ? 'desc' : 'asc')
         .limit(this.query.limit)
-        .startAfter(cursor);
+        .startAfter(cursor.created);
     });
     this.mapAndUpdate(more);
+    return this.data;
   }
 
   private getCursor() {
     const current = this._data.value;
     if (current.length) {
-      return this.query.prepend ? current[0].doc : current[current.length - 1].doc;
+      return this.query.prepend ? current[0] : current[current.length - 1];
     }
     console.log('cursor is null');
     return null;

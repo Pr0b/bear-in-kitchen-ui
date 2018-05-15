@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument} from 'angularfire2/firestore';
 import {IngredientRecipe, ProtocolItem, RecipeDetail, TagRecipe} from '../../../layout/recipe/recipe.component';
-import {Observable} from 'rxjs/Observable';
+import {Observable} from 'rxjs';
 import {DocumentSnapshot, Query} from '@firebase/firestore-types';
 
 
