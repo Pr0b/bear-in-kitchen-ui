@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {AngularFirestore, AngularFirestoreCollection} from 'angularfire2/firestore';
 import {Ingredient} from '../../../layout/recipe/recipe.component';
 import {Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
 
 @Injectable()
 export class IngredientFetcherService {
@@ -16,12 +17,15 @@ export class IngredientFetcherService {
 
   getAllIngredientsWithChanges(): Observable<Ingredient[]> {
     const collection: AngularFirestoreCollection<Ingredient> = this.afs.collection('ingredients');
-    return collection.snapshotChanges().map(actions => {
-      return actions.map(a => {
-        const data = a.payload.doc.data() as Ingredient;
-        const id = a.payload.doc.id;
-        return {id, ...data};
-      });
-    });
+    return collection.snapshotChanges()
+      .pipe(
+        map(actions => {
+          return actions.map(a => {
+            const data = a.payload.doc.data() as Ingredient;
+            const id = a.payload.doc.id;
+            return {id, ...data};
+          });
+        })
+      );
   }
 }

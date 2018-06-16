@@ -62,14 +62,27 @@ export class InputRecipeComponent implements OnInit {
     this.recipesCollection = this.afs.collection<RecipeDetail>('recipes');
 
     const ingredientsSelectControl = this.ingredientsFormArrayModel.get(0).get(0) as DynamicSelectModel<string>;
-    ingredientsSelectControl.options = this.formatSelectOptionService.getIngredients();
+    this.formatSelectOptionService.getIngredients().subscribe(ingredients => {
+      ingredients.forEach(ingredient => {
+        ingredientsSelectControl.add(ingredient);
+      });
+    });
 
     const tagsSelectControl = this.tagsFormArrayModel.get(0).get(0) as DynamicSelectModel<TagRecipe>;
-    tagsSelectControl.options = this.formatSelectOptionService.getRecipeTags();
+    this.formatSelectOptionService.getRecipeTags().subscribe(tags => {
+      tags.forEach(tag => {
+        tagsSelectControl.add(tag);
+      });
+    });
 
     const categories = this.formService.findById('categories', this.formModel) as DynamicFormGroupModel;
     const recipeCategoriesSelectControl = categories.get(3) as DynamicSelectModel<RecipeCategory>;
-    recipeCategoriesSelectControl.options = this.formatSelectOptionService.getRecipeCategories();
+
+    this.formatSelectOptionService.getRecipeCategories().subscribe(cats => {
+      cats.forEach(cat => {
+        recipeCategoriesSelectControl.add(cat);
+      });
+    });
   }
 
   addRecipe(recipeDetail: RecipeDetail) {
@@ -144,7 +157,11 @@ export class InputRecipeComponent implements OnInit {
   insertItemLabels(context: DynamicFormArrayModel, index: number) {
     this.formService.insertFormArrayGroup(index, this.tagsFormArrayControl, context);
     const tagsSelectControl = this.tagsFormArrayModel.get(index).get(0) as DynamicSelectModel<TagRecipe>;
-    tagsSelectControl.options = this.formatSelectOptionService.getRecipeTags();
+    this.formatSelectOptionService.getRecipeTags().subscribe(tags => {
+      tags.forEach(tag => {
+        tagsSelectControl.add(tag);
+      });
+    });
   }
 
   addItemIngredients() {
@@ -175,8 +192,12 @@ export class InputRecipeComponent implements OnInit {
 
   insertItemIngredients(context: DynamicFormArrayModel, index: number) {
     this.formService.insertFormArrayGroup(index, this.ingredientsFormArrayControl, context);
-    const selectControl = this.ingredientsFormArrayModel.get(index).get(0) as DynamicSelectModel<string>;
-    selectControl.options = this.formatSelectOptionService.getIngredients();
+    const ingredientsSelectControl = this.ingredientsFormArrayModel.get(index).get(0) as DynamicSelectModel<string>;
+    this.formatSelectOptionService.getIngredients().subscribe(ingredients => {
+      ingredients.forEach(ingredient => {
+        ingredientsSelectControl.add(ingredient);
+      });
+    });
   }
 
   addItemDirections() {

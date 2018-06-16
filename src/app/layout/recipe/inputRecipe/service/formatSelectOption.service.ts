@@ -3,6 +3,8 @@ import {AngularFirestore} from 'angularfire2/firestore';
 import {CategoryFetcherService, IngredientFetcherService} from '../../../../shared/services';
 import {Observable} from 'rxjs';
 import {RecipeCategory, TagRecipe} from '../../recipe.component';
+import {map} from 'rxjs/operators';
+import {DynamicFormOptionConfig} from '@ng-dynamic-forms/core/src/model/dynamic-option-control.model';
 
 @Injectable()
 export class FormatSelectOptionService {
@@ -13,13 +15,16 @@ export class FormatSelectOptionService {
   }
 
   getIngredients(): Observable<OptionValueItem<string>[]> {
-    return this.ingredientFetcherService.getAllIngredientsWithChanges().map(ingredients => {
-      return ingredients.map(ingredient => {
-        const label = ingredient.name;
-        const value = ingredient.id;
-        return {label, value};
-      });
-    });
+    return this.ingredientFetcherService.getAllIngredientsWithChanges()
+      .pipe(
+        map(ingredients => {
+          return ingredients.map(ingredient => {
+            const label = ingredient.name;
+            const value = ingredient.id;
+            return {label, value};
+          });
+        })
+      );
   }
 
   getRecipeCategories(): Observable<OptionValueItem<RecipeCategory>[]> {
@@ -50,7 +55,5 @@ export class FormatSelectOptionService {
   }
 }
 
-export interface OptionValueItem<T> {
-  label: string;
-  value: T;
+export interface OptionValueItem<T> extends DynamicFormOptionConfig<T> {
 }

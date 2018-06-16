@@ -15,7 +15,7 @@ import {RecipeDetail} from '../recipe/recipe.component';
 export class GalleryComponent implements OnInit {
   recipes: Observable<RecipeDetail[]>;
 
-  constructor(private recipePaginatedFetcherService: RecipePaginatedFetcherService) {
+  constructor(public recipePaginatedFetcherService: RecipePaginatedFetcherService) {
   }
 
   ngOnInit() {

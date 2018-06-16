@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
-import {AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument} from 'angularfire2/firestore';
-import {Ingredient, RecipeCategory, RecipeDetail, Tag} from '../../../layout/recipe/recipe.component';
+import {AngularFirestore, AngularFirestoreCollection} from 'angularfire2/firestore';
+import {Ingredient, RecipeCategory, Tag} from '../../../layout/recipe/recipe.component';
 import {Observable} from 'rxjs';
 
 @Injectable()
@@ -10,12 +10,12 @@ export class CategoryFetcherService {
   }
 
   getAllRecipeCategories() {
-    const collection: AngularFirestoreCollection<Ingredient> = this.afs.collection('recipeCategories');
+    const collection: AngularFirestoreCollection<RecipeCategory> = this.afs.collection('recipeCategories');
     return collection.ref;
   }
 
   getAllRecipeCategoriesWithChanges(): Observable<RecipeCategory[]> {
-    const collection: AngularFirestoreCollection<Ingredient> = this.afs.collection('recipeCategories');
+    const collection: AngularFirestoreCollection<RecipeCategory> = this.afs.collection('recipeCategories');
     return collection.snapshotChanges().map(actions => {
       return actions.map(a => {
         const data = a.payload.doc.data() as RecipeCategory;

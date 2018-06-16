@@ -9,6 +9,7 @@ import {NavbarComponent} from './components/navbar/navbar.component';
 import {FooterComponent} from './components/footer/footer.component';
 
 import {AuthService} from '../shared/services';
+import {HeaderComponent} from './components/header/header.component';
 
 @NgModule({
   imports: [
@@ -19,7 +20,7 @@ import {AuthService} from '../shared/services';
     NgbCollapseModule.forRoot()
   ],
   providers: [AuthService],
-  declarations: [LayoutComponent, NavbarComponent, FooterComponent]
+  declarations: [LayoutComponent, NavbarComponent, FooterComponent, HeaderComponent]
 })
 export class LayoutModule {
 }
