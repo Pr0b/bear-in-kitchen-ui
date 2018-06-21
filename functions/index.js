@@ -38,10 +38,10 @@ const THUMB_PREFIX = 'thumb_';
  * After the thumbnail has been generated and uploaded to Cloud Storage,
  * we write the public URL to the Firebase Realtime Database.
  */
-exports.generateThumbnail = functions.storage.object().onChange(event => {
+exports.generateThumbnail = functions.storage.object().onFinalize(event => {
   // File and directory paths.
-  const filePath = event.data.name;
-const contentType = event.data.contentType; // This is the image Mimme type
+  const filePath = event.name;
+const contentType = event.contentType; // This is the image Mimme type
 const fileDir = path.dirname(filePath);
 const fileName = path.basename(filePath);
 const thumbFilePath = path.normalize(path.join(fileDir, `${THUMB_PREFIX}${fileName}`));
@@ -61,14 +61,8 @@ if (fileName.startsWith(THUMB_PREFIX)) {
   return null;
 }
 
-// Exit if this is a move or deletion event.
-if (event.data.resourceState === 'not_exists') {
-  console.log('This is a deletion event.');
-  return null;
-}
-
 // Cloud Storage files.
-const bucket = gcs.bucket(event.data.bucket);
+const bucket = gcs.bucket(event.bucket);
 const file = bucket.file(filePath);
 const thumbFile = bucket.file(thumbFilePath);
 const metadata = { contentType: contentType };
@@ -91,7 +85,15 @@ return bucket.upload(tempLocalThumbFile, { destination: thumbFilePath, metadata:
 fs.unlinkSync(tempLocalFile);
 fs.unlinkSync(tempLocalThumbFile);
 // Get the Signed URLs for the thumbnail and original image.
-}).then(() => console.log('Thumbnail URLs saved to database.'));
+}).then(() => {
+  console.log('Thumbnail URLs saved to database.');
+  var db = admin.firestore();
+  const recipe = db.collection('recipes', ref => {
+    return ref
+      .where('photoUrl','==',filePath)
+      .update({'thumbnailUrl' : thumbFilePath});
+  });
+});
 
 
 });
