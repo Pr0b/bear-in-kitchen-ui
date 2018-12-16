@@ -63,7 +63,7 @@
           <div class="row">
             <div class="col-lg-12">
               <div class="form-group">
-                <input type="file" (change)="uploadFile($event)"/>
+                <input (change)="uploadMainPhoto($event)" type="file"/>
                 <div>{{ uploadPercent | async }}</div>
               </div>
               <button type="submit" class="btn btn-primary">Submit</button>

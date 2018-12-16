@@ -210,19 +210,16 @@ export const NG_BOOTSTRAP_SAMPLE_FORM_LAYOUT = {
   //   }
   // },
   //
-  // 'categories': {
-  //   element: {
-  //     container: 'form-group',
-  //     label: 'control-label'
-  //   },
-  //   grid: {
-  //     control: 'col-sm-9',
-  //     label: 'col-sm-3'
-  //   }
-  // }
+  'categories': {
+    element: {
+      container: 'form-group',
+      control: 'form-row',
+      label: 'control-label'
+    }
+  }
 
   // 'tagsFormArray': {
-  //   element: {
+  //   element: {DynamicFormControlLayoutConfig
   //     container: 'form-group form-array',
   //     label: 'control-label'
   //   },

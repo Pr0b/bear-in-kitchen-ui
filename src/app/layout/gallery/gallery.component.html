@@ -11,7 +11,7 @@
       <div class="container">
         <div class="row justify-content-center">
 
-          <div *ngFor="let recipe of recipePaginatedFetcherService.data | async">
+          <div *ngFor="let recipe of recipes | async">
             <div class="clearfix" ng-if="$index % 3 == 0"></div>
             <div class="col-4 col-md-4 text-center">
               <div class="justify-content-center pb-4">
@@ -23,7 +23,6 @@
           </div>
         </div>
       </div>
-      <button type="button" class="btn btn-info" (click)="onScroll()">next recipies</button>
     </section>
   <!--</div>-->
 </div>

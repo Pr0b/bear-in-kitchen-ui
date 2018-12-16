@@ -216,7 +216,7 @@ export class InputRecipeComponent implements OnInit {
     this.formService.insertFormArrayGroup(index, this.directionsFormArrayControl, context);
   }
 
-  uploadFile(event) {
+  uploadMainPhoto(event) {
     const file = event.target.files[0] as File;
     const filePath = 'recipes/' + file.name;
     const task = this.storage.upload(filePath, file);
