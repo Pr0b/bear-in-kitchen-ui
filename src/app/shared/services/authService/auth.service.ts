@@ -1,9 +1,8 @@
 import {Injectable} from '@angular/core';
 import {Router} from '@angular/router';
 
-import { firebase } from '@firebase/app';
-
 import {AngularFireAuth} from 'angularfire2/auth';
+import {auth} from 'firebase/app';
 import {AngularFirestore, AngularFirestoreDocument} from 'angularfire2/firestore';
 import {Observable} from 'rxjs';
 import 'rxjs/add/operator/switchMap';
@@ -35,7 +34,7 @@ export class AuthService {
   }
 
   googleLogin() {
-    const provider = new firebase.auth.GoogleAuthProvider();
+    const provider = new auth.GoogleAuthProvider();
     return this.oAuthLogin(provider);
   }
 
