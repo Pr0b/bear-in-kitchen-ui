@@ -1,43 +1,45 @@
 <header>
   <div class="grid">
     <div class="navBear">
-      <nav class="navbar navbar-light navbar-expand-md justify-content-center">
-        <a [routerLink]="['/']" class="navbar-brand flexBear">
+      <a [routerLink]="['/']" class="navbar-brand flexBear">
 
-          <img src="./assets/icons/017-bear-1.svg" height="75" alt="Bear In The Kitchen">
-          <div class="sos">
-            <h1 class="sos-r1">Bear <span class="sos-prep">in the</span> Kitchen</h1>
-          </div>
-        </a>
-        <button class="navbar-toggler"
-                type="button"
-                data-toggle="collapse"
-                data-target="#collapsingNavbar2"
-                (click)="isCollapsed = !isCollapsed"
-                [attr.aria-expanded]="!isCollapsed"
-                aria-controls="collapsingNavbar2">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="navbar-collapse collapse justify-content-between w-100" id="collapsingNavbar2"
-             [ngbCollapse]="isCollapsed">
-          <ul class="navbar-nav mx-auto text-center">
-            <li class="nav-item active">
-              <a class="nav-link text-white" [routerLink]="['/']">Recepty<span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-white" [routerLink]="['/tricks-and-tips']">Rady &amp; Tipy</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-white" [routerLink]="['/about-me']">O mne</a>
-            </li>
-          </ul>
-          <ul class="nav navbar-nav flex-row">
-            <li class="nav-item"><a class="nav-link text-white" [routerLink]="['/profile']">Profile</a></li>
-            <li class="nav-item"><a class="nav-link text-white" [routerLink]="['/recipe/new']">New Recipe</a></li>
-            <li class="nav-item"><a class="nav-link text-white" (click)="signOut()">Log out</a></li>
-          </ul>
+        <img src="./assets/icons/017-bear-1.svg" height="75" alt="Bear In The Kitchen">
+        <div class="sos">
+          <h1 class="sos-r1">Bear <span class="sos-prep">in the</span> Kitchen</h1>
         </div>
+      </a>
+    </div>
+    <div class="navMenu">
+      <nav class="navbar navbar-expand-lg">
+      <ul class="navbar-nav justify-content-between align-items-center">
+        <!--<li class="nav-item active"><a class="nav-link text-white" [routerLink]="['/']">Recepty<span class="sr-only">(current)</span></a>-->
+        <li class="nav-item active"><a href="#" [routerLink]="['/']" class="btn btn-outline-primary" role="button" aria-pressed="true">Recepty<span class="sr-only">(current)</span></a>
+        </li>
+        <!--<li class="nav-item"><a class="nav-link text-white" [routerLink]="['/tricks-and-tips']">Rady&nbsp;&amp;&nbsp;Tipy</a></li>-->
+        <li class="nav-item"><a href="#" [routerLink]="['/tricks-and-tips']" class="btn btn-outline-primary" role="button" aria-pressed="true">Rady&nbsp;&amp;&nbsp;Tipy</a></li>
+        <!--<li class="nav-item"><a class="nav-link text-white" [routerLink]="['/about-me']">O&nbsp;mne</a></li>-->
+        <li class="nav-item"><a href="#" [routerLink]="['/about-me']" class="btn btn-outline-primary" role="button" aria-pressed="true">O&nbsp;mne</a></li>
+        <!--<li class="nav-item"><a class="nav-link text-white" [routerLink]="['/recipe/new']">New&nbsp;Recipe</a></li>-->
+        <li class="nav-item"><a href="#" [routerLink]="['/recipe/new']" class="btn btn-outline-primary" role="button" aria-pressed="true">New&nbsp;Recipe</a></li>
+      </ul>
       </nav>
+    </div>
+    <div class="nav-dropdown navUserMenu" ngbDropdown>
+      <button type="button" class="btn btn-outline-primary" ngbDropdownToggle>User</button>
+      <div class="dropdown-menu-right" ngbDropdownMenu>
+        <a class="dropdown-item" [routerLink]="['/profile']">
+          <i class="fa fa-fw fa-user"></i> {{ 'Profile' | translate }}
+        </a>
+        <a class="dropdown-item" href="#">
+          <i class="fa fa-fw fa-envelope"></i> {{ 'Inbox' | translate }}
+        </a>
+        <a class="dropdown-item" href="#">
+          <i class="fa fa-fw fa-gear"></i> {{ 'Settings' | translate }}
+        </a>
+        <a class="dropdown-item" [routerLink]="['/login']" (click)="signOut()">
+          <i class="fa fa-fw fa-power-off"></i> {{ 'Log Out' | translate }}
+        </a>
+      </div>
     </div>
   </div>
 </header>
