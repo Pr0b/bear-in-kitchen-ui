@@ -8,6 +8,7 @@ import {SearchbarComponent} from './components/searchbar/searchbar.component';
 import {StatModule} from '../../shared';
 import {InfiniteScrollModule} from 'ngx-infinite-scroll';
 import {AngularFireStorageModule} from 'angularfire2/storage';
+import {AngularFirestoreModule} from 'angularfire2/firestore';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import {AngularFireStorageModule} from 'angularfire2/storage';
     InfiniteScrollModule,
     GalleryRoutingModule,
     StatModule,
-    AngularFireStorageModule
+    AngularFireStorageModule,
+    AngularFirestoreModule
   ],
   declarations: [
     GalleryComponent,

@@ -4,6 +4,7 @@ import {Observable} from 'rxjs';
 import {RecipeDetail} from '../recipe/recipe.component';
 import {RecipeFetcherService} from '../../shared/services';
 import {AngularFireStorage} from 'angularfire2/storage';
+import {AngularFirestore, AngularFirestoreDocument} from 'angularfire2/firestore';
 
 @Component({
   selector: 'app-gallery',
@@ -15,23 +16,35 @@ export class GalleryComponent implements OnInit {
   recipes: Observable<RecipeDetail[]>;
 
   constructor(private recipeFetcherService: RecipeFetcherService,
-              private storage: AngularFireStorage) {
+              private storage: AngularFireStorage,
+              private afs: AngularFirestore) {
   }
 
   ngOnInit() {
-    this.recipes = this.recipeFetcherService.getRecipes();
+    this.recipes = this.recipeFetcherService.getRecipes().map(recipes => {
+      recipes.forEach(recipe => {
+        // FIXME potential issue, we should wait for all async ops to finish before we return the recipes array
+        this.resolveThumbPhotoUrl(recipe);
+      });
+      return recipes;
+    });
   }
 
-  resolveThumbPhotoUrl(recipe: RecipeDetail): Observable<string> {
+  private resolveThumbPhotoUrl(recipe): Promise<void> {
+    const document: AngularFirestoreDocument<RecipeDetail> = this.afs.doc('recipes/' + recipe.id);
+
     if (recipe.thumbnailUrl) {
-      return Observable.of(recipe.thumbnailUrl);
+      return Promise.resolve();
+    }
+
+    if (!recipe.thumbnailStoragePath) {
+      return document.update({thumbnailUrl: recipe.photoUrl});
     }
 
     const downloadURL = this.storage.ref(recipe.thumbnailStoragePath).getDownloadURL();
-    downloadURL.subscribe(url => {
-      recipe.thumbnailUrl = url;
+    return downloadURL.toPromise().then(url => {
+      console.log('resolved thumbnailUrl=' + recipe.thumbnailUrl);
+      return document.update({thumbnailUrl: url});
     });
-
-    return downloadURL;
   }
 }
