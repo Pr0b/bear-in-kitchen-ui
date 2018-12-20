@@ -219,6 +219,7 @@ export class InputRecipeComponent implements OnInit {
   uploadMainPhoto(event) {
     const file = event.target.files[0] as File;
     const filePath = 'recipes/' + file.name;
+    const thumb_filePath = 'recipes/thumb_' + file.name;
     const task = this.storage.upload(filePath, file);
 
     // observe percentage changes
@@ -227,7 +228,8 @@ export class InputRecipeComponent implements OnInit {
     task.then((taskDone) => {
       taskDone.ref.getDownloadURL().then(url => {
         this.newRecipe.photoUrl = url;
-        this.newRecipe.thumbnailUrl = url;
+        this.newRecipe.photoStoragePath = filePath;
+        this.newRecipe.thumbnailStoragePath = thumb_filePath;
       });
     });
   }

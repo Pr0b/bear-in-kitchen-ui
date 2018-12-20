@@ -74,7 +74,9 @@ export interface RecipeDetail {
   'title': string;
   'description': string;
   'thumbnailUrl': string;
+  'thumbnailStoragePath': string;
   'photoUrl': string;
+  'photoStoragePath': string;
   'created': Date;
   'stats': Stats;
   'ingredients': IngredientRecipe[];

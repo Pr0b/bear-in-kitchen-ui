@@ -7,13 +7,15 @@ import {RecipeFetcherService, RecipePaginatedFetcherService} from '../../shared/
 import {SearchbarComponent} from './components/searchbar/searchbar.component';
 import {StatModule} from '../../shared';
 import {InfiniteScrollModule} from 'ngx-infinite-scroll';
+import {AngularFireStorageModule} from 'angularfire2/storage';
 
 @NgModule({
   imports: [
     CommonModule,
     InfiniteScrollModule,
     GalleryRoutingModule,
-    StatModule
+    StatModule,
+    AngularFireStorageModule
   ],
   declarations: [
     GalleryComponent,
