@@ -8,16 +8,24 @@ import {Observable} from 'rxjs';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/observable/of';
 
-interface User {
+
+export interface Roles {
+  subscriber?: boolean;
+  editor?: boolean;
+  admin?: boolean;
+}
+
+export interface User {
   uid: string;
   email: string;
   photoURL?: string;
   displayName?: string;
+  roles: Roles;
 }
 
 @Injectable()
 export class AuthService {
-  user: Observable<User>;
+  public user: Observable<User>;
 
   constructor(private afAuth: AngularFireAuth,
               private afs: AngularFirestore,
@@ -33,12 +41,12 @@ export class AuthService {
       });
   }
 
-  googleLogin() {
+  public googleLogin() {
     const provider = new auth.GoogleAuthProvider();
     return this.oAuthLogin(provider);
   }
 
-  signOut() {
+  public signOut() {
     return this.afAuth.auth.signOut();
   }
 
@@ -55,8 +63,38 @@ export class AuthService {
       uid: user.uid,
       email: user.email,
       displayName: user.displayName,
-      photoURL: user.photoURL
+      photoURL: user.photoURL,
+      roles: {
+        subscriber: true
+      }
     };
-    return userRef.set(data);
+    return userRef.set(data, {merge: true});
+  }
+
+  public canRead(user: User): boolean {
+    const allowed = ['admin', 'editor', 'subscriber'];
+    return this.checkAuthorization(user, allowed);
+  }
+
+  public canEdit(user: User): boolean {
+    const allowed = ['admin', 'editor'];
+    return this.checkAuthorization(user, allowed);
+  }
+
+  public canDelete(user: User): boolean {
+    const allowed = ['admin'];
+    return this.checkAuthorization(user, allowed);
+  }
+
+  private checkAuthorization(user: User, allowedRoles: string[]): boolean {
+    if (!user) {
+      return false;
+    }
+    for (const role of allowedRoles) {
+      if (user.roles[role]) {
+        return true;
+      }
+    }
+    return false;
   }
 }
