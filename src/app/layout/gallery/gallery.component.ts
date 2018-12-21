@@ -3,8 +3,8 @@ import {routerTransition} from '../../router.animations';
 import {Observable} from 'rxjs';
 import {RecipeDetail} from '../recipe/recipe.component';
 import {RecipeFetcherService} from '../../shared/services';
-import {AngularFireStorage} from 'angularfire2/storage';
-import {AngularFirestore, AngularFirestoreDocument} from 'angularfire2/firestore';
+import {AngularFireStorage, AngularFireStorageModule} from 'angularfire2/storage';
+import {AngularFirestore, AngularFirestoreDocument, AngularFirestoreModule} from 'angularfire2/firestore';
 
 @Component({
   selector: 'app-gallery',
@@ -30,6 +30,8 @@ export class GalleryComponent implements OnInit {
     });
   }
 
+  // TODO extract it to the service
+  // GalleryModule shouldn't have dependency on AngularFireStorageModule and AngularFirestoreModule
   private resolveThumbPhotoUrl(recipe): Promise<void> {
     const document: AngularFirestoreDocument<RecipeDetail> = this.afs.doc('recipes/' + recipe.id);
 
@@ -37,6 +39,7 @@ export class GalleryComponent implements OnInit {
       return Promise.resolve();
     }
 
+    // fallback
     if (!recipe.thumbnailStoragePath) {
       return document.update({thumbnailUrl: recipe.photoUrl});
     }
