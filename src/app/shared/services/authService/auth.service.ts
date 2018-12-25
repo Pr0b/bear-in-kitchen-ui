@@ -71,6 +71,17 @@ export class AuthService {
     return userRef.set(data, {merge: true});
   }
 
+  public isLogged(): Observable<boolean> {
+    return this.user.map(user => {
+      // return !user;
+      // here we go ...
+      if (!user) {
+        return false;
+      }
+      return true;
+    });
+  }
+
   public canRead(user: User): boolean {
     const allowed = ['admin', 'editor', 'subscriber'];
     return this.checkAuthorization(user, allowed);
@@ -87,11 +98,13 @@ export class AuthService {
   }
 
   private checkAuthorization(user: User, allowedRoles: string[]): boolean {
+    console.error('checkAuthorization.user=' + user.displayName);
     if (!user) {
       return false;
     }
     for (const role of allowedRoles) {
       if (user.roles[role]) {
+        console.error('checkAuthorization.returns true with role=' + role);
         return true;
       }
     }

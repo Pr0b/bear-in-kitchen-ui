@@ -9,12 +9,16 @@ import {Router} from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
   public isCollapsed = true;
+  public isLogged = false;
 
   constructor(private router: Router,
               private auth: AuthService) {
   }
 
   ngOnInit() {
+    this.auth.isLogged().subscribe(logged => {
+      this.isLogged = logged;
+    });
   }
 
   signOut() {

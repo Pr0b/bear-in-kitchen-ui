@@ -12,7 +12,6 @@ import {environment} from '../environments/environment';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import {AuthGuard, CanReadGuard} from './shared';
 import {AngularFirestoreModule} from 'angularfire2/firestore';
 import {AngularFireAuthModule} from 'angularfire2/auth';
 import {AuthService} from './shared/services';
@@ -44,7 +43,7 @@ export function createTranslateLoader(http: HttpClient) {
     HttpModule,
     AppRoutingModule
   ],
-  providers: [AuthGuard, CanReadGuard, AuthService],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
