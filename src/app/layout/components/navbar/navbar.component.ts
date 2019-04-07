@@ -10,6 +10,7 @@ import {Router} from '@angular/router';
 export class NavbarComponent implements OnInit {
   public isCollapsed = true;
   public isLogged = false;
+  public canEdit = false;
 
   constructor(private router: Router,
               private auth: AuthService) {
@@ -18,6 +19,9 @@ export class NavbarComponent implements OnInit {
   ngOnInit() {
     this.auth.isLogged().subscribe(logged => {
       this.isLogged = logged;
+    });
+    this.auth.canLoggedUserEdit().subscribe(logged => {
+      this.canEdit = logged;
     });
   }
 

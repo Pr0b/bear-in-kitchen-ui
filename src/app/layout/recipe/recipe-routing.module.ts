@@ -1,10 +1,11 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {RecipeComponent} from './recipe.component';
+import {CanEditGuard} from '../../shared/guard';
 
 const routes: Routes = [
   {
-    path: 'new', loadChildren: './inputRecipe/inputRecipe.module#InputRecipeModule'
+    path: 'new', loadChildren: './inputRecipe/inputRecipe.module#InputRecipeModule', canActivate: [CanEditGuard]
   },
   {
     path: ':id', component: RecipeComponent

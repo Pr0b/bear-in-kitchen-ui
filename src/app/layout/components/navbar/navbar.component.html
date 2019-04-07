@@ -27,9 +27,9 @@
                                   role="button">O&nbsp;mne</a></li>
           <!--<li class="nav-item"><a class="nav-link text-white" [routerLink]="['/recipe/new']">New&nbsp;Recipe</a></li>-->
 
-          <li *ngIf="isLogged" class="nav-item"><a [routerLink]="['/recipe/new']" aria-pressed="true"
-                                                   class="btn btn-outline-primary" href="#"
-                                                   role="button">New&nbsp;Recipe</a></li>
+          <li *ngIf="canEdit" class="nav-item"><a [routerLink]="['/recipe/new']" aria-pressed="true"
+                                                  class="btn btn-outline-primary" href="#"
+                                                  role="button">New&nbsp;Recipe</a></li>
         </ul>
       </nav>
     </div>

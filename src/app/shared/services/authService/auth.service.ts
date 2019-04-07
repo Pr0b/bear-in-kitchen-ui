@@ -82,9 +82,21 @@ export class AuthService {
     });
   }
 
+  public canLoggedUserRead(): Observable<boolean> {
+    return this.user.map(user => {
+      return this.canRead(user);
+    });
+  }
+
   public canRead(user: User): boolean {
     const allowed = ['admin', 'editor', 'subscriber'];
     return this.checkAuthorization(user, allowed);
+  }
+
+  public canLoggedUserEdit(): Observable<boolean> {
+    return this.user.map(user => {
+      return this.canEdit(user);
+    });
   }
 
   public canEdit(user: User): boolean {
@@ -98,13 +110,11 @@ export class AuthService {
   }
 
   private checkAuthorization(user: User, allowedRoles: string[]): boolean {
-    console.error('checkAuthorization.user=' + user.displayName);
     if (!user) {
       return false;
     }
     for (const role of allowedRoles) {
       if (user.roles[role]) {
-        console.error('checkAuthorization.returns true with role=' + role);
         return true;
       }
     }

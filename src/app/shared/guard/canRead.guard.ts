@@ -5,7 +5,7 @@ import {AuthService} from '../services';
 import {map, take, tap} from 'rxjs/operators';
 
 @Injectable()
-export class CanEditGuard implements CanActivate {
+export class CanReadGuard implements CanActivate {
 
   constructor(private auth: AuthService, private router: Router) {
   }
@@ -19,10 +19,10 @@ export class CanEditGuard implements CanActivate {
 
     return this.auth.user.pipe(
       take(1),
-      map(user => user && this.auth.canEdit(user)),
-      tap(canEdit => {
-        if (!canEdit) {
-          console.error('Access denied. Must have permission to Edit content');
+      map(user => user && this.auth.canRead(user)),
+      tap(canRead => {
+        if (!canRead) {
+          console.error('Access denied. Must have permission to Read content');
           this.router.navigate(['/access-denied']);
         }
       })
