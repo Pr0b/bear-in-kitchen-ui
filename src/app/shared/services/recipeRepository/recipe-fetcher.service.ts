@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument} from 'angularfire2/firestore';
 import {IngredientRecipe, ProtocolItem, RecipeDetail, TagRecipe} from '../../../layout/recipe/recipe.component';
 import {Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
 import {DocumentSnapshot, Query} from '@firebase/firestore-types';
 
 
@@ -36,18 +37,18 @@ export class RecipeFetcherService {
   getRecipes() {
     const collection: AngularFirestoreCollection<RecipeDetail> = this.afs.collection('recipes');
     // TODO rewrite to reference only
-    return collection.snapshotChanges().map(actions => {
+    return collection.snapshotChanges().pipe(map(actions => {
       return actions.map(a => {
         const data = a.payload.doc.data() as RecipeDetail;
         const id = a.payload.doc.id;
         return {id, ...data};
       });
-    });
+    }));
   }
 
   getRecipe(idIn: string) {
     const document: AngularFirestoreDocument<RecipeDetail> = this.afs.doc('recipes/' + idIn);
-    const document$: Observable<RecipeDetail> = document.snapshotChanges().map(a => {
+    const document$: Observable<RecipeDetail> = document.snapshotChanges().pipe(map(a => {
       const tags = [];
       const ingredients = [];
       const protocols = [];
@@ -72,7 +73,7 @@ export class RecipeFetcherService {
       });
 
       return {id, ...data, tags: tags, ingredients: ingredients, protocols: protocols};
-    });
+    }));
     return document$;
   }
 

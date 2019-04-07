@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {AngularFirestore, AngularFirestoreCollection} from 'angularfire2/firestore';
 import {Ingredient, RecipeCategory, Tag} from '../../../layout/recipe/recipe.component';
 import {Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
 
 @Injectable()
 export class CategoryFetcherService {
@@ -16,13 +17,13 @@ export class CategoryFetcherService {
 
   getAllRecipeCategoriesWithChanges(): Observable<RecipeCategory[]> {
     const collection: AngularFirestoreCollection<RecipeCategory> = this.afs.collection('recipeCategories');
-    return collection.snapshotChanges().map(actions => {
+    return collection.snapshotChanges().pipe(map(actions => {
       return actions.map(a => {
         const data = a.payload.doc.data() as RecipeCategory;
         const id = a.payload.doc.id;
         return {id, ...data};
       });
-    });
+    }));
   }
 
   // getRecipeCategory(recipeDetail: Observable<RecipeDetail>): Promise<RecipeCategory> {
@@ -37,13 +38,13 @@ export class CategoryFetcherService {
 
   getAllTagsWithChanges(): Observable<Tag[]> {
     const collection: AngularFirestoreCollection<Ingredient> = this.afs.collection('recipeTags');
-    return collection.snapshotChanges().map(actions => {
+    return collection.snapshotChanges().pipe(map(actions => {
       return actions.map(a => {
         const data = a.payload.doc.data() as Tag;
         const id = a.payload.doc.id;
         return {id, ...data};
       });
-    });
+    }));
   }
 
 }

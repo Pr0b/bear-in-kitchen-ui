@@ -5,6 +5,7 @@ import {AngularFireAuth} from 'angularfire2/auth';
 import {auth} from 'firebase/app';
 import {AngularFirestore, AngularFirestoreDocument} from 'angularfire2/firestore';
 import {Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/observable/of';
 
@@ -50,6 +51,46 @@ export class AuthService {
     return this.afAuth.auth.signOut();
   }
 
+  public isLogged(): Observable<boolean> {
+    return this.user.pipe(map(user => {
+        // return !user;
+        // here we go ...
+        if (!user) {
+          return false;
+        }
+        return true;
+      })
+    );
+  }
+
+  public canLoggedUserRead(): Observable<boolean> {
+    return this.user.pipe(map(user => {
+      return this.canRead(user);
+    }));
+  }
+
+  public canRead(user: User): boolean {
+    const allowed = ['admin', 'editor', 'subscriber'];
+    return this.checkAuthorization(user, allowed);
+  }
+
+  public canLoggedUserEdit(): Observable<boolean> {
+    return this.user.pipe(map(user => {
+        return this.canEdit(user);
+      })
+    );
+  }
+
+  public canEdit(user: User): boolean {
+    const allowed = ['admin', 'editor'];
+    return this.checkAuthorization(user, allowed);
+  }
+
+  public canDelete(user: User): boolean {
+    const allowed = ['admin'];
+    return this.checkAuthorization(user, allowed);
+  }
+
   private oAuthLogin(provider) {
     return this.afAuth.auth.signInWithPopup(provider)
       .then((credential) => {
@@ -69,44 +110,6 @@ export class AuthService {
       }
     };
     return userRef.set(data, {merge: true});
-  }
-
-  public isLogged(): Observable<boolean> {
-    return this.user.map(user => {
-      // return !user;
-      // here we go ...
-      if (!user) {
-        return false;
-      }
-      return true;
-    });
-  }
-
-  public canLoggedUserRead(): Observable<boolean> {
-    return this.user.map(user => {
-      return this.canRead(user);
-    });
-  }
-
-  public canRead(user: User): boolean {
-    const allowed = ['admin', 'editor', 'subscriber'];
-    return this.checkAuthorization(user, allowed);
-  }
-
-  public canLoggedUserEdit(): Observable<boolean> {
-    return this.user.map(user => {
-      return this.canEdit(user);
-    });
-  }
-
-  public canEdit(user: User): boolean {
-    const allowed = ['admin', 'editor'];
-    return this.checkAuthorization(user, allowed);
-  }
-
-  public canDelete(user: User): boolean {
-    const allowed = ['admin'];
-    return this.checkAuthorization(user, allowed);
   }
 
   private checkAuthorization(user: User, allowedRoles: string[]): boolean {

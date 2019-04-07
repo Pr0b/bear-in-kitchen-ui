@@ -1,10 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {routerTransition} from '../../router.animations';
 import {Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
 import {RecipeDetail} from '../recipe/recipe.component';
 import {RecipeFetcherService} from '../../shared/services';
-import {AngularFireStorage, AngularFireStorageModule} from 'angularfire2/storage';
-import {AngularFirestore, AngularFirestoreDocument, AngularFirestoreModule} from 'angularfire2/firestore';
+import {AngularFireStorage} from 'angularfire2/storage';
+import {AngularFirestore, AngularFirestoreDocument} from 'angularfire2/firestore';
 
 @Component({
   selector: 'app-gallery',
@@ -21,13 +22,13 @@ export class GalleryComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.recipes = this.recipeFetcherService.getRecipes().map(recipes => {
+    this.recipes = this.recipeFetcherService.getRecipes().pipe(map(recipes => {
       recipes.forEach(recipe => {
         // FIXME potential issue, we should wait for all async ops to finish before we return the recipes array
         this.resolveThumbPhotoUrl(recipe);
       });
       return recipes;
-    });
+    }));
   }
 
   // TODO extract it to the service
