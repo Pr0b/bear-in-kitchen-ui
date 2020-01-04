@@ -13,9 +13,6 @@ export class CanEditGuard implements CanActivate {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> {
-    this.auth.user.subscribe(user1 => {
-      console.error('this.auth.user=' + user1.displayName);
-    });
 
     return this.auth.user.pipe(
       take(1),

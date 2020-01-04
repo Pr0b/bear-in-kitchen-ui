@@ -1,10 +1,10 @@
 import {Injectable} from '@angular/core';
-import {AngularFirestore} from 'angularfire2/firestore';
+import {AngularFirestore} from '@angular/fire//firestore';
 import {CategoryFetcherService, IngredientFetcherService} from '../../../../shared/services';
 import {Observable} from 'rxjs';
 import {RecipeCategory, TagRecipe} from '../../recipe.component';
 import {map} from 'rxjs/operators';
-import {DynamicFormOptionConfig} from '@ng-dynamic-forms/core/src/model/dynamic-option-control.model';
+import {DynamicFormOptionConfig} from '@ng-dynamic-forms/core/lib/model/dynamic-option-control.model';
 
 @Injectable()
 export class FormatSelectOptionService {
